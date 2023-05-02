@@ -1,13 +1,18 @@
+$menu-height: 100vh;
+$menu-item-height: 3vh;
+$menu-item-border-width: 2px;
+$transition-time: 3.5s; 
+
+
 .menu {
   padding: 0; 
   width: 100vw;
-  height: 100vh;
-  background-color: blue;
+  height: $menu-height;
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
   
 }
 
@@ -15,62 +20,59 @@
   margin-top: -2px;
   width: 99.6%; 
   border-style: solid;
-  border-width: 2px;
+  border-width: $menu-item-border-width;
   display: flex;
   align-items: center;
   font-family: "area-normal", sans-serif;
   font-weight: 600;
   font-style: normal;
   font-size: 16px;
-  height: 3vh;
-  transition: margin-top 1s ease, margin-bottom 1s ease; 
-}
-
-.menu-1-active {
-  margin-top: 0;
-  margin-bottom: auto;
-}
-
-.menu-2-active {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.menu-3-active {
-  margin-bottom: auto;
-}
-
-.menu-4-active {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.menu-5-active {
-  margin-bottom: 0;
-}
-
-.menu-6-active {
-  margin-bottom: auto;
+  height: $menu-item-height;
+  transition: margin-top 1s ease, margin-bottom 1s ease;
+  z-index: 3;
 }
 
 .menu-item p {
   padding-left: 40vw; 
 }
-.menu-item-1 {
-  margin-top: auto; 
+
+.menu-item-1 { 
   background-color: #FC1C1C;
+  transition: transform $transition-time ease;
+  
+  &.menu-1-active {
+    $translateY: calc(-#{$menu-height} + #{3*$menu-item-height} + #{4*$menu-item-border-width});
+    transform: translateY($translateY);
+  }
 }
 
 .menu-item-2 {
   background-color: #ED5959;
+  transition: transform $transition-time ease; 
+
+  &.menu-2-active {
+    $translateY: calc(-#{$menu-height} + #{3*$menu-item-height} + #{4*$menu-item-border-width});
+    transform: translateY($translateY);
+  }
 }
 
 .menu-item-3 {
   background-color: #B990FC;
+  transition: transform $transition-time ease; 
+
+  &.menu-3-active {
+    $translateY: calc(-#{$menu-height} + #{3*$menu-item-height} + #{4*$menu-item-border-width});
+    transform: translateY($translateY);
+  }
 }
 
 .menu-item:hover {
-  transform: scaleY(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  z-index: 3; 
+  opacity: 0.95; 
+  box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
 }
+
+
+
+

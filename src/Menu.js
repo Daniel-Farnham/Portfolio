@@ -1,76 +1,58 @@
 import React, { useState } from 'react';
 import './Menu.scss';
-
+import MenuOverlay from './MenuOverlay';
+import MenuContent from './MenuContent';
 
 function Menu() {
-  const [activeItem, setActiveItem] = useState(''); 
+  const [activeItem, setActiveItem] = useState('');
 
   const handleClick = (item) => {
-    //console.log(getCustomStyles(item)); 
     setActiveItem((prevItem) => (prevItem === item ? '' : item));
-  }
-  
-  const findActive = (item) => {
-    if (activeItem === 'menu-item-1' && item === 'menu-item-1') {
-      return 'menu-1-active';
-    } else if (activeItem === 'menu-item-2' && item === 'menu-item-1') {
-      return 'menu-2-active';
-    } else if (activeItem === 'menu-item-2' && item === 'menu-item-2') {
-      return 'menu-3-active';
-    } else if (activeItem === 'menu-item-3' && item === 'menu-item-1') {
-      return 'menu-4-active';
-    } else if (activeItem === 'menu-item-3' && item === 'menu-item-2') {
-      return 'menu-5-active';
-    } else if (activeItem === 'menu-item-3' && item === 'menu-item-3') {
-      return 'menu-6-active';
-    }
-  }
+  };
 
-  /*
+  const menuItems = [
+    { id: 'menu-item-1', label: 'Experiences', activeClass: 'menu-1-active' },
+    { id: 'menu-item-2', label: 'Cool Projects', activeClass: 'menu-2-active' },
+    { id: 'menu-item-3', label: 'Why You Should Hire Me', activeClass: 'menu-3-active' },
+  ];
 
-  const getCustomStyles = (item) => {
-    if (activeItem === 'menu-item-1' && item === 'menu-item-1') {
-      return { marginTop: 0, marginBottom: 'auto' };
-    } else if (activeItem === 'menu-item-2' && item === 'menu-item-1') {
-      return { marginTop: 0, marginBottom: 0 };
-    } else if (activeItem === 'menu-item-2' && item === 'menu-item-2') {
-      return { marginBottom: 'auto' };
-    } else if (activeItem === 'menu-item-3' && item === 'menu-item-1') {
-      return { marginTop: 0, marginBottom: 0 };
-    } else if (activeItem === 'menu-item-3' && item === 'menu-item-2') {
-      return { marginBottom: 0 };
-    } else if (activeItem === 'menu-item-3' && item === 'menu-item-3') {
-      return { marginBottom: 'auto' };
-    } else if (item === 'menu-item-1') {
-      return { marginTop: 'auto' };
-    } else {
-      return {};
-    }
+  const isMenu1Active = () => {
+    return activeItem === 'menu-item-2' || activeItem === 'menu-item-3';
+  };
+
+  const isMenu2Active = () => {
+    return activeItem === 'menu-item-3';
+  };
+
+  const getActiveDivId = () => {
+    const activeIndex = menuItems.findIndex((item) => item.id === activeItem);
+    return activeIndex !== -1 ? `div-${activeIndex + 1}` : null;
   }
-  */
-
-  const menuItems = ['menu-item-1', 'menu-item-2', 'menu-item-3'];
 
   return (
     <div className="menu">
-      {['menu-item-1', 'menu-item-2', 'menu-item-3'].map((item) => (
+      {menuItems.map((item) => (
         <div
-          key={item}
-          className={`menu-item ${item}`}
-          onClick={() => handleClick(item)}
-          //style={getCustomStyles(item)}
+          key={item.id}
+          className={`menu-item ${item.id} ${
+            ((item.id === 'menu-item-1' && isMenu1Active()) ||
+              (item.id === 'menu-item-2' && isMenu2Active()) ||
+              activeItem === item.id)
+              ? item.activeClass
+              : ''
+          }`}
+          onClick={() => handleClick(item.id)}
         >
-          <p>
-            {item === 'menu-item-1'
-              ? 'Experiences'
-              : item === 'menu-item-2'
-              ? 'Cool Projects'
-              : 'Why You Should Hire Me'}
-          </p>
+          <p>{item.label}</p>
+          
         </div>
       ))}
+      <MenuOverlay isVisible ={!!activeItem} activeDiv={getActiveDivId()} />
+      <MenuContent activeDiv={getActiveDivId()} />
     </div>
   );
 }
 
 export default Menu;
+
+

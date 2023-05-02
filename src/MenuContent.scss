@@ -1,0 +1,167 @@
+
+.content-space {
+  height: 100vh;
+  width: 100vw; 
+  position: absolute; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.hideContent {
+  display: none;
+}
+
+.listContent {
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 1s ease;
+}
+
+.listContent.showContent {
+  width: 100vw; 
+  height: 100vh; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
+  padding: 12vh 0; 
+  overflow-y: scroll;
+  backdrop-filter: blur(20px);
+  animation: fadeIn 3.5s ease 0s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+  to {
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+/* ##### CONTENT BLOCKS FOR EXPERIENCES/PROJECTS ##### */
+.content-box {
+  border-radius: 20px;
+  width: 80vw;
+  height: 30vh; 
+  padding: 15px; 
+  border-style: solid;
+  border-color: black;
+  flex-shrink: 0; 
+  box-shadow: 0px 3px 1px rgb(0, 0, 0);
+  background-color: rgba(216, 216, 216, 0.5);
+  overflow: visible; 
+  transition: background-color 1s ease, height 2s ease, box-shadow 1s ease; 
+}
+
+.content-box:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 3px 4px rgb(0, 0, 0);
+  cursor: pointer; 
+}
+
+.content-box h1 {
+  margin-top: 1vh;
+  font-size: 40px;
+}
+
+.experience-design {
+  display: flex; 
+  flex-direction: column;
+}
+
+.expandExperience {
+  height: 60vh;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+
+.hideExperience {
+  background-color: rgba(216, 216, 216, 0.5);
+}
+
+/* ##### EXPERIENCES ##### */
+
+
+.experience-image {
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  border-bottom-style: solid;
+  border-width: 2px;
+  flex-basis: 30%; 
+}
+
+.experience-image img {
+  height: 80px; 
+}
+
+.experience-information {
+  margin: 0 auto; 
+  overflow-y: scroll;
+}
+
+/* ##### PROJECTS ##### */ 
+
+.project-design {
+  display: flex; 
+}
+.project-content {
+  overflow: hidden;
+  min-width: 310px;
+  max-width: 310px;
+}
+
+.content-wrapper {
+  overflow: hidden; 
+  height: 360px; 
+}
+
+.project-content video {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.project-content img {
+  border-radius: 10px; 
+  width: 100%; 
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 600px) {
+  .project-design {
+    flex-direction: column;
+  }
+  .project-design h1 {
+    padding: 0; 
+  }
+  .project-design p {
+    padding: 0; 
+  }
+  
+}
+
+h1 {
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 1);
+}
+
+p {
+  padding: 10px 15px;
+}
+
+@media screen and (min-width: 1500px) {
+  .content-box {
+    width: 40vw;
+  }
+}
+
+
+
