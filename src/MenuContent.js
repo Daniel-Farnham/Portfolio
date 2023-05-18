@@ -42,7 +42,8 @@ function ProjectDesign({
   content, 
   onClick, 
   playing, 
-  setPlaying 
+  setPlaying,
+  extraimage
   }) { 
   const activeClass = active ? 'expandExperience' : 'hideExperience'; 
 
@@ -80,13 +81,14 @@ function ProjectDesign({
               title={title}
               videoRef={video ? videoRef : null}
             />
+            <img className="extra-image" src={extraimage} alt={title} />
           </div>
         </div>
-          
         <div className="project-information">
           <h1>{title}</h1>
           <p>{formattedContent}</p>
         </div>
+        
       </div>
   );
 }
@@ -147,6 +149,7 @@ function MenuContent({ activeDiv }) {
       title: 'Water Cycle',
       image: null,
       video: waterCycle,
+      extraimage: waterCycleimage_1,
       content: 'blah blah test', 
     },
     {
@@ -154,6 +157,7 @@ function MenuContent({ activeDiv }) {
       title: 'Playground Vintage Shop', 
       image: null,
       video: pgvStoreVideo,
+      extraimage: null,
       content: 'Made with a shoe string budge, gross inexperience and a feeling of being generally in over my head ',
     },
     {
@@ -161,6 +165,7 @@ function MenuContent({ activeDiv }) {
       title: 'Playground Vintage Website Development',
       image: null,
       video: wombatVideo,
+      extraimage: waterCycleimage_1,
       content: 'blah blah test', 
     }, 
     {
@@ -168,6 +173,7 @@ function MenuContent({ activeDiv }) {
       title: 'WIRES',
       image: null,
       video: wombatVideo,
+      extraimage: null,
       content: 'blah blah test', 
     }, 
     {
@@ -175,6 +181,7 @@ function MenuContent({ activeDiv }) {
       title: 'Black Market Project',
       image: pgvLogo,
       video: null,
+      extraimage: null,
       content: 'blah blah test', 
     }, 
     {
@@ -182,6 +189,7 @@ function MenuContent({ activeDiv }) {
       title: 'BEANS',
       image: null,
       video: wombatVideo,
+      extraimage: null,
       content: 'blah blah test', 
     }
   ]
@@ -213,7 +221,8 @@ function MenuContent({ activeDiv }) {
             active={activeExperienceId === project.id}
             onClick={handleClick}
             playing={playing} 
-            setPlaying={setPlaying} 
+            setPlaying={setPlaying}
+            extraimage={project.extraimage} 
           />
         ))}
       </div>

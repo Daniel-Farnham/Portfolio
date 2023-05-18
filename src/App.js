@@ -7,7 +7,10 @@ function App() {
   return (
    <div className="App">
       <header className="App-header">
-        <img className="cloudImage" src={cloudImage} alt="cloudImage"></img>
+        <div className="clouds"> 
+          <img className="cloudImage" src={cloudImage} alt="cloudImage"></img>
+          <img className="cloudImage_1" src={cloudImage} alt="cloudImage"></img>
+        </div>
         <IntroductionText />
         <Menu />
       </header>

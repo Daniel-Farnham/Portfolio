@@ -1,5 +1,5 @@
 $menu-height: 100vh;
-$menu-item-height: 3vh;
+$menu-item-height: 40px;
 $menu-item-border-width: 2px;
 $transition-time: 3.5s; 
 $overlay-space: calc(#{$menu-height} - #{2*$menu-item-height} - #{3*$menu-item-border-width});
@@ -51,7 +51,7 @@ $overlay-space: calc(#{$menu-height} - #{2*$menu-item-height} - #{3*$menu-item-b
 .overlay-2.showOverlay {
   $translateY: calc(-#{$menu-height} + #{3*$menu-item-height} + #{4*$menu-item-border-width});
   transform: translateY($translateY);
-  transform: scaleY(94);
+  transform: scaleY(97);
   opacity: 0.8
 }
 

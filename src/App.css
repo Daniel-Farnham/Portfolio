@@ -13,24 +13,24 @@
   overflow: hidden;
 }
 
-
-.cloudContainer {
-  max-width: 100%; 
-  overflow: hidden;
+.clouds {
+  opacity: 0.8; 
+  overflow: hidden; 
 }
-
 .cloudImage {
-  opacity: 0.8;
   position: absolute; 
     top: 30%; 
     right: -0%; 
   width: 200px;
-  overflow: hidden;
   animation: moveImage 40s linear infinite; 
 }
 
-.cloudImage:hover {
-  opacity: 1; 
+.cloudImage_1 {
+  position: absolute; 
+    top: 10%; 
+    right: -0%; 
+    width: 100px; 
+    animation: moveImage 30s linear infinite; 
 }
 
 @media screen and (min-width: 1600px) {

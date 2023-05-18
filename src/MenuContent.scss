@@ -84,6 +84,15 @@
   background-color: rgba(216, 216, 216, 0.5);
 }
 
+@media screen and (max-width: 650px) {
+  .content-box {
+    height: 60vh; 
+  }
+  .expandExperience {
+    height: 70vh; 
+  }
+}
+
 /* ##### EXPERIENCES ##### */
 
 
@@ -117,7 +126,9 @@
 }
 
 .content-wrapper {
-  overflow: hidden; 
+  display: flex;
+  flex-direction: column; 
+  gap: 15px;
   height: 360px; 
 }
 
@@ -134,6 +145,11 @@
   height: 100%;
   object-fit: cover;
 }
+
+.extra-image {
+  height: 50vh;
+}
+
 
 @media screen and (max-width: 600px) {
   .project-design {
