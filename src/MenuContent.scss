@@ -16,7 +16,7 @@
 
 .listContent {
   backdrop-filter: blur(0px);
-  transition: backdrop-filter 1s ease;
+  transition: backdrop-filter 0.3s ease;
 }
 
 .listContent.showContent {
@@ -29,7 +29,7 @@
   padding: 12vh 0; 
   overflow-y: scroll;
   backdrop-filter: blur(20px);
-  animation: fadeIn 3.5s ease 0s forwards;
+  animation: fadeIn 2.5s ease 0s forwards;
 }
 
 @keyframes fadeIn {

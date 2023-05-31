@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import cloudImage from './assets/CloudImage.png';
 import IntroductionText from './IntroductionText';

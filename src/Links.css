@@ -1,0 +1,31 @@
+
+
+
+.extraLinks {
+  margin-top: 50px; 
+  display: flex; 
+  gap: 10px;
+  z-index: 5; 
+}
+
+.extraLinks a {
+  color: rgb(0, 0, 0);
+  transition: transform 0.2s ease;
+  height: 15px; 
+  display: inline-block;  
+  position: relative; 
+}
+
+.extraLinks a::before {
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+}
+
+.extraLinks a:hover {
+  transform: translateY(-10px);
+}

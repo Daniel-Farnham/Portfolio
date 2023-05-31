@@ -24,6 +24,11 @@ p {
   gap: 10px; 
 }
 
+.word {
+  display: inline-block;
+}
+
+
 /* Initial loading of text */ 
 .char {
   opacity: 0;                
