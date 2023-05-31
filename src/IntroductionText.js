@@ -5,14 +5,13 @@ import './IntroductionText.css';
 
 
 
-function IntroductionText({ isTextIntroduction }) {
+function IntroductionText({ textType, textContent }) {
  const [nameChars, setNameChars] = useState([]);
  const [showParagraph, setShowParagraph] = useState(false);
 
 
  useEffect(() => {
-  const text = 'Hi there, my name is Daniel.';
-  const words = text.split(' ');
+  const words = textContent.split(' ');
   let charCount = 0;
 
   const chars = words.map((word, wordIndex) => {
@@ -43,13 +42,13 @@ function IntroductionText({ isTextIntroduction }) {
   const timeoutId = setTimeout(() => setShowParagraph(true), animationDuration);
 
   return () => clearTimeout(timeoutId);
-}, []);
+}, [textContent]);
 
 
- if (isTextIntroduction === "introduction") {
+ if (textType === "introduction") {
   return (
-    <div className="IntroductionText">
-      <h1>{nameChars}</h1> {}
+    <div className="contentText">
+      <h1>{nameChars}</h1> 
       <p className = {showParagraph ? 'visible' : 'hidden'}>
         I'm sending this to you because I really admire the work of Future
         Friendly. So much so that I built a website to help you
@@ -58,6 +57,17 @@ function IntroductionText({ isTextIntroduction }) {
       < Links showLinks={showParagraph}/>
     </div>
   );
+ }
+ else if (textType === "hireMe") {
+  return (
+    <div className="contentText">
+      <h1>{nameChars}</h1>
+      < Links showLinks={showParagraph}/>
+    </div>
+    
+    
+  )
+  
  }
  
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './MenuContent.scss';
+import IntroductionText from './IntroductionText';
 import pgvLogo from './assets/PGV_Logo.png'
 import unswLogo from './assets/UNSW_Logo.png'
 import tediLogo from './assets/TEDI_Logo.png'
@@ -40,7 +41,8 @@ function ProjectDesign({
   image, 
   video,
   skills, 
-  content, 
+  content,
+  contentHeight, 
   onClick, 
   playing, 
   setPlaying,
@@ -56,6 +58,11 @@ function ProjectDesign({
   ));
 
   const videoRef = React.useRef()
+
+  const contentHeightMapping = {
+    tall: '100vh',
+    medium: '60vh'
+  }
 
   useEffect(() => {
     if (videoRef.current) {
@@ -73,7 +80,8 @@ function ProjectDesign({
         onClick(id);
         setPlaying(id); 
       }} 
-      className={`content-box ${activeClass} project-design`}>
+      className={`content-box ${activeClass} project-design`}
+      style={{height: contentHeightMapping[contentHeight]}}>
         <div className="project-content">
           <div className="content-wrapper">
             <Media
@@ -159,7 +167,8 @@ function MenuContent({ activeDiv }) {
       video: waterCycle,
       extraimage: waterCycleimage_1,
       content: 'A water recycling system built for a community garden powered by one of the great renewable energy resources - kids. \n\n Water Cycle is a proof of concept that combines energy produced from kids play equipment to power the water recycling system of a community garden. The community garden was operated by Global Generation who had issues with water wastage in their project but had neither the finances, resources or the power connection to install their own water recycling system. Upon talking to the wider community we found that due to new developments many local kids were worried about a loss of play equipment. Our solution was to develop play equipment that powered a water recycling system, resulting in the prototype called ‘Water Cycle’. \n\n The aim here was to make something that was ‘fun’, and should encourage ‘play’ as well as recycle water. To achieve this we added interactive light systems, miniature games that changed based on the amount of water pumped and the saturation of the soil. \n\n My role in this project flirted between being the Product Designer as well as an Engineer of many different hats but it could be neatly described as putting myself in the shoes of the users, designing a solution that fits their needs and applying technical know-how to make it real.', 
-      skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering']
+      skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
+      contentHeight: "tall"
     },
     {
       id: 5,
@@ -177,7 +186,8 @@ function MenuContent({ activeDiv }) {
       video: wombatVideo,
       extraimage: waterCycleimage_1,
       content: 'The Playground Vintage website was developed during the early stages of COVID as part of a pivot in my business from physical retail sales to online sales. \n\n My role was to rapidly develop this website from scratch with at the time little knowledge of ecommerce and web development principles. Through a period of significant learning and iteration I not only created this website but turned it into a thriving ecommerce business with sales that averaged $10,000/week. Through this our business not only survived the COVID lockdowns but came out of it stronger.', 
-      skills: ['HTML', 'CSS', 'Javascript', 'Shopify Liquid', 'API Integrations', 'UI/UX Design', 'Project Management', 'SEO', 'Digital Marketing', 'Product Design']
+      skills: ['HTML', 'CSS', 'Javascript', 'Shopify Liquid', 'API Integrations', 'UI/UX Design', 'Project Management', 'SEO', 'Digital Marketing', 'Product Design'],
+      contentHeight: "medium"
     }, 
     {
       id: 6,
@@ -226,7 +236,8 @@ function MenuContent({ activeDiv }) {
   ]
 
   return (
-    <div className="content-space">
+    
+    <div className={`content-space ${activeDiv ? 'showContent' : 'hideContent'}`}>
       <div className = {`listContent ${activeDiv === 'div-1' ? 'showContent' : 'hideContent'}`}>
         {experiences.map((experience) => (
           <ExperienceDesign
@@ -250,6 +261,7 @@ function MenuContent({ activeDiv }) {
             video={project.video}
             skills={project.skills}
             content={project.content}
+            contentHeight={project.contentHeight}
             active={activeExperienceId === project.id}
             onClick={handleClick}
             playing={playing} 
@@ -258,7 +270,10 @@ function MenuContent({ activeDiv }) {
           />
         ))}
       </div>
-      <div className = {`listContent ${activeDiv === 'div-3' ? 'showContent' : 'hideContent'}`}>
+      <div className = {`listContent hireMe ${activeDiv === 'div-3' ? 'showContent' : 'hideContent'}`}>
+        
+          <IntroductionText textType={"hireMe"} textContent={"stuff to do"} />
+        
         
       </div>
     </div>
