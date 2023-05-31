@@ -1,5 +1,5 @@
 $menu-height: 100vh;
-$menu-item-height: 60px;
+$menu-item-height: 55px;
 $menu-item-border-width: 2px;
 $transition-time: 2.2s; 
 
@@ -31,7 +31,7 @@ $transition-time: 2.2s;
   font-size: 16px;
   height: $menu-item-height;
   transition: border-width 3s ease, margin-top 1s ease, margin-bottom 1s ease;
-  z-index: 3;
+  z-index: 4;
 }
 
 

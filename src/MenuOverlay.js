@@ -24,30 +24,4 @@ function MenuOverlay({ activeDiv }) {
   );
 }
 
-
-/*
-const divContent = {
-  'div-1': <div>Hello World</div>,
-  'div-2': <div>Hello World2</div>,
-  'div-3': <div>Hello World3</div>,
-}
-
-function MenuContent({ isVisible, activeDiv }) {
-
-  const isContentVisible = (divId) => {
-    if (!isVisible) return 'inactiveContent';
-    if (activeDiv === divId) return 'showContent'
-    return 'inactiveContent'
-  }
-  return (
-      <div
-        className={ `unique-div ${isVisible ? 'showContent' : ''} ${activeDiv}`       /}
-      >
-      {divContent[activeDiv]}
-    </div>
-  );
-  // Maybe I keep the menu content in here. 
-}
-
-*/
 export default MenuOverlay

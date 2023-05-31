@@ -38,7 +38,8 @@ function ProjectDesign({
   active, 
   title, 
   image, 
-  video, 
+  video,
+  skills, 
   content, 
   onClick, 
   playing, 
@@ -86,7 +87,14 @@ function ProjectDesign({
         </div>
         <div className="project-information">
           <h1>{title}</h1>
+          <p>Skills Required: </p>
+          <ul>
+            {skills && skills.map((skill, index) => (
+            <li key={index}>{skill}</li>
+            ))}
+          </ul>
           <p>{formattedContent}</p>
+          
         </div>
         
       </div>
@@ -100,9 +108,9 @@ function Media({ type, src, title, videoRef }) {
         <source src={src}></source>
       </video>
     );
-  } else {
+  } else if (type === 'image') {
     return <img src={src} alt={title} />;
-  }
+  } 
 }
 
 function MenuContent({ activeDiv }) {
@@ -150,7 +158,8 @@ function MenuContent({ activeDiv }) {
       image: null,
       video: waterCycle,
       extraimage: waterCycleimage_1,
-      content: 'blah blah test', 
+      content: 'A water recycling system built for a community garden powered by one of the great renewable energy resources - kids. \n\n Water Cycle is a proof of concept that combines energy produced from kids play equipment to power the water recycling system of a community garden. The community garden was operated by Global Generation who had issues with water wastage in their project but had neither the finances, resources or the power connection to install their own water recycling system. Upon talking to the wider community we found that due to new developments many local kids were worried about a loss of play equipment. Our solution was to develop play equipment that powered a water recycling system, resulting in the prototype called ‘Water Cycle’. \n\n The aim here was to make something that was ‘fun’, and should encourage ‘play’ as well as recycle water. To achieve this we added interactive light systems, miniature games that changed based on the amount of water pumped and the saturation of the soil. \n\n My role in this project flirted between being the Product Designer as well as an Engineer of many different hats but it could be neatly described as putting myself in the shoes of the users, designing a solution that fits their needs and applying technical know-how to make it real.', 
+      skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering']
     },
     {
       id: 5,
@@ -158,15 +167,17 @@ function MenuContent({ activeDiv }) {
       image: null,
       video: pgvStoreVideo,
       extraimage: null,
-      content: 'Made with a shoe string budge, gross inexperience and a feeling of being generally in over my head ',
+      content: 'Playground Vintage has operated across two different locations within Sydney with the first opening in September of 2019. \n\n I was part of the leadership of the opening of this store. Going into this process I had no idea how to open a physical business location so doing this involved a steep learning curve. The idea that I had was to develop a place for young people between the ages of 18-25 where they could not only find affordable clothing but be a place that was novel, childish and just fun and memorable - this was important in helping our customers feel comfortable in their own identity.',
+      skills: ['Project Management', 'Negotiation', 'Interior Design', 'Financial Planning', 'Market Research', 'Product Development', 'Team Planning', 'Leadership']
     },
     {
       id: 9,
-      title: 'Playground Vintage Website Development',
+      title: 'Playground Vintage Website',
       image: null,
       video: wombatVideo,
       extraimage: waterCycleimage_1,
-      content: 'blah blah test', 
+      content: 'The Playground Vintage website was developed during the early stages of COVID as part of a pivot in my business from physical retail sales to online sales. \n\n My role was to rapidly develop this website from scratch with at the time little knowledge of ecommerce and web development principles. Through a period of significant learning and iteration I not only created this website but turned it into a thriving ecommerce business with sales that averaged $10,000/week. Through this our business not only survived the COVID lockdowns but came out of it stronger.', 
+      skills: ['HTML', 'CSS', 'Javascript', 'Shopify Liquid', 'API Integrations', 'UI/UX Design', 'Project Management', 'SEO', 'Digital Marketing', 'Product Design']
     }, 
     {
       id: 6,
@@ -182,15 +193,35 @@ function MenuContent({ activeDiv }) {
       image: pgvLogo,
       video: null,
       extraimage: null,
-      content: 'blah blah test', 
+      content: 'A project aimed at lifting the lid on the characters, impacts and hidden networks that fuel the global wildlife trade and ultimately the decline in our natural world. \n\n Led by photographer Adam Oswell, journalist Ben Davies With foreword from Jane Goodall, Black Market Project explores the connection between humans and the natural world by journeying through the bat-filled caves of Laos, the burnt black forests of Australia, the isolated mountains of Mongolia and the wilds of Uganda. It is an ongoing journalistic project which seeks to highlight the stories between people and wildlife as they emerge. \n\n My role was mainly in the development of the website. This included early prototyping with Figma, consultation with the clients to understand their needs, an understanding of their users and also the development of the website.', 
+      skills: ['UI/UX Design', 'User Journey Mapping', 'Figma', 'HTML', 'CSS', 'Javascript', 'JSON', 'Git', 'Project Management']
     }, 
     {
       id: 10,
       title: 'BEANS',
       image: null,
-      video: wombatVideo,
+      video: null,
       extraimage: null,
-      content: 'blah blah test', 
+      content: 'The simplest way of describing Beans is it is a bootleg Microsoft Teams but with all the perks of being built by a team of scrappy university students. \n\n On the Beans project I worked as backend engineer and was heavily involved in developing features for different team ‘channels’, ‘standups’ as well as the authentication of users upon logging in. Beans went through a process of iterative development with each stage involving new features and updated testing using Jest.',
+      skills: ['Typescript', 'Jest', 'Node.js', 'Express.js', 'Git/Gitlab', 'Agile Development'] 
+    },
+    {
+      id: 11,
+      title: 'Dungeonmania', 
+      image: null, 
+      video: wombatVideo,
+      extraimage: null, 
+      content: 'Dungeonmania is as it sounds a ‘Dungeon’ style adventure game developed in Java where the user moves through different rooms completing goals, collecting items, fighting enemies and navigating obstacles. My role in this project involved adding some new features to the game such as new items and weapons. However as some of the game was already built this quickly evolved into a large refactoring process to untangle the web of tight coupling between classes in order to make the process of adding these new features easier as development went on.',
+      skills: ['Java', 'Object Oriented Programming', 'Git/GitLab', 'UML Diagrams', 'Iterative Development'],
+    }, 
+    {
+      id: 12,
+      title: 'BattleMips', 
+      image: null, 
+      video: wombatVideo,
+      extraimage: null, 
+      content: 'BattleMips is perhaps one of my most straightforward (on paper) but most difficult and deeply-technical projects that I have completed. In short BattleMips is the game ‘BattleShip’ but coded in the Assembly language MIPS. \n\n For context, Assembly is one of the lowest-languages you get in programming - it is hard to decipher and involves a lot of binary/hexadecimal (1’s and 0’s - like what you see in the Matrix’). This project tested my technical skills and more importantly helped refine my toolkit allowing me to break down and deal with difficult problems.',
+      skills: ['C', 'Assembly', 'Computer Memory Management', 'Understanding of Binary', 'Software Testing', 'Deep Technical Problem Solving', 'Time Management'],
     }
   ]
 
@@ -217,6 +248,7 @@ function MenuContent({ activeDiv }) {
             title={project.title}
             image={project.image}
             video={project.video}
+            skills={project.skills}
             content={project.content}
             active={activeExperienceId === project.id}
             onClick={handleClick}
@@ -225,6 +257,9 @@ function MenuContent({ activeDiv }) {
             extraimage={project.extraimage} 
           />
         ))}
+      </div>
+      <div className = {`listContent ${activeDiv === 'div-3' ? 'showContent' : 'hideContent'}`}>
+        
       </div>
     </div>
   );

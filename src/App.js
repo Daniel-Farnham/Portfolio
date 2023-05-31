@@ -12,7 +12,7 @@ function App() {
           <img className="cloudImage" src={cloudImage} alt="cloudImage"></img>
           <img className="cloudImage_1" src={cloudImage} alt="cloudImage"></img>
         </div>
-        <IntroductionText />
+        <IntroductionText isTextIntroduction={"introduction"} />
         <Menu />
       </header>
     </div>
