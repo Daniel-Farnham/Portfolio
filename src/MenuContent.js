@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './MenuContent.scss';
 import IntroductionText from './IntroductionText';
+import Media from './Media'
 import pgvLogo from './assets/PGV_Logo.png'
 import unswLogo from './assets/UNSW_Logo.png'
 import tediLogo from './assets/TEDI_Logo.png'
@@ -8,6 +9,9 @@ import fullCirclelogo from './assets/Full_Circle_Logo.png'
 import blackMarketProject from './assets/BlackMarketProject.png'
 import blackMarketProject_2 from './assets/BlackMarketProject2.png'
 import waterCycleimage_1 from './assets/WaterCycle_Construction.jpeg'
+import playgroundVintagewebsite_1 from './assets/playgroundVintageWebsite.png'
+import playgroundVintageWebsite_2 from './assets/playgroundVintageWebsite_2.png'
+import pgvShop_2 from './assets/pgvShop_2.jpg'
 import pgvStoreVideo from './assets/PGV_Shop.mp4'
 import wombatVideo from './assets/Wombat_Mange.mp4'
 import waterCycle from './assets/WaterCycle.mp4'
@@ -40,8 +44,8 @@ function ProjectDesign({
   id, 
   active, 
   title, 
-  image, 
-  video,
+  media_1,
+  media_2,
   skills, 
   content,
   contentHeight, 
@@ -58,6 +62,19 @@ function ProjectDesign({
       <br />
     </React.Fragment>
   ));
+
+  function determineMediaType(media) {
+    if (media.type === 'video') return { type: "video", src: media.src };
+    if (media.type === 'image') return { type: "image", src: media.src };
+    if (media.type === 'icon') return { type: "icon", src: media.src };
+    return { type: "null", src: null };
+  } 
+
+  const { type: type1, src: src1 } = determineMediaType(media_1);
+  const { type: type2, src: src2 } = determineMediaType(media_2);
+
+  const isVideo1 = type1 === "video";
+  const isVideo2 = type2 === "video";
 
   const videoRef = React.useRef()
 
@@ -81,12 +98,17 @@ function ProjectDesign({
         <div className="project-content">
           <div className="content-wrapper">
             <Media
-              type={video ? "video" : "image"}
-              src={video ? video : image}
+              type={type1}
+              src={src1}
               title={title}
-              videoRef={video ? videoRef : null}
+              videoRef={isVideo1 ? videoRef : null}
             />
-            <img className="extra-image" src={extraimage} alt={title} />
+            <Media
+              type={type2}
+              src={src2}
+              title={title}
+              videoRef={isVideo2 ? videoRef : null}
+            />
           </div>
         </div>
         <div className="project-information">
@@ -103,18 +125,6 @@ function ProjectDesign({
         
       </div>
   );
-}
-
-function Media({ type, src, title, videoRef }) {
-  if (type === "video") {
-    return (
-      <video ref={videoRef} autoPlay muted loop>
-        <source src={src}></source>
-      </video>
-    );
-  } else if (type === 'image') {
-    return <img src={src} alt={title} />;
-  } 
 }
 
 function MenuContent({ activeDiv }) {
@@ -160,19 +170,19 @@ function MenuContent({ activeDiv }) {
     {
       id: 7,
       title: 'Water Cycle',
-      image: null,
-      video: waterCycle,
+      media_1: {type: 'image', src: waterCycleimage_1},
+      media_2: {type: 'video', src: waterCycle},
       extraimage: waterCycleimage_1,
       content: 'A water recycling system built for a community garden powered by one of the great renewable energy resources - kids. \n\n Water Cycle is a proof of concept that combines energy produced from kids play equipment to power the water recycling system of a community garden. The community garden was operated by Global Generation who had issues with water wastage in their project but had neither the finances, resources or the power connection to install their own water recycling system. Upon talking to the wider community we found that due to new developments many local kids were worried about a loss of play equipment. Our solution was to develop play equipment that powered a water recycling system, resulting in the prototype called ‘Water Cycle’. \n\n The aim here was to make something that was ‘fun’, and should encourage ‘play’ as well as recycle water. To achieve this we added interactive light systems, miniature games that changed based on the amount of water pumped and the saturation of the soil. \n\n My role in this project flirted between being the Product Designer as well as an Engineer of many different hats but it could be neatly described as putting myself in the shoes of the users, designing a solution that fits their needs and applying technical know-how to make it real.', 
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
       contentHeight: "tall"
     },
+    
     {
       id: 5,
       title: 'Playground Vintage Shop', 
-      image: null,
-      video: pgvStoreVideo,
-      extraimage: null,
+      media_1: {type: 'image', src: pgvShop_2},
+      media_2: {type: 'video', src: pgvStoreVideo},
       content: 'Playground Vintage has operated across two different locations within Sydney with the first opening in September of 2019. \n\n I was part of the leadership of the opening of this store. Going into this process I had no idea how to open a physical business location so doing this involved a steep learning curve. The idea that I had was to develop a place for young people between the ages of 18-25 where they could not only find affordable clothing but be a place that was novel, childish and just fun and memorable - this was important in helping our customers feel comfortable in their own identity.',
       skills: ['Project Management', 'Negotiation', 'Interior Design', 'Financial Planning', 'Market Research', 'Product Development', 'Team Planning', 'Leadership'],
       contentHeight: "medium"
@@ -180,9 +190,8 @@ function MenuContent({ activeDiv }) {
     {
       id: 9,
       title: 'Playground Vintage Website',
-      image: null,
-      video: wombatVideo,
-      extraimage: waterCycleimage_1,
+      media_1: {type: 'image', src: playgroundVintagewebsite_1},
+      media_2: {type: 'image', src: playgroundVintageWebsite_2},
       content: 'The Playground Vintage website was developed during the early stages of COVID as part of a pivot in my business from physical retail sales to online sales. \n\n My role was to rapidly develop this website from scratch with at the time little knowledge of ecommerce and web development principles. Through a period of significant learning and iteration I not only created this website but turned it into a thriving ecommerce business with sales that averaged $10,000/week. Through this our business not only survived the COVID lockdowns but came out of it stronger.', 
       skills: ['HTML', 'CSS', 'Javascript', 'Shopify Liquid', 'API Integrations', 'UI/UX Design', 'Project Management', 'SEO', 'Digital Marketing', 'Product Design'],
       contentHeight: "medium"
@@ -190,46 +199,50 @@ function MenuContent({ activeDiv }) {
     {
       id: 6,
       title: 'WIRES',
-      image: null,
-      video: wombatVideo,
-      extraimage: null,
+      media_1: {type: 'video', src: wombatVideo},
+      media_2: {type: 'null', src: null},
       content: 'blah blah test', 
     }, 
+    
     {
       id: 8,
       title: 'Black Market Project',
-      image: blackMarketProject,
-      video: null,
-      extraimage: blackMarketProject_2,
+      media_1: {type: 'image', src: blackMarketProject},
+      media_2: {type: 'image', src: blackMarketProject_2},
       content: 'A project aimed at lifting the lid on the characters, impacts and hidden networks that fuel the global wildlife trade and ultimately the decline in our natural world. \n\n Led by photographer Adam Oswell, journalist Ben Davies With foreword from Jane Goodall, Black Market Project explores the connection between humans and the natural world by journeying through the bat-filled caves of Laos, the burnt black forests of Australia, the isolated mountains of Mongolia and the wilds of Uganda. It is an ongoing journalistic project which seeks to highlight the stories between people and wildlife as they emerge. \n\n My role was mainly in the development of the website. This included early prototyping with Figma, consultation with the clients to understand their needs, an understanding of their users and also the development of the website.', 
       skills: ['UI/UX Design', 'User Journey Mapping', 'Figma', 'HTML', 'CSS', 'Javascript', 'JSON', 'Git', 'Project Management']
     }, 
     {
       id: 10,
       title: 'BEANS',
-      image: null,
-      video: null,
-      extraimage: null,
+      media_1: {type: 'icon', src: "https://github.com/Daniel-Farnham/Beans"},
+      media_2: {type: 'null', src: null},
       content: 'The simplest way of describing Beans is it is a bootleg Microsoft Teams but with all the perks of being built by a team of scrappy university students. \n\n On the Beans project I worked as backend engineer and was heavily involved in developing features for different team ‘channels’, ‘standups’ as well as the authentication of users upon logging in. Beans went through a process of iterative development with each stage involving new features and updated testing using Jest.',
       skills: ['Typescript', 'Jest', 'Node.js', 'Express.js', 'Git/Gitlab', 'Agile Development'] 
     },
     {
       id: 11,
       title: 'Dungeonmania', 
-      image: null, 
-      video: wombatVideo,
-      extraimage: null, 
+      media_1: {type: 'icon', src: 'https://github.com/Daniel-Farnham/Dungeonmania'},
+      media_2: {type: null, src: null},
       content: 'Dungeonmania is as it sounds a ‘Dungeon’ style adventure game developed in Java where the user moves through different rooms completing goals, collecting items, fighting enemies and navigating obstacles. My role in this project involved adding some new features to the game such as new items and weapons. However as some of the game was already built this quickly evolved into a large refactoring process to untangle the web of tight coupling between classes in order to make the process of adding these new features easier as development went on.',
       skills: ['Java', 'Object Oriented Programming', 'Git/GitLab', 'UML Diagrams', 'Iterative Development'],
     }, 
     {
       id: 12,
       title: 'BattleMips', 
-      image: null, 
-      video: wombatVideo,
-      extraimage: null, 
+      media_1: {type: 'icon', src: 'https://github.com/Daniel-Farnham/Battlemips'},
+      media_2: {type: null, src: null},
       content: 'BattleMips is perhaps one of my most straightforward (on paper) but most difficult and deeply-technical projects that I have completed. In short BattleMips is the game ‘BattleShip’ but coded in the Assembly language MIPS. \n\n For context, Assembly is one of the lowest-languages you get in programming - it is hard to decipher and involves a lot of binary/hexadecimal (1’s and 0’s - like what you see in the Matrix’). This project tested my technical skills and more importantly helped refine my toolkit allowing me to break down and deal with difficult problems.',
       skills: ['C', 'Assembly', 'Computer Memory Management', 'Understanding of Binary', 'Software Testing', 'Deep Technical Problem Solving', 'Time Management'],
+    },
+    {
+      id: 13, 
+      title: 'SatelliteTransferSystem', 
+      media_1: {type: 'icon', src: 'https://github.com/Daniel-Farnham/SatelliteTransferSystem'},
+      media_2: {type: null, src: null},
+      content: 'blah blah', 
+      skills: ['Java']
     }
   ]
 
@@ -256,8 +269,8 @@ function MenuContent({ activeDiv }) {
             key={project.id}
             id={project.id}
             title={project.title}
-            image={project.image}
-            video={project.video}
+            media_1={project.media_1}
+            media_2={project.media_2}
             skills={project.skills}
             content={project.content}
             contentHeight={project.contentHeight}

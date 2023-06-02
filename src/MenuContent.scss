@@ -162,6 +162,11 @@ $contentHeightShort: 40vh;
   object-fit: cover;
 }
 
+.project-content a {
+  width: 50px; 
+  margin: auto auto; 
+}
+
 .extra-image {
   max-height: 50vh;
 }
