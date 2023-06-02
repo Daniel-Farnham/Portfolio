@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Menu.scss';
 import MenuOverlay from './MenuOverlay';
 import MenuContent from './MenuContent';
 
 function Menu() {
   const [activeItem, setActiveItem] = useState('');
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight); 
 
   const handleClick = (item) => {
     setActiveItem((prevItem) => (prevItem === item ? '' : item));
   };
+
+  useEffect(() => {
+    const handleResize = () => setWindowHeight(window.innerHeight);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize); 
+    }
+  }, []);
+
 
   const menuItems = [
     { id: 'menu-item-1', label: 'Experiences', activeClass: 'menu-1-active' },
@@ -30,7 +40,8 @@ function Menu() {
   }
 
   return (
-    <div className="menu">
+    <div className="menu"
+     style={{ height: windowHeight }}>
       {menuItems.map((item) => (
         <div
           key={item.id}

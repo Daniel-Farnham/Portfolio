@@ -1,3 +1,7 @@
+$contentHeightTall: 80vh; 
+$contentHeightMedium: 60vh; 
+$contentHeightShort: 40vh; 
+
 
 .content-space {
   height: 100vh;
@@ -75,8 +79,20 @@
 }
 
 .expandExperience {
-  height: 60vh;
+  height: 50vh;
   background-color: rgba(255, 255, 255, 0.9);
+}
+
+.expandExperience.tall {
+  height: $contentHeightTall;
+}
+
+.expandExperience.medium {
+  height: $contentHeightMedium;
+}
+
+.expandExperience.short {
+  height: $contentHeightShort;
 }
 
 
@@ -147,7 +163,7 @@
 }
 
 .extra-image {
-  height: 50vh;
+  max-height: 50vh;
 }
 
 

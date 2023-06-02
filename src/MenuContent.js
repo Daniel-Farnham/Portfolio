@@ -5,13 +5,15 @@ import pgvLogo from './assets/PGV_Logo.png'
 import unswLogo from './assets/UNSW_Logo.png'
 import tediLogo from './assets/TEDI_Logo.png'
 import fullCirclelogo from './assets/Full_Circle_Logo.png'
+import blackMarketProject from './assets/BlackMarketProject.png'
+import blackMarketProject_2 from './assets/BlackMarketProject2.png'
 import waterCycleimage_1 from './assets/WaterCycle_Construction.jpeg'
 import pgvStoreVideo from './assets/PGV_Shop.mp4'
 import wombatVideo from './assets/Wombat_Mange.mp4'
 import waterCycle from './assets/WaterCycle.mp4'
 
 
-function ExperienceDesign({ id, active, logo, title, content, onClick }) {
+function ExperienceDesign({ id, active, logo, title, content, contentHeight, onClick }) {
   const activeClass = active ? 'expandExperience' : 'hideExperience'; 
 
   const formattedContent = content.split('\n').map((line, index) => (
@@ -22,7 +24,7 @@ function ExperienceDesign({ id, active, logo, title, content, onClick }) {
   ));
 
     return (
-      <div onClick={() => onClick(id)} className={`content-box experience-design ${activeClass}`}>
+      <div onClick={() => onClick(id)} className={`content-box experience-design ${contentHeight} ${activeClass}`}>
         <div className="experience-image">
           <img src={logo} alt={title} />
         </div>
@@ -59,11 +61,6 @@ function ProjectDesign({
 
   const videoRef = React.useRef()
 
-  const contentHeightMapping = {
-    tall: '100vh',
-    medium: '60vh'
-  }
-
   useEffect(() => {
     if (videoRef.current) {
       if (active && playing === id) { 
@@ -80,8 +77,7 @@ function ProjectDesign({
         onClick(id);
         setPlaying(id); 
       }} 
-      className={`content-box ${activeClass} project-design`}
-      style={{height: contentHeightMapping[contentHeight]}}>
+      className={`content-box ${activeClass} ${contentHeight} project-design`}>
         <div className="project-content">
           <div className="content-wrapper">
             <Media
@@ -156,6 +152,7 @@ function MenuContent({ activeDiv }) {
       logo: unswLogo, 
       title: 'Bachelor of Environmental Engineering/Computer Science',
       content: 'Something to be completed in the next couple of months. My degree has taught me everything from biology, chemistry, physics, environmental systems thinking, plenty of complex mathematics and a suite of programming languages (C, C++, Javascript, React, Node.JS, Java) plus a whole host of other useful technical skills. \n\nArguably though the most valuable skill I have gained from this is the ability to break down and solve hard problems. I know that my degree will not teach me everything I will ever need to know. However being able to problem solve has meant that if I don’t know something I am comfortable that I can work it out and become good at it.\n\nIf you’re interested in my problem solving method: \n\nIt is a process of breaking down the problem into small chunks.  Testing a solution on a particular chunk. The solution doesn’t work. Find out why. Learn. Iterate a new solution. Repeat until you have a working solution and repeat for each chunk. ',
+      contentHeight: "tall"
     },
   ]
 
@@ -177,7 +174,8 @@ function MenuContent({ activeDiv }) {
       video: pgvStoreVideo,
       extraimage: null,
       content: 'Playground Vintage has operated across two different locations within Sydney with the first opening in September of 2019. \n\n I was part of the leadership of the opening of this store. Going into this process I had no idea how to open a physical business location so doing this involved a steep learning curve. The idea that I had was to develop a place for young people between the ages of 18-25 where they could not only find affordable clothing but be a place that was novel, childish and just fun and memorable - this was important in helping our customers feel comfortable in their own identity.',
-      skills: ['Project Management', 'Negotiation', 'Interior Design', 'Financial Planning', 'Market Research', 'Product Development', 'Team Planning', 'Leadership']
+      skills: ['Project Management', 'Negotiation', 'Interior Design', 'Financial Planning', 'Market Research', 'Product Development', 'Team Planning', 'Leadership'],
+      contentHeight: "medium"
     },
     {
       id: 9,
@@ -200,9 +198,9 @@ function MenuContent({ activeDiv }) {
     {
       id: 8,
       title: 'Black Market Project',
-      image: pgvLogo,
+      image: blackMarketProject,
       video: null,
-      extraimage: null,
+      extraimage: blackMarketProject_2,
       content: 'A project aimed at lifting the lid on the characters, impacts and hidden networks that fuel the global wildlife trade and ultimately the decline in our natural world. \n\n Led by photographer Adam Oswell, journalist Ben Davies With foreword from Jane Goodall, Black Market Project explores the connection between humans and the natural world by journeying through the bat-filled caves of Laos, the burnt black forests of Australia, the isolated mountains of Mongolia and the wilds of Uganda. It is an ongoing journalistic project which seeks to highlight the stories between people and wildlife as they emerge. \n\n My role was mainly in the development of the website. This included early prototyping with Figma, consultation with the clients to understand their needs, an understanding of their users and also the development of the website.', 
       skills: ['UI/UX Design', 'User Journey Mapping', 'Figma', 'HTML', 'CSS', 'Javascript', 'JSON', 'Git', 'Project Management']
     }, 
@@ -246,6 +244,7 @@ function MenuContent({ activeDiv }) {
           logo={experience.logo}
           title={experience.title}
           content={experience.content}
+          contentHeight={experience.contentHeight}
           active={activeExperienceId === experience.id}
           onClick={handleClick}
           />
