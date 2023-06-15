@@ -3,6 +3,7 @@ $contentHeightMedium: 60vh;
 $contentHeightShort: 40vh; 
 
 
+
 .content-space {
   height: 100vh;
   width: 100vw; 
@@ -13,6 +14,12 @@ $contentHeightShort: 40vh;
   align-items: center;
   overflow-y: scroll;
   z-index: 2;
+}
+
+@media screen and (max-width: 650px) {
+  .content-space {
+    height: -webkit-fill-available; 
+  }
 }
 
 .hideContent {
@@ -48,9 +55,17 @@ $contentHeightShort: 40vh;
   }
 }
 
+
+
 /* ##### CONTENT BLOCKS FOR EXPERIENCES/PROJECTS ##### */
-.content-box {
-  
+
+@media screen and (min-width: 1500px) {
+  .content-box {
+    width: 40vw;
+  }
+}
+
+.content-box {  
   width: 85vw;
   height: 30vh; 
   padding: 15px; 
@@ -95,17 +110,25 @@ $contentHeightShort: 40vh;
   height: $contentHeightShort;
 }
 
-
 .hideExperience {
   background-color: rgba(216, 216, 216, 0.5);
 }
 
 @media screen and (max-width: 650px) {
   .content-box {
-    height: 60vh; 
+    height: 30vh;
+    width: 70vw; 
+    transition: width 1.5s ease, height 1.5s ease; 
+  }
+  .content-box h1 {
+    font-size: 24px
+  }
+  .content-box p {
+    font-size: 12px; 
   }
   .expandExperience {
-    height: 70vh; 
+    width: 80vw; 
+    height: 60vh; 
   }
 }
 
@@ -127,7 +150,15 @@ $contentHeightShort: 40vh;
 
 .experience-information {
   margin: 0 auto; 
-  overflow-y: scroll;
+}
+
+@media screen and (max-width: 650px) {
+  .experience-image {
+    max-height: 70px;
+  }
+  .experience-image img {
+    height: 50px; 
+  }
 }
 
 /* ##### PROJECTS ##### */ 
@@ -138,27 +169,26 @@ $contentHeightShort: 40vh;
 .project-content {
   overflow: scroll;
   min-width: 310px;
-  max-width: 310px;
+  
 }
 
 .content-wrapper {
   display: flex;
   flex-direction: column; 
   gap: 15px;
-  height: 360px; 
 }
 
 .project-content video {
   border-radius: 10px;
   width: 100%;
-  height: 100%; 
+  height: 360px; 
   object-fit: cover; 
 }
 
 .project-content img {
   border-radius: 10px; 
   width: 100%; 
-  height: 100%;
+  height: 360px;
   object-fit: cover;
 }
 
@@ -172,10 +202,26 @@ $contentHeightShort: 40vh;
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .project-design {
-    flex-direction: column;
+    display: flex;
+    flex-direction: column; 
+    height: 50vh;
   }
+  .project-content {
+    overflow: visible;
+    height: 50vh; 
+  }
+  .content-wrapper {
+    width: 100%; 
+  }
+  .project-content img {
+    height: 50vh; 
+  }
+  .project-content video {
+    height: 50vh;
+  }
+  
   .project-design h1 {
     padding: 0; 
   }
@@ -185,20 +231,6 @@ $contentHeightShort: 40vh;
   
 }
 
-h1 {
-  padding: 0 15px;
-  color: rgba(0, 0, 0, 1);
-}
-
-p {
-  padding: 10px 15px;
-}
-
-@media screen and (min-width: 1500px) {
-  .content-box {
-    width: 40vw;
-  }
-}
 
 /* ###### Hire Me ####### */
 

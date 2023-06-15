@@ -5,9 +5,6 @@ import './MenuOverlay.scss';
 
 function MenuOverlay({ activeDiv }) {
   
-  // Check if div is active or not. 
-  // currently the problem is that this will always be true if div-1 is clicked. 
-  
   return (
       <div
       className={ `section-overlay` }
@@ -18,7 +15,6 @@ function MenuOverlay({ activeDiv }) {
         </div>
         <div className = {`overlay-3 ${activeDiv === 'div-3' ? 'showOverlay' : 'hideOverlay'}`}>
         </div>
-       
       </div>
     
   );

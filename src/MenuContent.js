@@ -52,7 +52,7 @@ function ProjectDesign({
   onClick, 
   playing, 
   setPlaying,
-  extraimage
+
   }) { 
   const activeClass = active ? 'expandExperience' : 'hideExperience'; 
 
@@ -120,9 +120,7 @@ function ProjectDesign({
             ))}
           </ul>
           <p>{formattedContent}</p>
-          
         </div>
-        
       </div>
   );
 }
@@ -210,7 +208,8 @@ function MenuContent({ activeDiv }) {
       media_1: {type: 'image', src: blackMarketProject},
       media_2: {type: 'image', src: blackMarketProject_2},
       content: 'A project aimed at lifting the lid on the characters, impacts and hidden networks that fuel the global wildlife trade and ultimately the decline in our natural world. \n\n Led by photographer Adam Oswell, journalist Ben Davies With foreword from Jane Goodall, Black Market Project explores the connection between humans and the natural world by journeying through the bat-filled caves of Laos, the burnt black forests of Australia, the isolated mountains of Mongolia and the wilds of Uganda. It is an ongoing journalistic project which seeks to highlight the stories between people and wildlife as they emerge. \n\n My role was mainly in the development of the website. This included early prototyping with Figma, consultation with the clients to understand their needs, an understanding of their users and also the development of the website.', 
-      skills: ['UI/UX Design', 'User Journey Mapping', 'Figma', 'HTML', 'CSS', 'Javascript', 'JSON', 'Git', 'Project Management']
+      skills: ['UI/UX Design', 'User Journey Mapping', 'Figma', 'HTML', 'CSS', 'Javascript', 'JSON', 'Git', 'Project Management'],
+      contentHeight: "medium"
     }, 
     {
       id: 10,
@@ -233,7 +232,7 @@ function MenuContent({ activeDiv }) {
       title: 'BattleMips', 
       media_1: {type: 'icon', src: 'https://github.com/Daniel-Farnham/Battlemips'},
       media_2: {type: null, src: null},
-      content: 'BattleMips is perhaps one of my most straightforward (on paper) but most difficult and deeply-technical projects that I have completed. In short BattleMips is the game ‘BattleShip’ but coded in the Assembly language MIPS. \n\n For context, Assembly is one of the lowest-languages you get in programming - it is hard to decipher and involves a lot of binary/hexadecimal (1’s and 0’s - like what you see in the Matrix’). This project tested my technical skills and more importantly helped refine my toolkit allowing me to break down and deal with difficult problems.',
+      content: 'BattleMips is perhaps one of my most straightforward (on paper) but most difficult and deeply-technical projects that I have completed. In short BattleMips is the game ‘BattleShip’ but coded in the Assembly language MIPS. \n\n For the non-technical people, Assembly is one of the lowest-languages you get in programming - it is hard to decipher and involves a lot of binary/hexadecimal (1’s and 0’s - like what you see in the Matrix’). This project tested my technical skills and more importantly helped refine my toolkit allowing me to break down and deal with difficult problems.',
       skills: ['C', 'Assembly', 'Computer Memory Management', 'Understanding of Binary', 'Software Testing', 'Deep Technical Problem Solving', 'Time Management'],
     },
     {
@@ -243,11 +242,18 @@ function MenuContent({ activeDiv }) {
       media_2: {type: null, src: null},
       content: 'blah blah', 
       skills: ['Java']
-    }
+    },
+    {
+      id: 14, 
+      title: 'Silk Project',
+      media_1: {type: 'image', src: blackMarketProject},
+      media_2: {type: 'image', src: blackMarketProject_2},
+      content: 'blah',
+      skills: ['skills go here']
+    },
   ]
 
   return (
-    
     <div className={`content-space ${activeDiv ? 'showContent' : 'hideContent'}`}>
       <div className = {`listContent ${activeDiv === 'div-1' ? 'showContent' : 'hideContent'}`}>
         {experiences.map((experience) => (
@@ -284,9 +290,7 @@ function MenuContent({ activeDiv }) {
       </div>
       <div className = {`listContent hireMe ${activeDiv === 'div-3' ? 'showContent' : 'hideContent'}`}>
         
-          <IntroductionText textType={"hireMe"} textContent={"stuff to do"} />
-        
-        
+          <IntroductionText textType={"hireMe"} textContent={"stuff to do"} />     
       </div>
     </div>
   );
