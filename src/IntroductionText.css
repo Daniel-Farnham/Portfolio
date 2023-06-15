@@ -15,7 +15,6 @@ p {
   margin: 0;
 }
 
-
 .contentText {
   max-width: 60vw;
   display: flex; 
@@ -27,7 +26,6 @@ p {
 .word {
   display: inline-block;
 }
-
 
 /* Initial loading of text */ 
 .char {
@@ -44,7 +42,6 @@ p {
 }
 
 /* Loading of body text */
-
 .hidden {
   opacity: 0; 
   transition: opacity 0.8s ease-in; 
@@ -57,9 +54,9 @@ p {
 
 @media screen and (max-width: 600px) {
   h1 {
-    font-size: 40px;
+    font-size: 32px;
   }
   p {
-    font-size: 14px;
+    font-size: 12px;
   }
 }

@@ -6,10 +6,9 @@ import './Links.css'
 
 function Links({ showLinks }) {
   const icons = [
-    { icon: faEnvelope, link: "mailto: danjf1210@gmail.com" },
-    { icon: faGithub, link: "https://github.com/Daniel-Farnham" },
-    { icon: faLinkedin, link: "https://www.linkedin.com/in/daniel-farnham-84308522b/" },
-    // Add more icons as needed
+    { icon: faEnvelope, link: "mailto: danjf1210@gmail.com", size: "lg" },
+    { icon: faGithub, link: "https://github.com/Daniel-Farnham", size: "lg" },
+    { icon: faLinkedin, link: "https://www.linkedin.com/in/daniel-farnham-84308522b/", size: "lg" },
   ];
 
   return (
