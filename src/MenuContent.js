@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './MenuContent.scss';
 import IntroductionText from './IntroductionText';
-import Media from './Media'
+import Media from './Media';
+import SkillsTable from './SkillsTable';
 import pgvLogo from './assets/PGV_Logo.png'
 import unswLogo from './assets/UNSW_Logo.png'
 import tediLogo from './assets/TEDI_Logo.png'
@@ -62,7 +63,7 @@ function ProjectDesign({
       <br />
     </React.Fragment>
   ));
-
+  
   function determineMediaType(media) {
     if (media.type === 'video') return { type: "video", src: media.src };
     if (media.type === 'image') return { type: "image", src: media.src };
@@ -113,12 +114,8 @@ function ProjectDesign({
         </div>
         <div className="project-information">
           <h1>{title}</h1>
-          <p>Skills Required: </p>
-          <ul>
-            {skills && skills.map((skill, index) => (
-            <li key={index}>{skill}</li>
-            ))}
-          </ul>
+          <p>Skills: </p>
+          <SkillsTable skills={skills} />
           <p>{formattedContent}</p>
         </div>
       </div>
@@ -142,6 +139,7 @@ function MenuContent({ activeDiv }) {
       logo: pgvLogo, 
       title: 'Co-Founder', 
       content: 'Playground Vintage was established in 2018 out of a desire to provide clothing that is cool, affordable and ultimately good for the environment. This was a business born out of naivety, frustration with the clothing industry and a willingness to do something about it.\n\n Originally this started as a process of designing and making my own clothing which did well to start with. However I became concerned with the environmental impact of clothes and pivoted to selling only remade or vintage pieces. Plus I felt like there wasn’t enough ‘fun’ for young people in Sydney, hence the name ‘Playground Vintage’. \n\nIn 2019, I opened up my first store and in 2021 my second which was difficult while balancing my degree and COVID-lockdowns. This experience was valuable because it really taught me a lot about building products for people and how to make things happen despite a lack of knowledge and resources.',
+      contentHeight: "tall",
     },
     {
       id: 2,
@@ -183,7 +181,7 @@ function MenuContent({ activeDiv }) {
       media_2: {type: 'video', src: pgvStoreVideo},
       content: 'Playground Vintage has operated across two different locations within Sydney with the first opening in September of 2019. \n\n I was part of the leadership of the opening of this store. Going into this process I had no idea how to open a physical business location so doing this involved a steep learning curve. The idea that I had was to develop a place for young people between the ages of 18-25 where they could not only find affordable clothing but be a place that was novel, childish and just fun and memorable - this was important in helping our customers feel comfortable in their own identity.',
       skills: ['Project Management', 'Negotiation', 'Interior Design', 'Financial Planning', 'Market Research', 'Product Development', 'Team Planning', 'Leadership'],
-      contentHeight: "medium"
+      contentHeight: "short"
     },
     {
       id: 9,
@@ -192,7 +190,7 @@ function MenuContent({ activeDiv }) {
       media_2: {type: 'image', src: playgroundVintageWebsite_2},
       content: 'The Playground Vintage website was developed during the early stages of COVID as part of a pivot in my business from physical retail sales to online sales. \n\n My role was to rapidly develop this website from scratch with at the time little knowledge of ecommerce and web development principles. Through a period of significant learning and iteration I not only created this website but turned it into a thriving ecommerce business with sales that averaged $10,000/week. Through this our business not only survived the COVID lockdowns but came out of it stronger.', 
       skills: ['HTML', 'CSS', 'Javascript', 'Shopify Liquid', 'API Integrations', 'UI/UX Design', 'Project Management', 'SEO', 'Digital Marketing', 'Product Design'],
-      contentHeight: "medium"
+      contentHeight: "short"
     }, 
     {
       id: 6,
@@ -200,6 +198,7 @@ function MenuContent({ activeDiv }) {
       media_1: {type: 'video', src: wombatVideo},
       media_2: {type: 'null', src: null},
       content: 'blah blah test', 
+      skills: ['blah']
     }, 
     
     {
