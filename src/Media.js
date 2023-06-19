@@ -5,7 +5,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 function Media({ type, src, title, videoRef }) {
   if (type === "video") {
     return (
-      <video ref={videoRef} autoPlay muted loop>
+      <video ref={videoRef} autoPlay muted playsInline loop>
         <source src={src}></source>
       </video>
     );

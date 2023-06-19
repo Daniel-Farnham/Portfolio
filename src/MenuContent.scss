@@ -1,6 +1,9 @@
-$contentHeightTall: 80vh; 
+$contentHeightTall: 70vh; 
 $contentHeightMedium: 60vh; 
-$contentHeightShort: 40vh; 
+$contentHeightShort: 60vh; 
+$additionalHeightforTallMobile: 55vh; 
+$additionalHeightforMediumMobile: 35vh;
+$additionalHeightforShortMobile: 20vh;
 
 
 
@@ -69,12 +72,13 @@ $contentHeightShort: 40vh;
   width: 85vw;
   height: 30vh; 
   padding: 15px; 
+  gap: 20px;
   border-style: solid;
   border-color: black;
   flex-shrink: 0; 
   background-color: rgba(216, 216, 216, 0.5);
   overflow: hidden; 
-  transition: background-color 0.5s ease, height 1.5s ease, box-shadow 1s ease; 
+  transition: background-color 0.5s ease, width 1.5s ease, height 1.5s ease, box-shadow 1s ease; 
 }
 
 .content-box:hover {
@@ -95,6 +99,7 @@ $contentHeightShort: 40vh;
 
 .expandExperience {
   height: 50vh;
+  width: 90vw; 
   background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -118,13 +123,24 @@ $contentHeightShort: 40vh;
   .content-box {
     height: 30vh;
     width: 70vw; 
-    transition: width 1.5s ease, height 1.5s ease; 
+    transition: width 1.3s ease, height 1.5s ease; 
   }
   .content-box h1 {
     font-size: 24px
   }
   .content-box p {
     font-size: 12px; 
+  }
+  .expandExperience.tall {
+    height: calc(#{$additionalHeightforTallMobile} + #{$contentHeightTall});
+  }
+  
+  .expandExperience.medium {
+    height: calc(#{$additionalHeightforMediumMobile} + #{$contentHeightMedium});
+  }
+  
+  .expandExperience.short {
+    height: calc(#{$additionalHeightforShortMobile} + #{$contentHeightShort});
   }
   .expandExperience {
     width: 80vw; 
@@ -175,6 +191,7 @@ $contentHeightShort: 40vh;
 .content-wrapper {
   display: flex;
   flex-direction: column; 
+  height: 360px;
   gap: 15px;
 }
 
@@ -197,6 +214,11 @@ $contentHeightShort: 40vh;
   margin: auto auto; 
 }
 
+.project-information {
+  display: flex; 
+  flex-direction: column;
+  gap: 10px; 
+}
 .extra-image {
   max-height: 50vh;
 }
@@ -205,21 +227,24 @@ $contentHeightShort: 40vh;
 @media screen and (max-width: 650px) {
   .project-design {
     display: flex;
-    flex-direction: column; 
-    height: 50vh;
+    flex-direction: column-reverse; 
+    justify-content: start; 
+    align-items: flex-start;
   }
   .project-content {
     overflow: visible;
-    height: 50vh; 
   }
   .content-wrapper {
-    width: 100%; 
+    display: flex; 
+    flex-direction: row;
   }
   .project-content img {
-    height: 50vh; 
+    width: 50%;
+    height: 25vh;
   }
   .project-content video {
-    height: 50vh;
+    width: 50%;
+    height: 25vh; 
   }
   
   .project-design h1 {
