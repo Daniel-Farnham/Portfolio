@@ -1,4 +1,4 @@
-
+/*
   .skillsTableContainer {
     display: grid; 
     grid-template-columns: repeat(3, 1fr [flex-start]);
@@ -17,7 +17,7 @@
     height: 100%; 
     max-width: 200px;
   }
-
+*/
 
   /* Not sure whether to include this. 
   .skillItems:hover {
@@ -25,13 +25,15 @@
     background-blend-mode: overlay;
   }
 */ 
+
+/*
   .skillsTableContainer p {
     font-size: 10px;
     text-align: center;
   }
-
+*/
 // ## CODE FOR CONTINOUS SKILL RUN ## 
-/*
+
 .scrollContainer {
   overflow: hidden;
   position: relative;
@@ -51,6 +53,10 @@
   display: inline-flex; 
   gap: 10px;
   height: 50px; 
+  //animation: marquee 20s linear infinite;
+}
+
+.skillsTableContainer.running {
   animation: marquee 20s linear infinite;
 }
 
@@ -77,7 +83,7 @@
 @media screen {
   
 }
-*/
+
 
 
 

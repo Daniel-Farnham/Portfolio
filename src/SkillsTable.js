@@ -1,19 +1,21 @@
-/*import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './SkillsTable.scss';
 import PropTypes from 'prop-types';
 
-const SkillsTable = ({ skills }) => {
+const SkillsTable = ({ skills, isActive }) => {
+  
   const scrollRef = useRef(null);
-
   useEffect(() => {
     const el = scrollRef.current;
     const clone = el.cloneNode(true);
     el.parentNode.appendChild(clone);
   }, []);
 
+  const className = isActive ? 'skillsTableContainer running' : 'skillsTableContainer'; 
+
   return (
     <div className='scrollContainer'>
-      <div className='skillsTableContainer' ref={scrollRef}>
+      <div className={className} ref={scrollRef}>
         {skills.map((skill) => (
           <p className="skillItems" key={skill}> {skill}</p>
         ))}
@@ -27,10 +29,10 @@ SkillsTable.propTypes = {
 };
 
 export default SkillsTable;
-*/
 
 
 
+/*
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './SkillsTable.scss';
@@ -67,7 +69,7 @@ SkillsTable.propTypes = {
 };
 
 export default SkillsTable;
-
+*/
 // CODE FOR CONTINOUS SKILL RUN
 /*
 import React from 'react';

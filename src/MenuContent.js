@@ -87,6 +87,7 @@ function ProjectDesign({
         videoRef.current.pause();
       }
     }
+    
   }, [playing, active, id]); 
   
   return (
@@ -115,7 +116,7 @@ function ProjectDesign({
         <div className="project-information">
           <h1>{title}</h1>
           <p>Skills: </p>
-          <SkillsTable skills={skills} />
+          <SkillsTable skills={skills} isActive={active && playing === id}/>
           <p>{formattedContent}</p>
         </div>
       </div>
