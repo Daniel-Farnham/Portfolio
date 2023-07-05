@@ -10,6 +10,11 @@ import fullCirclelogo from './assets/Full_Circle_Logo.png'
 import blackMarketProject from './assets/BlackMarketProject.png'
 import blackMarketProject_2 from './assets/BlackMarketProject2.png'
 import waterCycleimage_1 from './assets/WaterCycle_Construction.jpeg'
+import sneakerDeximage_1 from './assets/SneakerDex.png'
+import sneakerDeximage_2 from './assets/SneakerDex_image2.png'
+import silkDriptheLabelImage_1 from './assets/SilkDripTheLabel.png'
+import silkDriptheLabelImage_2 from './assets/SilkDripTheLabelimage_2.png'
+import portfolioImage from './assets/PortfolioImage.png'
 import playgroundVintagewebsite_1 from './assets/playgroundVintageWebsite.png'
 import playgroundVintageWebsite_2 from './assets/playgroundVintageWebsite_2.png'
 import pgvShop_2 from './assets/pgvShop_2.jpg'
@@ -87,6 +92,7 @@ function ProjectDesign({
         videoRef.current.pause();
       }
     }
+    
   }, [playing, active, id]); 
   
   return (
@@ -115,7 +121,7 @@ function ProjectDesign({
         <div className="project-information">
           <h1>{title}</h1>
           <p>Skills: </p>
-          <SkillsTable skills={skills} />
+          <SkillsTable skills={skills}/>
           <p>{formattedContent}</p>
         </div>
       </div>
@@ -173,7 +179,16 @@ function MenuContent({ activeDiv }) {
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
       contentHeight: "tall"
     },
-    
+    /*
+    {
+      id: 15,
+      title: 'SneakerDex',
+      media_1: {type: 'image', src: sneakerDeximage_1},
+      media_2: {type: 'image', src: sneakerDeximage_2},
+      content: 'A water recycling system built for a community garden powered by one of the great renewable energy resources - kids. \n\n Water Cycle is a proof of concept that combines energy produced from kids play equipment to power the water recycling system of a community garden. The community garden was operated by Global Generation who had issues with water wastage in their project but had neither the finances, resources or the power connection to install their own water recycling system. Upon talking to the wider community we found that due to new developments many local kids were worried about a loss of play equipment. Our solution was to develop play equipment that powered a water recycling system, resulting in the prototype called ‘Water Cycle’. \n\n The aim here was to make something that was ‘fun’, and should encourage ‘play’ as well as recycle water. To achieve this we added interactive light systems, miniature games that changed based on the amount of water pumped and the saturation of the soil. \n\n My role in this project flirted between being the Product Designer as well as an Engineer of many different hats but it could be neatly described as putting myself in the shoes of the users, designing a solution that fits their needs and applying technical know-how to make it real.', 
+      skills: ['UI/UX Design', 'Wireframing', 'Prototyping'],
+      contentHeight: "tall"
+    },*/
     {
       id: 5,
       title: 'Playground Vintage Shop', 
@@ -191,16 +206,17 @@ function MenuContent({ activeDiv }) {
       content: 'The Playground Vintage website was developed during the early stages of COVID as part of a pivot in my business from physical retail sales to online sales. \n\n My role was to rapidly develop this website from scratch with at the time little knowledge of ecommerce and web development principles. Through a period of significant learning and iteration I not only created this website but turned it into a thriving ecommerce business with sales that averaged $10,000/week. Through this our business not only survived the COVID lockdowns but came out of it stronger.', 
       skills: ['HTML', 'CSS', 'Javascript', 'Shopify Liquid', 'API Integrations', 'UI/UX Design', 'Project Management', 'SEO', 'Digital Marketing', 'Product Design'],
       contentHeight: "short"
-    }, 
+    },
+    /* 
     {
       id: 6,
-      title: 'WIRES',
+      title: 'WIRES Wombat Mange Treatment',
       media_1: {type: 'video', src: wombatVideo},
       media_2: {type: 'null', src: null},
       content: 'blah blah test', 
       skills: ['blah']
-    }, 
-    
+    },
+    */ 
     {
       id: 8,
       title: 'Black Market Project',
@@ -210,6 +226,25 @@ function MenuContent({ activeDiv }) {
       skills: ['UI/UX Design', 'User Journey Mapping', 'Figma', 'HTML', 'CSS', 'Javascript', 'JSON', 'Git', 'Project Management'],
       contentHeight: "medium"
     }, 
+    /*
+    {
+      id: 14,
+      title: 'Silk Drip The Label',
+      media_1: {type: 'image', src: silkDriptheLabelImage_1},
+      media_2: {type: 'image', src: silkDriptheLabelImage_2},
+      content: 'blah blah test', 
+      skills: ['blah']
+    },
+    
+    {
+      id: 16, 
+      title: 'This Website',
+      media_1: {type: 'image', src: portfolioImage},
+      media_2: {type: 'image', src: silkDriptheLabelImage_2},
+      content: 'blah blah test', 
+      skills: ['blah']
+    }, 
+    */
     {
       id: 10,
       title: 'BEANS',
@@ -232,8 +267,9 @@ function MenuContent({ activeDiv }) {
       media_1: {type: 'icon', src: 'https://github.com/Daniel-Farnham/Battlemips'},
       media_2: {type: null, src: null},
       content: 'BattleMips is perhaps one of my most straightforward (on paper) but most difficult and deeply-technical projects that I have completed. In short BattleMips is the game ‘BattleShip’ but coded in the Assembly language MIPS. \n\n For the non-technical people, Assembly is one of the lowest-languages you get in programming - it is hard to decipher and involves a lot of binary/hexadecimal (1’s and 0’s - like what you see in the Matrix’). This project tested my technical skills and more importantly helped refine my toolkit allowing me to break down and deal with difficult problems.',
-      skills: ['C', 'Assembly', 'Computer Memory Management', 'Understanding of Binary', 'Software Testing', 'Deep Technical Problem Solving', 'Time Management'],
+      skills: ['C', 'Assembly', 'Memory Management', 'Binary', 'Software Testing', 'Technical Problem Solving', 'Time Management'],
     },
+    /*
     {
       id: 13, 
       title: 'SatelliteTransferSystem', 
@@ -242,14 +278,7 @@ function MenuContent({ activeDiv }) {
       content: 'blah blah', 
       skills: ['Java']
     },
-    {
-      id: 14, 
-      title: 'Silk Project',
-      media_1: {type: 'image', src: blackMarketProject},
-      media_2: {type: 'image', src: blackMarketProject_2},
-      content: 'blah',
-      skills: ['skills go here']
-    },
+    */
   ]
 
   return (

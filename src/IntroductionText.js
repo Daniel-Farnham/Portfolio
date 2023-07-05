@@ -50,8 +50,7 @@ function IntroductionText({ textType, textContent }) {
     <div className="contentText">
       <h1>{nameChars}</h1> 
       <p className = {showParagraph ? 'visible' : 'hidden'}>
-        I'm sending this to you because I really admire the work of Future
-        Friendly. So much so that I built a website to help you
+        I'm sending this to you because I really admire the work you do. So much so that I built a website to help you
         understand me better.
       </p>
       < Links showLinks={showParagraph}/>

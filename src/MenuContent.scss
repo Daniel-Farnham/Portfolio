@@ -184,20 +184,21 @@ $additionalHeightforShortMobile: 20vh;
 }
 .project-content {
   overflow: scroll;
-  min-width: 310px;
+  min-width: 360px;
   
 }
 
 .content-wrapper {
   display: flex;
   flex-direction: column; 
-  height: 360px;
+  height: 340px;
   gap: 15px;
 }
 
 .project-content video {
   border-radius: 10px;
   width: 100%;
+  max-width: 340px; 
   height: 360px; 
   object-fit: cover; 
 }
@@ -205,6 +206,7 @@ $additionalHeightforShortMobile: 20vh;
 .project-content img {
   border-radius: 10px; 
   width: 100%; 
+  max-width: 340px;
   height: 360px;
   object-fit: cover;
 }
