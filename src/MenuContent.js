@@ -179,6 +179,7 @@ function MenuContent({ activeDiv }) {
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
       contentHeight: "tall"
     },
+    /*
     {
       id: 15,
       title: 'SneakerDex',
@@ -187,7 +188,7 @@ function MenuContent({ activeDiv }) {
       content: 'A water recycling system built for a community garden powered by one of the great renewable energy resources - kids. \n\n Water Cycle is a proof of concept that combines energy produced from kids play equipment to power the water recycling system of a community garden. The community garden was operated by Global Generation who had issues with water wastage in their project but had neither the finances, resources or the power connection to install their own water recycling system. Upon talking to the wider community we found that due to new developments many local kids were worried about a loss of play equipment. Our solution was to develop play equipment that powered a water recycling system, resulting in the prototype called ‘Water Cycle’. \n\n The aim here was to make something that was ‘fun’, and should encourage ‘play’ as well as recycle water. To achieve this we added interactive light systems, miniature games that changed based on the amount of water pumped and the saturation of the soil. \n\n My role in this project flirted between being the Product Designer as well as an Engineer of many different hats but it could be neatly described as putting myself in the shoes of the users, designing a solution that fits their needs and applying technical know-how to make it real.', 
       skills: ['UI/UX Design', 'Wireframing', 'Prototyping'],
       contentHeight: "tall"
-    },
+    },*/
     {
       id: 5,
       title: 'Playground Vintage Shop', 
@@ -205,15 +206,17 @@ function MenuContent({ activeDiv }) {
       content: 'The Playground Vintage website was developed during the early stages of COVID as part of a pivot in my business from physical retail sales to online sales. \n\n My role was to rapidly develop this website from scratch with at the time little knowledge of ecommerce and web development principles. Through a period of significant learning and iteration I not only created this website but turned it into a thriving ecommerce business with sales that averaged $10,000/week. Through this our business not only survived the COVID lockdowns but came out of it stronger.', 
       skills: ['HTML', 'CSS', 'Javascript', 'Shopify Liquid', 'API Integrations', 'UI/UX Design', 'Project Management', 'SEO', 'Digital Marketing', 'Product Design'],
       contentHeight: "short"
-    }, 
+    },
+    /* 
     {
       id: 6,
-      title: 'WIRES',
+      title: 'WIRES Wombat Mange Treatment',
       media_1: {type: 'video', src: wombatVideo},
       media_2: {type: 'null', src: null},
       content: 'blah blah test', 
       skills: ['blah']
-    }, 
+    },
+    */ 
     {
       id: 8,
       title: 'Black Market Project',
@@ -223,6 +226,7 @@ function MenuContent({ activeDiv }) {
       skills: ['UI/UX Design', 'User Journey Mapping', 'Figma', 'HTML', 'CSS', 'Javascript', 'JSON', 'Git', 'Project Management'],
       contentHeight: "medium"
     }, 
+    /*
     {
       id: 14,
       title: 'Silk Drip The Label',
@@ -231,6 +235,7 @@ function MenuContent({ activeDiv }) {
       content: 'blah blah test', 
       skills: ['blah']
     },
+    
     {
       id: 16, 
       title: 'This Website',
@@ -239,6 +244,7 @@ function MenuContent({ activeDiv }) {
       content: 'blah blah test', 
       skills: ['blah']
     }, 
+    */
     {
       id: 10,
       title: 'BEANS',
@@ -263,6 +269,7 @@ function MenuContent({ activeDiv }) {
       content: 'BattleMips is perhaps one of my most straightforward (on paper) but most difficult and deeply-technical projects that I have completed. In short BattleMips is the game ‘BattleShip’ but coded in the Assembly language MIPS. \n\n For the non-technical people, Assembly is one of the lowest-languages you get in programming - it is hard to decipher and involves a lot of binary/hexadecimal (1’s and 0’s - like what you see in the Matrix’). This project tested my technical skills and more importantly helped refine my toolkit allowing me to break down and deal with difficult problems.',
       skills: ['C', 'Assembly', 'Memory Management', 'Binary', 'Software Testing', 'Technical Problem Solving', 'Time Management'],
     },
+    /*
     {
       id: 13, 
       title: 'SatelliteTransferSystem', 
@@ -271,7 +278,7 @@ function MenuContent({ activeDiv }) {
       content: 'blah blah', 
       skills: ['Java']
     },
-    
+    */
   ]
 
   return (
