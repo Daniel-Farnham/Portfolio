@@ -37,33 +37,39 @@ $transition-time: 2.2s;
 
 
 .menu-item-1 { 
-  background-color: #FC1C1C;
+  background-color: #e8dad1;
   transition: transform $transition-time ease;
-
+  &:hover {
+    background-color: rgb(255, 205, 255);
+  }
   &.menu-1-active {
     $translateY: calc(-#{$menu-height} + #{3*$menu-item-height} - 4px);
+    background-color: rgb(255, 205, 255);
     transform: translateY($translateY);
     box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
   }
 }
 
 .menu-item-2 {
-  background-color: #ED5959;
+  background-color: #e8dad1;
   transition: transform $transition-time ease; 
-
   &.menu-2-active {
     $translateY: calc(-#{$menu-height} + #{3*$menu-item-height - 4px});
+    background-color: rgb(255, 205, 255);
     transform: translateY($translateY);
     box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
   }
 }
 
 .menu-item-3 {
-  background-color: #B990FC;
+  background-color: #e8dad1;
   transition: transform $transition-time ease; 
-
+  &:hover {
+    background-color: rgb(255, 205, 255);
+  }
   &.menu-3-active {
     $translateY: calc(-#{$menu-height} + #{3*$menu-item-height - 4px});
+    background-color: rgb(255, 205, 255);
     transform: translateY($translateY);
     box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
   }
