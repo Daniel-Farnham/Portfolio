@@ -6,10 +6,10 @@ import MenuContent from './MenuContent';
 function Menu() {
   const [activeItem, setActiveItem] = useState('');
   const [windowHeight, setWindowHeight] = useState(window.innerHeight); 
-
-  const handleClick = (item) => {
-    setActiveItem((prevItem) => (prevItem === item ? '' : item));
-  };
+  const itemStyles = {
+    itemHeight: 55,
+    itemBorderWidth: 2,
+  } 
 
   useEffect(() => {
     const handleResize = () => setWindowHeight(window.innerHeight);
@@ -19,12 +19,11 @@ function Menu() {
     }
   }, []);
 
+  console.log(windowHeight); 
 
-  const menuItems = [
-    { id: 'menu-item-1', label: 'Experiences', activeClass: 'menu-1-active' },
-    { id: 'menu-item-2', label: 'Cool Projects', activeClass: 'menu-2-active' },
-    { id: 'menu-item-3', label: 'Why You Should Hire Me', activeClass: 'menu-3-active' },
-  ];
+  const handleClick = (item) => {
+    setActiveItem((prevItem) => (prevItem === item ? '' : item));
+  };
 
   const isMenu1Active = () => {
     return activeItem === 'menu-item-2' || activeItem === 'menu-item-3';
@@ -39,6 +38,18 @@ function Menu() {
     return activeIndex !== -1 ? `div-${activeIndex + 1}` : null;
   }
 
+  const positionActiveDivs = () => {
+    return windowHeight - (3 * itemStyles.itemHeight - 3 * itemStyles.itemBorderWidth); 
+  }
+
+  const menuItems = [
+    { id: 'menu-item-1', label: 'Experiences', activeClass: 'menu-1-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight, activePosition: positionActiveDivs() },
+    { id: 'menu-item-2', label: 'Cool Projects', activeClass: 'menu-2-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight, activePosition: positionActiveDivs() },
+    { id: 'menu-item-3', label: 'Why You Should Hire Me', activeClass: 'menu-3-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight,  activePosition: positionActiveDivs() },
+  ];
+
+  
+
   return (
     <div className="menu"
      style={{ height: windowHeight }}>
@@ -52,6 +63,11 @@ function Menu() {
               ? item.activeClass
               : ''
           }`}
+          style={{ height: item.height, /* transform: "translateY(-100%)" */ 
+          transform: ((item.id === 'menu-item-1' && isMenu1Active()) ||
+                     (item.id === 'menu-item-2' && isMenu2Active()) ||
+                      activeItem === item.id) ? `translateY(-${item.activePosition}px` : '',
+          }}
           onClick={() => handleClick(item.id)}
         >
           <p>{item.label}</p>

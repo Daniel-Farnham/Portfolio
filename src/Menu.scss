@@ -5,11 +5,10 @@ $menu-item-height-mobile: 40px;
 $menu-item-border-width: 2px;
 $transition-time: 2.2s; 
 
-
 .menu {
   padding: 0; 
   width: 100vw;
-  height: $menu-height;
+  //height: $menu-height;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -30,29 +29,34 @@ $transition-time: 2.2s;
   font-weight: 600;
   font-style: normal;
   font-size: 16px;
-  height: $menu-item-height;
+  //height: $menu-item-height;
   transition: border-width 3s ease, margin-top 1s ease, margin-bottom 1s ease;
   z-index: 4;
 }
 
 
 .menu-item-1 { 
-  background-color: #e8dad1;
-  transition: transform $transition-time ease;
+  //background-color: #e8dad1;
+  //box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
+  transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease;
   &:hover {
     background-color: rgb(255, 205, 255);
   }
   &.menu-1-active {
     $translateY: calc(-#{$menu-height} + #{3*$menu-item-height} - 4px);
     background-color: rgb(255, 205, 255);
-    transform: translateY($translateY);
+    //transform: translateY(-100%);
     box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
   }
 }
 
 .menu-item-2 {
-  background-color: #e8dad1;
-  transition: transform $transition-time ease; 
+  //background-color: #e8dad1;
+  //box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
+  transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease; 
+  &:hover {
+    background-color: rgb(255, 205, 255);
+  }
   &.menu-2-active {
     $translateY: calc(-#{$menu-height} + #{3*$menu-item-height - 4px});
     background-color: rgb(255, 205, 255);
@@ -62,8 +66,8 @@ $transition-time: 2.2s;
 }
 
 .menu-item-3 {
-  background-color: #e8dad1;
-  transition: transform $transition-time ease; 
+  //background-color: #e8dad1;
+  transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease; 
   &:hover {
     background-color: rgb(255, 205, 255);
   }
