@@ -29,6 +29,7 @@ $transition-time: 2.2s;
   font-weight: 600;
   font-style: normal;
   font-size: 16px;
+  
   //height: $menu-item-height;
   transition: border-width 3s ease, margin-top 1s ease, margin-bottom 1s ease;
   z-index: 4;
@@ -36,8 +37,6 @@ $transition-time: 2.2s;
 
 
 .menu-item-1 { 
-  //background-color: #e8dad1;
-  //box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
   transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease;
   &:hover {
     background-color: rgb(255, 205, 255);
@@ -51,8 +50,6 @@ $transition-time: 2.2s;
 }
 
 .menu-item-2 {
-  //background-color: #e8dad1;
-  //box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
   transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease; 
   &:hover {
     background-color: rgb(255, 205, 255);
@@ -66,7 +63,6 @@ $transition-time: 2.2s;
 }
 
 .menu-item-3 {
-  //background-color: #e8dad1;
   transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease; 
   &:hover {
     background-color: rgb(255, 205, 255);
@@ -90,31 +86,4 @@ $transition-time: 2.2s;
 
 // ####### MOBILE ######### 
 
-@media screen and (max-width: 650px) {
-  .menu {
-    height: -webkit-fill-available;
-  }
-  .menu-item {
-    height: $menu-item-height-mobile;
-  }
-  .menu-item-1 { 
-    &.menu-1-active {
-      $translateY: calc(-#{$menu-height-mobile} + #{4*$menu-item-height-mobile} - 4px);
-      transform: translateY($translateY);
-    }
-  }
-  .menu-item-2 {
-    &.menu-2-active {
-      $translateY: calc(-#{$menu-height-mobile} + #{4*$menu-item-height-mobile - 4px});
-      transform: translateY($translateY);
-    }
-  }
-
-  .menu-item-3 {
-    &.menu-3-active {
-      $translateY: calc(-#{$menu-height-mobile} + #{4*$menu-item-height-mobile - 4px});
-      transform: translateY($translateY);
-    }
-  }
-}
 

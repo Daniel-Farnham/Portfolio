@@ -74,7 +74,7 @@ function Menu() {
           
         </div>
       ))}
-      <MenuOverlay isVisible ={!!activeItem} activeDiv={getActiveDivId()} />
+      {/* <MenuOverlay isVisible ={!!activeItem} activeDiv={getActiveDivId()} /> */}
       <MenuContent activeDiv={getActiveDivId()} />
     </div>
   );

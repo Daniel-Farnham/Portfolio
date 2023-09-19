@@ -5,8 +5,6 @@ $additionalHeightforTallMobile: 55vh;
 $additionalHeightforMediumMobile: 35vh;
 $additionalHeightforShortMobile: 20vh;
 
-
-
 .content-space {
   height: 100vh;
   width: 100vw; 
@@ -16,6 +14,7 @@ $additionalHeightforShortMobile: 20vh;
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
+  overflow: hidden; 
   z-index: 2;
 }
 
@@ -35,14 +34,16 @@ $additionalHeightforShortMobile: 20vh;
 }
 
 .listContent.showContent {
-  width: 100vw; 
-  height: 100vh; 
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
+  width: 90vw; 
+  height: 80vh; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  //flex-direction: column;
+  //align-items: center;
   gap: 10px;
   padding: 12vh 0; 
-  overflow-y: scroll;
+  //overflow:visible; // Edit this to change scroll feature
   backdrop-filter: blur(20px);
   animation: fadeIn 2.5s ease 0s forwards;
 }
@@ -58,8 +59,6 @@ $additionalHeightforShortMobile: 20vh;
   }
 }
 
-
-
 /* ##### CONTENT BLOCKS FOR EXPERIENCES/PROJECTS ##### */
 
 @media screen and (min-width: 1500px) {
@@ -69,13 +68,12 @@ $additionalHeightforShortMobile: 20vh;
 }
 
 .content-box {  
-  width: 85vw;
-  height: 30vh; 
+  // width: 85vw;
+  //height: 40vh; 
   padding: 15px; 
   gap: 20px;
   border-style: solid;
   border-color: black;
-  flex-shrink: 0; 
   background-color: rgba(216, 216, 216, 0.5);
   overflow: hidden; 
   transition: background-color 0.5s ease, width 1.5s ease, height 1.5s ease, box-shadow 1s ease; 
@@ -89,35 +87,15 @@ $additionalHeightforShortMobile: 20vh;
 
 .content-box h1 {
   margin-top: 1vh;
-  font-size: 40px;
+  font-size: 30px;
 }
 
-.experience-design {
-  display: flex; 
-  flex-direction: column;
-}
+// .experience-design {
+//   display: flex; 
+//   flex-direction: column;
+// }
 
-.expandExperience {
-  height: 50vh;
-  width: 90vw; 
-  background-color: rgba(255, 255, 255, 0.9);
-}
 
-.expandExperience.tall {
-  height: $contentHeightTall;
-}
-
-.expandExperience.medium {
-  height: $contentHeightMedium;
-}
-
-.expandExperience.short {
-  height: $contentHeightShort;
-}
-
-.hideExperience {
-  background-color: rgba(216, 216, 216, 0.5);
-}
 
 @media screen and (max-width: 650px) {
   .content-box {
@@ -157,11 +135,11 @@ $additionalHeightforShortMobile: 20vh;
   justify-content: center;
   border-bottom-style: solid;
   border-width: 2px;
-  flex-basis: 30%; 
+  max-height: 80px; 
 }
 
 .experience-image img {
-  height: 80px; 
+  height: 70px; 
 }
 
 .experience-information {
@@ -266,3 +244,24 @@ $additionalHeightforShortMobile: 20vh;
 }
 
 
+// .expandExperience {
+//   height: 50vh;
+//   width: 90vw; 
+//   background-color: rgba(255, 255, 255, 0.9);
+// }
+
+// .expandExperience.tall {
+//   height: $contentHeightTall;
+// }
+
+// .expandExperience.medium {
+//   height: $contentHeightMedium;
+// }
+
+// .expandExperience.short {
+//   height: $contentHeightShort;
+// }
+
+// .hideExperience {
+//   background-color: rgba(216, 216, 216, 0.5);
+// }

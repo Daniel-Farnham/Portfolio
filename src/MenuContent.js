@@ -23,8 +23,7 @@ import wombatVideo from './assets/Wombat_Mange.mp4'
 import waterCycle from './assets/WaterCycle.mp4'
 
 
-function ExperienceDesign({ id, active, logo, title, content, contentHeight, onClick }) {
-  const activeClass = active ? 'expandExperience' : 'hideExperience'; 
+function ExperienceDesign({ id, active, logo, title, content, skills, onClick }) {
 
   const formattedContent = content.split('\n').map((line, index) => (
     <React.Fragment key={index}>
@@ -34,13 +33,15 @@ function ExperienceDesign({ id, active, logo, title, content, contentHeight, onC
   ));
 
     return (
-      <div onClick={() => onClick(id)} className={`content-box experience-design ${contentHeight} ${activeClass}`}>
+      <div onClick={() => onClick(id)} className={`content-box experience-design`}>
         <div className="experience-image">
           <img src={logo} alt={title} />
         </div>
         <div className="experience-information">
           <h1>{title}</h1>
+          <SkillsTable skills={skills}/>
           <p>{formattedContent}</p>
+          
         </div>
       </div>
     );
@@ -101,7 +102,7 @@ function ProjectDesign({
         onClick(id);
         setPlaying(id); 
       }} 
-      className={`content-box ${activeClass} ${contentHeight} project-design`}>
+      className={`content-box ${activeClass} project-design`}>
         <div className="project-content">
           <div className="content-wrapper">
             <Media
@@ -145,18 +146,20 @@ function MenuContent({ activeDiv }) {
       logo: pgvLogo, 
       title: 'Co-Founder', 
       content: 'Playground Vintage was established in 2018 out of a desire to provide clothing that is cool, affordable and ultimately good for the environment. This was a business born out of naivety, frustration with the clothing industry and a willingness to do something about it.\n\n Originally this started as a process of designing and making my own clothing which did well to start with. However I became concerned with the environmental impact of clothes and pivoted to selling only remade or vintage pieces. Plus I felt like there wasn’t enough ‘fun’ for young people in Sydney, hence the name ‘Playground Vintage’. \n\nIn 2019, I opened up my first store and in 2021 my second which was difficult while balancing my degree and COVID-lockdowns. This experience was valuable because it really taught me a lot about building products for people and how to make things happen despite a lack of knowledge and resources.',
-      contentHeight: "tall",
+      skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
     },
     {
       id: 2,
       logo: tediLogo,
       title: 'Student Product Engineer',
+      skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
       content: 'This was a spot within a cross functional team, multi-disciplinary team which required me to design, prototype and ultimately build a product from scratch. \n\nDuring this experience I led a lot of the work during the design and building process. This meant identifying user problems, writing a design brief, building a prototype and eventually the entire product within a short period. There was technical obstacles to overcome, design flaws to iterate over and financial constraints but it was immensely satisfying to build things for people.',
     },
     {
       id: 3, 
       logo: fullCirclelogo,
-      title: 'Web Developer', 
+      title: 'Web Developer',
+      skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'], 
       content: 'Leaning on my technical skills from my degree and my product management skills from running my own business I began offering up my time as a freelance web developer. This meant developing Figma prototypes all the way to actually coding the website. This has been as much about understanding what the client needs as it has been about writing code. Being able to put myself in my client’s shoes has helped me be a better web developer. ',
     },
     {
@@ -164,7 +167,8 @@ function MenuContent({ activeDiv }) {
       logo: unswLogo, 
       title: 'Bachelor of Environmental Engineering/Computer Science',
       content: 'Something to be completed in the next couple of months. My degree has taught me everything from biology, chemistry, physics, environmental systems thinking, plenty of complex mathematics and a suite of programming languages (C, C++, Javascript, React, Node.JS, Java) plus a whole host of other useful technical skills. \n\nArguably though the most valuable skill I have gained from this is the ability to break down and solve hard problems. I know that my degree will not teach me everything I will ever need to know. However being able to problem solve has meant that if I don’t know something I am comfortable that I can work it out and become good at it.\n\nIf you’re interested in my problem solving method: \n\nIt is a process of breaking down the problem into small chunks.  Testing a solution on a particular chunk. The solution doesn’t work. Find out why. Learn. Iterate a new solution. Repeat until you have a working solution and repeat for each chunk. ',
-      contentHeight: "tall"
+      skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
+      
     },
   ]
 
@@ -291,7 +295,7 @@ function MenuContent({ activeDiv }) {
           logo={experience.logo}
           title={experience.title}
           content={experience.content}
-          contentHeight={experience.contentHeight}
+          skills={experience.skills}
           active={activeExperienceId === experience.id}
           onClick={handleClick}
           />

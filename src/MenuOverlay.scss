@@ -6,7 +6,6 @@ $transition-time: 2.2s;
 $overlay-space: calc(#{$menu-height} - #{2*$menu-item-height} - #{3*$menu-item-border-width});
 
 
-
 .section-overlay {
   width: 100vw; 
   max-height: 100vh;
@@ -74,7 +73,6 @@ $overlay-space: calc(#{$menu-height} - #{2*$menu-item-height} - #{3*$menu-item-b
   transform: scaleY(93);
   opacity: 0.8
 }
-
 
 @media screen and (max-width: 650px) {
 .section-overlay {
