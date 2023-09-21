@@ -3,6 +3,7 @@ import './MenuContent.scss';
 import IntroductionText from './IntroductionText';
 import Media from './Media';
 import SkillsTable from './SkillsTable';
+import { ReactComponent as Arrow } from './assets/arrow.svg'
 import pgvLogo from './assets/PGV_Logo.png'
 import unswLogo from './assets/UNSW_Logo.png'
 import tediLogo from './assets/TEDI_Logo.png'
@@ -22,112 +23,107 @@ import pgvStoreVideo from './assets/PGV_Shop.mp4'
 import wombatVideo from './assets/Wombat_Mange.mp4'
 import waterCycle from './assets/WaterCycle.mp4'
 
-
-function ExperienceDesign({ id, active, logo, title, content, skills, onClick }) {
-
-  const formattedContent = content.split('\n').map((line, index) => (
+const FormattedContent = ({ content }) => {
+  return content.split('\n').map((line, index) => (
     <React.Fragment key={index}>
       {line}
       <br />
     </React.Fragment>
   ));
+};
 
-    return (
-      <div onClick={() => onClick(id)} className={`content-box experience-design`}>
-        <div className="experience-image">
-          <img src={logo} alt={title} />
-        </div>
-        <div className="experience-information">
-          <h1>{title}</h1>
-          <SkillsTable skills={skills}/>
-          <p>{formattedContent}</p>
-          
-        </div>
+// ContentTitle component
+const ContentTitle = ({ title }) => (
+  <div className="content-title">
+    <h1>{title}</h1>
+  </div>
+);
+
+// ContentBox wrapper
+const ContentBox = ({ children, id, onClick, className }) => (
+  <div onClick={() => onClick(id)} className={`content-box ${className}`}>
+    {children}
+  </div>
+);
+
+function ExperienceDesign(props) {
+
+  return (
+      <div onClick={() => props.onClick(props.id)} className={`content-box experience-design`}>
+          <div className="content-title">
+              <h1>{props.title}</h1>
+          </div>
+          <div className="content-information">
+              <img logo={1} src={props.logo} alt={props.title} />
+              <p><FormattedContent content={props.content} /></p>
+          </div>
+          <SkillsTable skills={props.skills} />
+          <Arrow className="navigation-icon" />
       </div>
-    );
+  );
 }
 
-function ProjectDesign({ 
-  id, 
-  active, 
-  title, 
-  media_1,
-  media_2,
-  skills, 
-  content,
-  contentHeight, 
-  onClick, 
-  playing, 
-  setPlaying,
 
-  }) { 
-  const activeClass = active ? 'expandExperience' : 'hideExperience'; 
+function ProjectDesign(props) {
 
-  const formattedContent = content.split('\n').map((line, index) => (
-    <React.Fragment key={index}>
-      {line}
-      <br />
-    </React.Fragment>
-  ));
-  
-  function determineMediaType(media) {
-    if (media.type === 'video') return { type: "video", src: media.src };
-    if (media.type === 'image') return { type: "image", src: media.src };
-    if (media.type === 'icon') return { type: "icon", src: media.src };
-    return { type: "null", src: null };
-  } 
+  const determineMediaType = (media) => {
+      if (media.type === 'video') return { type: "video", src: media.src };
+      if (media.type === 'image') return { type: "image", src: media.src };
+      if (media.type === 'icon') return { type: "icon", src: media.src };
+      return { type: "null", src: null };
+  };
 
-  const { type: type1, src: src1 } = determineMediaType(media_1);
-  const { type: type2, src: src2 } = determineMediaType(media_2);
+  const { type: type1, src: src1 } = determineMediaType(props.media_1);
+  const { type: type2, src: src2 } = determineMediaType(props.media_2);
 
   const isVideo1 = type1 === "video";
   const isVideo2 = type2 === "video";
 
-  const videoRef = React.useRef()
+  const videoRef = React.useRef();
 
-  useEffect(() => {
-    if (videoRef.current) {
-      if (active && playing === id) { 
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
+  React.useEffect(() => {
+      if (videoRef.current) {
+          if (props.playing === props.id) {
+              videoRef.current.play();
+          } else {
+              videoRef.current.pause();
+          }
       }
-    }
-    
-  }, [playing, active, id]); 
-  
+  }, [props.playing, props.id]);
+
+  const handleClick = () => {
+      props.onClick(props.id);
+      props.setPlaying(props.id);
+  };
+
   return (
-    <div 
-      onClick={() => {
-        onClick(id);
-        setPlaying(id); 
-      }} 
-      className={`content-box ${activeClass} project-design`}>
-        <div className="project-content">
-          <div className="content-wrapper">
-            <Media
-              type={type1}
-              src={src1}
-              title={title}
-              videoRef={isVideo1 ? videoRef : null}
-            />
-            <Media
-              type={type2}
-              src={src2}
-              title={title}
-              videoRef={isVideo2 ? videoRef : null}
-            />
+      <ContentBox onClick={handleClick} id={props.id} className="experience-design">
+          <ContentTitle title={props.title} />
+          <div className="content-information">
+              <div className="media-wrapper">
+                  <Media 
+                      type={type1}
+                      src={src1}
+                      title={props.title}
+                      videoRef={isVideo1 ? videoRef : null}
+                      media={1}
+                  />
+                  <Media
+                      type={type2}
+                      src={src2}
+                      title={props.title}
+                      videoRef={isVideo2 ? videoRef : null}
+                      media={1}
+                  />
+              </div>
+            <p><FormattedContent content={props.content} /></p>
           </div>
-        </div>
-        <div className="project-information">
-          <h1>{title}</h1>
-          <p>Skills: </p>
-          <SkillsTable skills={skills}/>
-          <p>{formattedContent}</p>
-        </div>
-      </div>
+            <SkillsTable skills={props.skills}/>
+          <Arrow className="navigation-icon"/>
+      </ContentBox>
   );
 }
+
 
 function MenuContent({ activeDiv }) {
   const [activeExperienceId, setActiveExperienceId] = useState(null);
@@ -293,6 +289,7 @@ function MenuContent({ activeDiv }) {
           key={experience.id}
           id={experience.id}
           logo={experience.logo}
+          svg={Arrow}
           title={experience.title}
           content={experience.content}
           skills={experience.skills}

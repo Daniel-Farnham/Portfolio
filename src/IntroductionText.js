@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Links from './Links';
 import './IntroductionText.css'; 
 
-
-
-
 function IntroductionText({ textType, textContent }) {
  const [nameChars, setNameChars] = useState([]);
  const [showParagraph, setShowParagraph] = useState(false);
@@ -24,7 +21,6 @@ function IntroductionText({ textType, textContent }) {
       );
     });
     
-    // if it's not the last word, add a space after
     if (wordIndex !== words.length - 1) {
       letters.push(
         <span key={word.length} className="char" style={{ animationDelay: `${charCount++ * 0.15}s` }}>

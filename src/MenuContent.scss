@@ -1,10 +1,3 @@
-$contentHeightTall: 70vh; 
-$contentHeightMedium: 60vh; 
-$contentHeightShort: 60vh; 
-$additionalHeightforTallMobile: 55vh; 
-$additionalHeightforMediumMobile: 35vh;
-$additionalHeightforShortMobile: 20vh;
-
 .content-space {
   height: 100vh;
   width: 100vw; 
@@ -13,15 +6,8 @@ $additionalHeightforShortMobile: 20vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
-  overflow: hidden; 
+  overflow: hidden;
   z-index: 2;
-}
-
-@media screen and (max-width: 650px) {
-  .content-space {
-    height: -webkit-fill-available; 
-  }
 }
 
 .hideContent {
@@ -31,21 +17,22 @@ $additionalHeightforShortMobile: 20vh;
 .listContent {
   backdrop-filter: blur(0px);
   transition: backdrop-filter 0.3s ease;
-}
 
-.listContent.showContent {
-  width: 90vw; 
-  height: 80vh; 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
-  //flex-direction: column;
-  //align-items: center;
-  gap: 10px;
-  padding: 12vh 0; 
-  //overflow:visible; // Edit this to change scroll feature
-  backdrop-filter: blur(20px);
-  animation: fadeIn 2.5s ease 0s forwards;
+  &.showContent {
+    width: 90vw; 
+    height: 80vh; 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    gap: 10px;
+    padding: 12vh 0; 
+    backdrop-filter: blur(20px);
+    animation: fadeIn 2.5s ease 0s forwards;
+
+    &.hireMe {
+      justify-content: center;
+    }
+  }
 }
 
 @keyframes fadeIn {
@@ -59,209 +46,80 @@ $additionalHeightforShortMobile: 20vh;
   }
 }
 
-/* ##### CONTENT BLOCKS FOR EXPERIENCES/PROJECTS ##### */
-
-@media screen and (min-width: 1500px) {
-  .content-box {
-    width: 40vw;
-  }
-}
-
-.content-box {  
-  // width: 85vw;
-  //height: 40vh; 
+.content-box {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   padding: 15px; 
-  gap: 20px;
+  gap: 30px;
   border-style: solid;
   border-color: black;
   background-color: rgba(216, 216, 216, 0.5);
   overflow: hidden; 
-  transition: background-color 0.5s ease, width 1.5s ease, height 1.5s ease, box-shadow 1s ease; 
-}
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
-.content-box:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0px 3px 4px rgb(0, 0, 0);
-  cursor: pointer; 
-}
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 3px 4px rgb(0, 0, 0);
+    cursor: pointer; 
+  }
 
-.content-box h1 {
-  margin-top: 1vh;
-  font-size: 30px;
-}
+  h1 {
+    font-size: 20px;
+  }
 
-// .experience-design {
-//   display: flex; 
-//   flex-direction: column;
-// }
-
-
-
-@media screen and (max-width: 650px) {
-  .content-box {
-    height: 30vh;
-    width: 70vw; 
-    transition: width 1.3s ease, height 1.5s ease; 
-  }
-  .content-box h1 {
-    font-size: 24px
-  }
-  .content-box p {
-    font-size: 12px; 
-  }
-  .expandExperience.tall {
-    height: calc(#{$additionalHeightforTallMobile} + #{$contentHeightTall});
-  }
-  
-  .expandExperience.medium {
-    height: calc(#{$additionalHeightforMediumMobile} + #{$contentHeightMedium});
-  }
-  
-  .expandExperience.short {
-    height: calc(#{$additionalHeightforShortMobile} + #{$contentHeightShort});
-  }
-  .expandExperience {
-    width: 80vw; 
-    height: 60vh; 
+  p {
+    font-size: 14px; 
+    margin-top: 5px; 
   }
 }
 
-/* ##### EXPERIENCES ##### */
+.content-title,
+.content-information,
+.navigation-icon {
+  grid-column: 1 / 4;
+}
 
-
-.experience-image {
-  display: flex; 
-  align-items: center;
-  justify-content: center;
+.content-title {
+  align-self: center;
+  justify-self: center;
   border-bottom-style: solid;
   border-width: 2px;
-  max-height: 80px; 
+  width: 100%; 
+  height: 80px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.experience-image img {
-  height: 70px; 
+.content-information {
+  grid-column: 1 / 3; 
+  overflow: hidden; 
+  
+  [logo] {
+    height: 60px; 
+  }
+
+  [media] {
+    height: 200px; 
+  }
+}
+
+.navigation-icon {
+  justify-self: center;
+  align-self: center;
+  &:hover {
+    box-shadow: 0px 3px 4px rgb(0, 0, 0); 
+  }
 }
 
 .experience-information {
   margin: 0 auto; 
 }
 
-@media screen and (max-width: 650px) {
-  .experience-image {
-    max-height: 70px;
-  }
-  .experience-image img {
-    height: 50px; 
-  }
-}
-
-/* ##### PROJECTS ##### */ 
-
-.project-design {
-  display: flex; 
-}
-.project-content {
-  overflow: scroll;
-  min-width: 360px;
-  
-}
-
-.content-wrapper {
+.media-wrapper {
   display: flex;
   flex-direction: column; 
-  height: 340px;
   gap: 15px;
 }
-
-.project-content video {
-  border-radius: 10px;
-  width: 100%;
-  max-width: 340px; 
-  height: 360px; 
-  object-fit: cover; 
-}
-
-.project-content img {
-  border-radius: 10px; 
-  width: 100%; 
-  max-width: 340px;
-  height: 360px;
-  object-fit: cover;
-}
-
-.project-content a {
-  width: 50px; 
-  margin: auto auto; 
-}
-
-.project-information {
-  display: flex; 
-  flex-direction: column;
-  gap: 10px; 
-}
-.extra-image {
-  max-height: 50vh;
-}
-
-
-@media screen and (max-width: 650px) {
-  .project-design {
-    display: flex;
-    flex-direction: column-reverse; 
-    justify-content: start; 
-    align-items: flex-start;
-  }
-  .project-content {
-    overflow: visible;
-  }
-  .content-wrapper {
-    display: flex; 
-    flex-direction: row;
-  }
-  .project-content img {
-    width: 50%;
-    height: 25vh;
-  }
-  .project-content video {
-    width: 50%;
-    height: 25vh; 
-  }
-  
-  .project-design h1 {
-    padding: 0; 
-  }
-  .project-design p {
-    padding: 0; 
-  }
-  
-}
-
-
-/* ###### Hire Me ####### */
-
-.listContent.showContent.hireMe {
-  justify-content: center;
-}
-
-
-// .expandExperience {
-//   height: 50vh;
-//   width: 90vw; 
-//   background-color: rgba(255, 255, 255, 0.9);
-// }
-
-// .expandExperience.tall {
-//   height: $contentHeightTall;
-// }
-
-// .expandExperience.medium {
-//   height: $contentHeightMedium;
-// }
-
-// .expandExperience.short {
-//   height: $contentHeightShort;
-// }
-
-// .hideExperience {
-//   background-color: rgba(216, 216, 216, 0.5);
-// }

@@ -1,9 +1,10 @@
 
   .skillsTableContainer {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     flex-wrap: wrap; 
-    overflow-x:visible;
-    gap: 15px;  
+    gap: 5px;  
   }
 
   .skillItems {
@@ -23,5 +24,4 @@
 
   .skillsTableContainer p {
     font-size: 10px;
-    text-align: center;
   }
