@@ -145,21 +145,19 @@ function MenuContent({ activeDiv }) {
     const menuItem = document.querySelector('.menu-item');
     const menuItemHeight = menuItem.offsetHeight;
     const availableHeight = window.innerHeight - (menuItemHeight * 3);
-    setContentHeight(`${availableHeight}px`);
+    setContentHeight(`${availableHeight + 2}px`);
   };
 
   const updateContentPosition = () => {
     const menuItem = document.querySelector('.menu-item');
     const menuItemHeight = menuItem.offsetHeight;
-    let contentTopOffset = menuItemHeight;
+    let contentTopOffset = menuItemHeight - 1;
     if (activeDiv === 'div-2') {
       contentTopOffset = contentTopOffset * 2; 
     }
     if (activeDiv === 'div-3') {
       contentTopOffset = contentTopOffset * 3;
     }
-    
-    console.log('TopOffset', contentTopOffset);
     setTopOffset(`${contentTopOffset}px`); // Use template literals
   }
   useEffect(() => {
