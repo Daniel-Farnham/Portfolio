@@ -19,8 +19,6 @@ function Menu() {
     }
   }, []);
 
-  console.log(windowHeight); 
-
   const handleClick = (item) => {
     setActiveItem((prevItem) => (prevItem === item ? '' : item));
   };
@@ -47,8 +45,6 @@ function Menu() {
     { id: 'menu-item-2', label: 'Cool Projects', activeClass: 'menu-2-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight, activePosition: positionActiveDivs() },
     { id: 'menu-item-3', label: 'Why You Should Hire Me', activeClass: 'menu-3-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight,  activePosition: positionActiveDivs() },
   ];
-
-  
 
   return (
     <div className="menu"

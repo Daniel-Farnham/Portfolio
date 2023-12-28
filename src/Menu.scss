@@ -29,10 +29,12 @@ $transition-time: 2.2s;
   font-weight: 600;
   font-style: normal;
   font-size: 16px;
-  
   //height: $menu-item-height;
   transition: border-width 3s ease, margin-top 1s ease, margin-bottom 1s ease;
   z-index: 4;
+  &:hover {
+    box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
+  }
 }
 
 
@@ -51,6 +53,7 @@ $transition-time: 2.2s;
 
 .menu-item-2 {
   transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease; 
+  background: inherit;
   &:hover {
     background-color: rgb(255, 205, 255);
   }

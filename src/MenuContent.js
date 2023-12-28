@@ -44,6 +44,7 @@ const ContentBox = ({ children, id, onClick, className }) => (
   <div onClick={() => onClick(id)} className={`content-box ${className}`}>
     {children}
   </div>
+    
 );
 
 function ExperienceDesign(props) {
@@ -92,28 +93,29 @@ function ProjectDesign(props) {
   }, [props.playing, props.id]);
 
   const handleClick = () => {
-      props.onClick(props.id);
-      props.setPlaying(props.id);
-  };
-
+    props.onClick(props.id);
+    props.setPlaying(props.id);
+};
   return (
       <ContentBox onClick={handleClick} id={props.id} className="experience-design">
           <ContentTitle title={props.title} />
           <div className="content-information">
               <div className="media-wrapper">
                   <Media 
+                      className="media"
                       type={type1}
                       src={src1}
                       title={props.title}
                       videoRef={isVideo1 ? videoRef : null}
-                      media={1}
+                     
                   />
                   <Media
+                      className="media"
                       type={type2}
                       src={src2}
                       title={props.title}
                       videoRef={isVideo2 ? videoRef : null}
-                      media={1}
+                      
                   />
               </div>
             <p><FormattedContent content={props.content} /></p>
@@ -127,7 +129,10 @@ function ProjectDesign(props) {
 
 function MenuContent({ activeDiv }) {
   const [activeExperienceId, setActiveExperienceId] = useState(null);
-  const [playing, setPlaying] = useState(null); 
+  const [playing, setPlaying] = useState(null);
+  const [contentHeight, setContentHeight] = useState('100vh');
+  const [topOffset, setTopOffset] = useState(0);
+  
   const handleClick = (id) => {
     if (activeExperienceId === id) {
       setActiveExperienceId(null)
@@ -135,7 +140,44 @@ function MenuContent({ activeDiv }) {
       setActiveExperienceId(id); 
     }
   }
+  
+  const updateContentHeight = () => {
+    const menuItem = document.querySelector('.menu-item');
+    const menuItemHeight = menuItem.offsetHeight;
+    const availableHeight = window.innerHeight - (menuItemHeight * 3);
+    setContentHeight(`${availableHeight}px`);
+  };
 
+  const updateContentPosition = () => {
+    const menuItem = document.querySelector('.menu-item');
+    const menuItemHeight = menuItem.offsetHeight;
+    let contentTopOffset = menuItemHeight;
+    if (activeDiv === 'div-2') {
+      contentTopOffset = contentTopOffset * 2; 
+    }
+    if (activeDiv === 'div-3') {
+      contentTopOffset = contentTopOffset * 3;
+    }
+    
+    console.log('TopOffset', contentTopOffset);
+    setTopOffset(`${contentTopOffset}px`); // Use template literals
+  }
+  useEffect(() => {
+    const updateLayout = () => {
+      updateContentHeight();
+      updateContentPosition();
+    };
+
+    updateLayout();
+
+    // Add resize event listener
+    window.addEventListener('resize', updateLayout);
+
+    // Return a cleanup function to remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', updateLayout);
+    };
+  }, [activeDiv]);
   const experiences = [
     {
       id: 1,
@@ -282,7 +324,7 @@ function MenuContent({ activeDiv }) {
   ]
 
   return (
-    <div className={`content-space ${activeDiv ? 'showContent' : 'hideContent'}`}>
+    <div className={`content-space ${activeDiv ? 'showContent' : 'hideContent'}`} style={{height: contentHeight, top: topOffset}}>
       <div className = {`listContent ${activeDiv === 'div-1' ? 'showContent' : 'hideContent'}`}>
         {experiences.map((experience) => (
           <ExperienceDesign
