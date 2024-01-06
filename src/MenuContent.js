@@ -58,8 +58,7 @@ function ExperienceDesign(props) {
               <img logo={1} src={props.logo} alt={props.title} />
               <p><FormattedContent content={props.content} /></p>
           </div>
-          <SkillsTable skills={props.skills} />
-          <Arrow className="navigation-icon" />
+          {/* <SkillsTable skills={props.skills} /> */}
       </div>
   );
 }
@@ -120,8 +119,7 @@ function ProjectDesign(props) {
               </div>
             <p><FormattedContent content={props.content} /></p>
           </div>
-            <SkillsTable skills={props.skills}/>
-          <Arrow className="navigation-icon"/>
+            {/* <SkillsTable skills={props.skills}/> */}
       </ContentBox>
   );
 }
@@ -219,7 +217,7 @@ function MenuContent({ activeDiv }) {
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
       contentHeight: "tall"
     },
-    /*
+    
     {
       id: 15,
       title: 'SneakerDex',
@@ -228,7 +226,7 @@ function MenuContent({ activeDiv }) {
       content: 'A water recycling system built for a community garden powered by one of the great renewable energy resources - kids. \n\n Water Cycle is a proof of concept that combines energy produced from kids play equipment to power the water recycling system of a community garden. The community garden was operated by Global Generation who had issues with water wastage in their project but had neither the finances, resources or the power connection to install their own water recycling system. Upon talking to the wider community we found that due to new developments many local kids were worried about a loss of play equipment. Our solution was to develop play equipment that powered a water recycling system, resulting in the prototype called ‘Water Cycle’. \n\n The aim here was to make something that was ‘fun’, and should encourage ‘play’ as well as recycle water. To achieve this we added interactive light systems, miniature games that changed based on the amount of water pumped and the saturation of the soil. \n\n My role in this project flirted between being the Product Designer as well as an Engineer of many different hats but it could be neatly described as putting myself in the shoes of the users, designing a solution that fits their needs and applying technical know-how to make it real.', 
       skills: ['UI/UX Design', 'Wireframing', 'Prototyping'],
       contentHeight: "tall"
-    },*/
+    },
     {
       id: 5,
       title: 'Playground Vintage Shop', 
