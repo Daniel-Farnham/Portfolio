@@ -145,7 +145,7 @@ function MenuContent({ activeDiv }) {
     const menuItem = document.querySelector('.menu-item');
     const menuItemHeight = menuItem.offsetHeight;
     const availableHeight = window.innerHeight - (menuItemHeight * 3);
-    setContentHeight(`${availableHeight + 2}px`);
+    setContentHeight(`${availableHeight + 2 - 100}px`); //100px is to account for the top padding of the content space
   };
 
   const updateContentPosition = () => {
