@@ -81,6 +81,11 @@ function ProjectDesign(props) {
 
   const videoRef = React.useRef();
 
+  const contentInfoRef = React.useRef();
+
+  const [scrollDown, setScrollDown] = React.useState(true);
+
+  // This function will be called when the experience-design div is clicked
   React.useEffect(() => {
       if (videoRef.current) {
           if (props.playing === props.id) {
@@ -94,11 +99,34 @@ function ProjectDesign(props) {
   const handleClick = () => {
     props.onClick(props.id);
     props.setPlaying(props.id);
+
+    if (contentInfoRef.current) {
+      // Determine the current scroll position and the height of the content
+      const currentScroll = contentInfoRef.current.scrollTop;
+      const maxScroll = contentInfoRef.current.scrollHeight - contentInfoRef.current.clientHeight;
+      let scrollAmount = 400;
+
+      if (scrollDown) {
+        // If we're about to exceed the maxScroll, adjust the scroll amount
+        if (currentScroll + scrollAmount >= maxScroll) {
+          scrollAmount = maxScroll - currentScroll;
+          setScrollDown(false); // Reverse the scroll direction for the next click
+        }
+        contentInfoRef.current.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+      } else {
+        // If we're about to scroll past the top, adjust the scroll amount
+        if (currentScroll - scrollAmount <= 0) {
+          scrollAmount = currentScroll;
+          setScrollDown(true); // Reverse the scroll direction for the next click
+        }
+        contentInfoRef.current.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+      }
+    }
 };
   return (
       <ContentBox onClick={handleClick} id={props.id} className="experience-design">
           <ContentTitle title={props.title} />
-          <div className="content-information">
+          <div ref={contentInfoRef} className="content-information">
               <div className="media-wrapper">
                   <Media 
                       className="media"

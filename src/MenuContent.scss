@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
+  overflow-x: hidden;
   z-index: 2;
   backdrop-filter: blur(20px);
 }
@@ -57,7 +58,7 @@
   background-color: rgba(216, 216, 216, 0.5);
   overflow: hidden; 
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  height: 400px;
+  height: 500px;
   width: 60vw; 
   max-width: 800px;
   &:hover {
@@ -95,12 +96,17 @@
 }
 
 .content-information {
-  grid-row: 2;
+  grid-row: 2 / 4;
   grid-column: 1 / 4; 
   display: flex;
   gap: 20px;
   flex-direction: row; 
-  margin-left: 20px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
   [logo] {
     height: 60px; 
   }
