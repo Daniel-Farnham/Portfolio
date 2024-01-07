@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './MenuContent.scss';
 import IntroductionText from './IntroductionText';
 import Media from './Media';
+import ContentBox from './ContentBox';
 import SkillsTable from './SkillsTable';
 import { ReactComponent as Arrow } from './assets/arrow.svg'
 import pgvLogo from './assets/PGV_Logo.png'
@@ -22,136 +23,6 @@ import pgvShop_2 from './assets/pgvShop_2.jpg'
 import pgvStoreVideo from './assets/PGV_Shop.mp4'
 import wombatVideo from './assets/Wombat_Mange.mp4'
 import waterCycle from './assets/WaterCycle.mp4'
-
-const FormattedContent = ({ content }) => {
-  return content.split('\n').map((line, index) => (
-    <React.Fragment key={index}>
-      {line}
-      <br />
-    </React.Fragment>
-  ));
-};
-
-// ContentTitle component
-const ContentTitle = ({ title }) => (
-  <div className="content-title">
-    <h1>{title}</h1>
-  </div>
-);
-
-// ContentBox wrapper
-const ContentBox = ({ children, id, onClick, className }) => (
-  <div onClick={() => onClick(id)} className={`content-box ${className}`}>
-    {children}
-  </div>
-    
-);
-
-function ExperienceDesign(props) {
-
-  return (
-      <div onClick={() => props.onClick(props.id)} className={`content-box experience-design`}>
-          <div className="content-title">
-              <h1>{props.title}</h1>
-          </div>
-          <div className="content-information">
-              <img logo={1} src={props.logo} alt={props.title} />
-              <p><FormattedContent content={props.content} /></p>
-          </div>
-          {/* <SkillsTable skills={props.skills} /> */}
-      </div>
-  );
-}
-
-
-function ProjectDesign(props) {
-
-  const determineMediaType = (media) => {
-      if (media.type === 'video') return { type: "video", src: media.src };
-      if (media.type === 'image') return { type: "image", src: media.src };
-      if (media.type === 'icon') return { type: "icon", src: media.src };
-      return { type: "null", src: null };
-  };
-
-  const { type: type1, src: src1 } = determineMediaType(props.media_1);
-  const { type: type2, src: src2 } = determineMediaType(props.media_2);
-
-  const isVideo1 = type1 === "video";
-  const isVideo2 = type2 === "video";
-
-  const videoRef = React.useRef();
-
-  const contentInfoRef = React.useRef();
-
-  const [scrollDown, setScrollDown] = React.useState(true);
-
-  // This function will be called when the experience-design div is clicked
-  React.useEffect(() => {
-      if (videoRef.current) {
-          if (props.playing === props.id) {
-              videoRef.current.play();
-          } else {
-              videoRef.current.pause();
-          }
-      }
-  }, [props.playing, props.id]);
-
-  const handleClick = () => {
-    props.onClick(props.id);
-    props.setPlaying(props.id);
-
-    if (contentInfoRef.current) {
-      // Determine the current scroll position and the height of the content
-      const currentScroll = contentInfoRef.current.scrollTop;
-      const maxScroll = contentInfoRef.current.scrollHeight - contentInfoRef.current.clientHeight;
-      let scrollAmount = 400;
-
-      if (scrollDown) {
-        // If we're about to exceed the maxScroll, adjust the scroll amount
-        if (currentScroll + scrollAmount >= maxScroll) {
-          scrollAmount = maxScroll - currentScroll;
-          setScrollDown(false); // Reverse the scroll direction for the next click
-        }
-        contentInfoRef.current.scrollBy({ top: scrollAmount, behavior: 'smooth' });
-      } else {
-        // If we're about to scroll past the top, adjust the scroll amount
-        if (currentScroll - scrollAmount <= 0) {
-          scrollAmount = currentScroll;
-          setScrollDown(true); // Reverse the scroll direction for the next click
-        }
-        contentInfoRef.current.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
-      }
-    }
-};
-  return (
-      <ContentBox onClick={handleClick} id={props.id} className="experience-design">
-          <ContentTitle title={props.title} />
-          <div ref={contentInfoRef} className="content-information">
-              <div className="media-wrapper">
-                  <Media 
-                      className="media"
-                      type={type1}
-                      src={src1}
-                      title={props.title}
-                      videoRef={isVideo1 ? videoRef : null}
-                     
-                  />
-                  <Media
-                      className="media"
-                      type={type2}
-                      src={src2}
-                      title={props.title}
-                      videoRef={isVideo2 ? videoRef : null}
-                      
-                  />
-              </div>
-            <p><FormattedContent content={props.content} /></p>
-          </div>
-            {/* <SkillsTable skills={props.skills}/> */}
-      </ContentBox>
-  );
-}
-
 
 function MenuContent({ activeDiv }) {
   const [activeExperienceId, setActiveExperienceId] = useState(null);
@@ -351,7 +222,7 @@ function MenuContent({ activeDiv }) {
     <div className={`content-space ${activeDiv ? 'showContent' : 'hideContent'}`} style={{height: contentHeight, top: topOffset}}>
       <div className = {`listContent ${activeDiv === 'div-1' ? 'showContent' : 'hideContent'}`}>
         {experiences.map((experience) => (
-          <ExperienceDesign
+          <ContentBox
           key={experience.id}
           id={experience.id}
           logo={experience.logo}
@@ -366,7 +237,7 @@ function MenuContent({ activeDiv }) {
       </div>
       <div className = {`listContent ${activeDiv === 'div-2' ? 'showContent' : 'hideContent'}`}>
         {projects.map((project) => (
-          <ProjectDesign
+          <ContentBox
             key={project.id}
             id={project.id}
             title={project.title}

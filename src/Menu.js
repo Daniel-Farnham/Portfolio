@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Menu.scss';
-import MenuOverlay from './MenuOverlay';
 import MenuContent from './MenuContent';
 
 function Menu() {
@@ -70,7 +69,6 @@ function Menu() {
           
         </div>
       ))}
-      {/* <MenuOverlay isVisible ={!!activeItem} activeDiv={getActiveDivId()} /> */}
       <MenuContent activeDiv={getActiveDivId()} />
     </div>
   );
