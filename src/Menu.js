@@ -20,6 +20,7 @@ function Menu() {
 
   const handleClick = (item) => {
     setActiveItem((prevItem) => (prevItem === item ? '' : item));
+
   };
 
   const isMenu1Active = () => {
@@ -58,7 +59,7 @@ function Menu() {
               ? item.activeClass
               : ''
           }`}
-          style={{ height: item.height, /* transform: "translateY(-100%)" */ 
+          style={{ height: item.height, 
           transform: ((item.id === 'menu-item-1' && isMenu1Active()) ||
                      (item.id === 'menu-item-2' && isMenu2Active()) ||
                       activeItem === item.id) ? `translateY(-${item.activePosition}px` : '',
