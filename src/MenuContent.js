@@ -44,7 +44,6 @@ function MenuContent({ activeDiv, isMobile }) {
       return;
     }
     const menuItem = document.querySelector('.menu-item');
-      console.log(menuItem);
       const menuItemHeight = menuItem.offsetHeight;
       const availableHeight = window.innerHeight - (menuItemHeight * 3);
       setContentHeight(`${availableHeight + 2 - 100}px`); //100px is to account for the top padding of the content space

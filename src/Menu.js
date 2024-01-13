@@ -100,7 +100,6 @@ function Menu({ isMobile, onActiveDivChange }) {
             <p>{item.label}</p>
           </div>
         ))}
-        <MenuContent activeDiv={getActiveDivId()} />
       </div>
     );
   }

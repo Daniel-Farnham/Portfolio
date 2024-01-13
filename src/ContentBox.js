@@ -95,7 +95,7 @@ function ContentBox(props) {
   };
 
   return (
-    <div onClick={handleClick} id={props.id} className="content-box experience-design">
+    <div onClick={handleClick} id={props.id} className="content-box">
       <div className="content-title">
         <h1>{props.title}</h1>
       </div>

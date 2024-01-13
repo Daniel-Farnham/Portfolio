@@ -36,6 +36,27 @@ $transition-time: 1.5s;
     box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
   }
 }
+@media (min-width: 700px) {
+  .menu-item-1, .menu-item-2, .menu-item-3 {
+    transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease;
+
+    &:hover {
+      
+    }
+    &.menu-1-active {
+      background-color: rgb(255, 205, 255);
+      //transform: translateY(-100%);
+      box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
+    }
+
+    &.menu-2-active, &.menu-3-active {
+      $translateY: calc(-#{$menu-height} + #{3*$menu-item-height - 4px});
+      transform: translateY($translateY);
+      background-color: rgb(255, 205, 255);
+      box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
+    }
+  }
+}
 
 
 .menu-item-1 { 
@@ -43,12 +64,7 @@ $transition-time: 1.5s;
   &:hover {
     background-color: rgb(255, 205, 255);
   }
-  &.menu-1-active {
-    $translateY: calc(-#{$menu-height} + #{3*$menu-item-height} - 4px);
-    background-color: rgb(255, 205, 255);
-    //transform: translateY(-100%);
-    box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
-  }
+
 }
 
 .menu-item-2 {
@@ -57,24 +73,12 @@ $transition-time: 1.5s;
   &:hover {
     background-color: rgb(255, 205, 255);
   }
-  &.menu-2-active {
-    $translateY: calc(-#{$menu-height} + #{3*$menu-item-height - 4px});
-    background-color: rgb(255, 205, 255);
-    transform: translateY($translateY);
-    box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
-  }
 }
 
 .menu-item-3 {
   transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease; 
   &:hover {
     background-color: rgb(255, 205, 255);
-  }
-  &.menu-3-active {
-    $translateY: calc(-#{$menu-height} + #{3*$menu-item-height - 4px});
-    background-color: rgb(255, 205, 255);
-    transform: translateY($translateY);
-    box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
   }
 }
 

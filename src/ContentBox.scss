@@ -13,7 +13,7 @@
   height: 300px;
   width: 80vw;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 700px) {
     width: 70vw; 
     height: 500px;
   }
@@ -60,27 +60,26 @@
   gap: 20px;
   flex-direction: row; 
   overflow-y: scroll;
+  margin: 0 auto; 
    &::-webkit-scrollbar {
     display: none;
   }
+  @media screen and (max-width: 700px) {
+    flex-direction: column; // stack items vertically on smaller screens
+  }
+
   /* Hide scrollbar for Firefox */
   scrollbar-width: none;
   [logo] {
-    height: 60px; 
+    height: 80px; 
+    max-width: 200px;
+    object-fit: cover;
   }
   [media] {
     height: 300px;
     width: 300px; 
     border-radius: 5px;
     object-fit: cover;
-  }
-}
-
-.navigation-icon {
-  justify-self: center;
-  align-self: center;
-  &:hover {
-    box-shadow: 0px 3px 4px rgb(0, 0, 0); 
   }
 }
 

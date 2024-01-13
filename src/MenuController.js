@@ -13,24 +13,20 @@ function MenuController() {
     const handleResize = () => {
       setIsMobileDevice(window.innerWidth < 700);
     };
-
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
-
   const handleMenuItemClick = (itemId) => {
     setActiveItem(itemId);
-    setIsDrawerOpen(false); // Close the drawer when a menu item is clicked
+    setIsDrawerOpen(false); 
   };
 
   const handleActiveDivChange = (newActiveDivId) => {
-    console.log("Active div changed to:", newActiveDivId);
     setActiveDivId(newActiveDivId); 
   };
-  // TODO: I think this is not being read because "menu-item-1" doesn't exist yet. 
+
   return (
     <>
       {isMobileDevice ?
