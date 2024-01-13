@@ -24,7 +24,8 @@ import pgvStoreVideo from './assets/PGV_Shop.mp4'
 import wombatVideo from './assets/Wombat_Mange.mp4'
 import waterCycle from './assets/WaterCycle.mp4'
 
-function MenuContent({ activeDiv }) {
+function MenuContent({ activeDiv, isMobile }) {
+  console.log(isMobile);
   const [activeExperienceId, setActiveExperienceId] = useState(null);
   const [playing, setPlaying] = useState(null);
   const [contentHeight, setContentHeight] = useState('100vh');
@@ -39,13 +40,20 @@ function MenuContent({ activeDiv }) {
   }
   
   const updateContentHeight = () => {
+    if (isMobile) {
+      return;
+    }
     const menuItem = document.querySelector('.menu-item');
-    const menuItemHeight = menuItem.offsetHeight;
-    const availableHeight = window.innerHeight - (menuItemHeight * 3);
-    setContentHeight(`${availableHeight + 2 - 100}px`); //100px is to account for the top padding of the content space
+      console.log(menuItem);
+      const menuItemHeight = menuItem.offsetHeight;
+      const availableHeight = window.innerHeight - (menuItemHeight * 3);
+      setContentHeight(`${availableHeight + 2 - 100}px`); //100px is to account for the top padding of the content space
   };
 
   const updateContentPosition = () => {
+    if (isMobile) {
+      return; 
+    }
     const menuItem = document.querySelector('.menu-item');
     const menuItemHeight = menuItem.offsetHeight;
     let contentTopOffset = menuItemHeight - 1;
@@ -55,8 +63,10 @@ function MenuContent({ activeDiv }) {
     if (activeDiv === 'div-3') {
       contentTopOffset = contentTopOffset * 3;
     }
+    
     setTopOffset(`${contentTopOffset}px`); // Use template literals
   }
+
   useEffect(() => {
     const updateLayout = () => {
       updateContentHeight();

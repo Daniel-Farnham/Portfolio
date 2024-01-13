@@ -3,7 +3,7 @@ import './Menu.scss';
 import MenuContent from './MenuContent';
 
 // Will need to pass 
-function Menu({ isMobile }) {
+function Menu({ isMobile, onActiveDivChange }) {
   const [activeItem, setActiveItem] = useState('');
   const [windowHeight, setWindowHeight] = useState(window.innerHeight); 
   const itemStyles = {
@@ -20,8 +20,12 @@ function Menu({ isMobile }) {
   }, []);
 
   const handleClick = (item) => {
-    setActiveItem((prevItem) => (prevItem === item ? '' : item));
-
+    setActiveItem((prevItem) => {
+      const newActiveItem = prevItem === item ? '' : item;
+      // Call the callback function with the new active div ID
+      onActiveDivChange(getActiveDivId(newActiveItem));
+      return newActiveItem;
+    });
   };
 
   const isMenu1Active = () => {
@@ -32,11 +36,10 @@ function Menu({ isMobile }) {
     return activeItem === 'menu-item-3';
   };
 
-  const getActiveDivId = () => {
-    const activeIndex = menuItems.findIndex((item) => item.id === activeItem);
+  const getActiveDivId = (activeItemId) => {
+    const activeIndex = menuItems.findIndex((item) => item.id === activeItemId);
     return activeIndex !== -1 ? `div-${activeIndex + 1}` : null;
-  }
-  console.log(activeItem); 
+  };
 
   const positionActiveDivs = () => {
     return windowHeight - (3 * itemStyles.itemHeight - 3 * itemStyles.itemBorderWidth); 
@@ -64,6 +67,7 @@ function Menu({ isMobile }) {
               : ''
           }`}
           style={{ height: windowHeight / 3 + itemStyles.itemBorderWidth }}
+          onClick={() => handleClick(item.id)}
           >
             
             <p>{item.label}</p>

@@ -7,7 +7,7 @@ import Menu from './Menu';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import './Menu.scss';
 
-export default function TemporaryDrawer({ isOpen, onToggle }) {
+export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange }) {
   return (
     <div>
       <Box sx={{ position: 'absolute', top: 20, left: 20, zIndex: 4 }}>
@@ -31,7 +31,7 @@ export default function TemporaryDrawer({ isOpen, onToggle }) {
           sx={{ width: '250px' }} // Set width of content container
         >
         </Box>
-        <Menu isMobile={true}></Menu>
+        <Menu isMobile={true} onActiveDivChange={onActiveDivChange}></Menu>
         
       </SwipeableDrawer>
     </div> 
