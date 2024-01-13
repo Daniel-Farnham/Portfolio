@@ -15,11 +15,9 @@ function MenuController() {
 
     window.addEventListener("resize", handleResize);
 
-    // Cleanup
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log(isMobileDevice);
   const handleMenuItemClick = (itemId) => {
     setActiveItem(itemId);
     setIsDrawerOpen(false); // Close the drawer when a menu item is clicked
@@ -27,13 +25,14 @@ function MenuController() {
 
   return (
     <>
-      {console.log(isMobileDevice)}
       {isMobileDevice ?
         <TemporaryDrawer
           isOpen={isDrawerOpen}
           onToggle={setIsDrawerOpen} /> :
         <Menu
-          onMenuItemClick={handleMenuItemClick} />
+          onMenuItemClick={handleMenuItemClick} 
+          isMobile={isMobileDevice}     
+          />
       }
 
 

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Menu.scss';
 import MenuContent from './MenuContent';
 
-function Menu() {
+// Will need to pass 
+function Menu({ isMobile }) {
   const [activeItem, setActiveItem] = useState('');
   const [windowHeight, setWindowHeight] = useState(window.innerHeight); 
   const itemStyles = {
@@ -35,6 +36,7 @@ function Menu() {
     const activeIndex = menuItems.findIndex((item) => item.id === activeItem);
     return activeIndex !== -1 ? `div-${activeIndex + 1}` : null;
   }
+  console.log(activeItem); 
 
   const positionActiveDivs = () => {
     return windowHeight - (3 * itemStyles.itemHeight - 3 * itemStyles.itemBorderWidth); 
@@ -46,33 +48,58 @@ function Menu() {
     { id: 'menu-item-3', label: 'Why You Should Hire Me', activeClass: 'menu-3-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight,  activePosition: positionActiveDivs() },
   ];
 
-  return (
-    <div className="menu"
-     style={{ height: windowHeight }}>
-      {menuItems.map((item) => (
-        <div
+  if (isMobile) {
+    // Render a placeholder menu for mobile devices, might have to change className from menu-placeholder.
+    return (
+      <div className="menu-placeholder" style={{ height: windowHeight }}>
+        {menuItems.map((item) => (
+          <div 
           key={item.id}
           className={`menu-item ${item.id} ${
             ((item.id === 'menu-item-1' && isMenu1Active()) ||
               (item.id === 'menu-item-2' && isMenu2Active()) ||
               activeItem === item.id)
+            
               ? item.activeClass
               : ''
           }`}
-          style={{ height: item.height, 
-          transform: ((item.id === 'menu-item-1' && isMenu1Active()) ||
-                     (item.id === 'menu-item-2' && isMenu2Active()) ||
-                      activeItem === item.id) ? `translateY(-${item.activePosition}px` : '',
-          }}
-          onClick={() => handleClick(item.id)}
-        >
-          <p>{item.label}</p>
-          
-        </div>
-      ))}
-      <MenuContent activeDiv={getActiveDivId()} />
-    </div>
-  );
+          style={{ height: windowHeight / 3 + itemStyles.itemBorderWidth }}
+          >
+            
+            <p>{item.label}</p>
+          </div>
+        ))}
+
+      </div>
+    );
+  } else {
+    // Render the regular menu for non-mobile devices
+    return (
+      <div className="menu" style={{ height: windowHeight }}>
+        {menuItems.map((item) => (
+          <div
+            key={item.id}
+            className={`menu-item ${item.id} ${
+              ((item.id === 'menu-item-1' && isMenu1Active()) ||
+                (item.id === 'menu-item-2' && isMenu2Active()) ||
+                activeItem === item.id)
+                ? item.activeClass
+                : ''
+            }`}
+            style={{ height: item.height, 
+            transform: ((item.id === 'menu-item-1' && isMenu1Active()) ||
+                       (item.id === 'menu-item-2' && isMenu2Active()) ||
+                        activeItem === item.id) ? `translateY(-${item.activePosition}px` : '',
+            }}
+            onClick={() => handleClick(item.id)}
+          >
+            <p>{item.label}</p>
+          </div>
+        ))}
+        <MenuContent activeDiv={getActiveDivId()} />
+      </div>
+    );
+  }
 }
 
 export default Menu;
