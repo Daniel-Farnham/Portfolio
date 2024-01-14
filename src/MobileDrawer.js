@@ -6,25 +6,27 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Menu from './Menu';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import './Menu.scss';
+import './MobileDrawer.scss'
 
 export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange }) {
-
   const handleCloseDrawer = () => {
     onToggle(!isOpen);
   };
-  
+
   return (
     <div>
-      <Box sx={{ position: 'absolute', top: 20, left: 20, zIndex: 4 }}>
+      <Box className="drawer-container">
         <IconButton
           edge="start"
           color="inherit"
           aria-label="menu"
           fontSize="large"
-          sx={{ mr: 2, zIndex: 4 }}
+          className="drawer-icon-button"
           onClick={handleCloseDrawer}
         >
-          <MenuIcon />
+          <MenuIcon 
+          fontSize="large"
+          />
         </IconButton>
       </Box>
       <SwipeableDrawer
@@ -34,12 +36,11 @@ export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange })
       >
         <Box
           role="presentation"
-          sx={{ width: '250px' }} // Set width of content container
+          className="drawer-content-container"
           onClick={() => onToggle(false)}
         >
         </Box>
         <Menu isMobile={true} onActiveDivChange={onActiveDivChange}></Menu>
-        
       </SwipeableDrawer>
     </div> 
   );

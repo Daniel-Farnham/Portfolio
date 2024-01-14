@@ -17,12 +17,14 @@ function ContentBox(props) {
   const contentInfoRef = useRef();
   const [scrollDown, setScrollDown] = useState(true);
   const [playing, setPlaying] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   // Common function for determining media type
   const determineMediaType = (media) => {
     if (!media) return { type: "null", src: null };
     return { type: media.type, src: media.src };
   };
+  console.log(props.contentHeight);
 
   const { type: type1, src: src1 } = determineMediaType(props.media_1);
   const { type: type2, src: src2 } = determineMediaType(props.media_2);
@@ -30,6 +32,7 @@ function ContentBox(props) {
   const isVideo1 = type1 === "video";
   const isVideo2 = type2 === "video";
 
+  // TODO: It might be best to just precalculate the maximum space a div will need
   // Video autoplay and pause logic
   useEffect(() => {
     if (videoRef.current) {
@@ -41,29 +44,55 @@ function ContentBox(props) {
     }
   }, [props.playing, props.id]);
 
+  const heightMap = {
+    tall: '200vh',
+    medium: '150vh',
+    short: '100vh',
+    undefined: '100vh'
+  };
+
   const handleClick = () => {
     props.onClick(props.id);
     if (props.setPlaying) {
       props.setPlaying(props.id);
     }
+   
+    setIsExpanded(!isExpanded);
 
     if (contentInfoRef.current) {
-      const currentScroll = contentInfoRef.current.scrollTop;
-      const maxScroll = contentInfoRef.current.scrollHeight - contentInfoRef.current.clientHeight;
-      let scrollAmount = 300;
+      // if we are on the mobile site. 
+      if (window.innerWidth < 700)  {
+        const contentBox = contentInfoRef.current.closest('.content-box');
+        if (!isExpanded) {
+          // If the box is not expanded, expand it
+          contentBox.style.width = '90vw';
+          contentBox.style.height = heightMap[props.contentHeight];
+          contentBox.style.overflow = 'auto'; // Enable scrolling if content overflows
+        } else {
+          // If the box is expanded, shrink it back to its original size
+          contentBox.style.width = ''; // Reset to default
+          contentBox.style.height = ''; // Reset to default
+        }
+      }
+      else {
+        const currentScroll = contentInfoRef.current.scrollTop;
+        const maxScroll = contentInfoRef.current.scrollHeight - contentInfoRef.current.clientHeight;
+        let scrollAmount = 300;
+  
+        if (scrollDown) {
+          if (currentScroll + scrollAmount >= maxScroll) {
+            scrollAmount = maxScroll - currentScroll;
+            setScrollDown(false);
+          }
+          contentInfoRef.current.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+        } else {
+          if (currentScroll - scrollAmount <= 0) {
+            scrollAmount = currentScroll;
+            setScrollDown(true);
+          }
+          contentInfoRef.current.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+        }
 
-      if (scrollDown) {
-        if (currentScroll + scrollAmount >= maxScroll) {
-          scrollAmount = maxScroll - currentScroll;
-          setScrollDown(false);
-        }
-        contentInfoRef.current.scrollBy({ top: scrollAmount, behavior: 'smooth' });
-      } else {
-        if (currentScroll - scrollAmount <= 0) {
-          scrollAmount = currentScroll;
-          setScrollDown(true);
-        }
-        contentInfoRef.current.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
       }
     }
   };

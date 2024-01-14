@@ -8,10 +8,13 @@ import MenuController from './MenuController';
 
 function App() {
   const [isMobileDevice, setIsMobileDevice] = useState(window.innerWidth < 600);
+  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobileDevice(window.innerWidth < 700);
+      setViewportHeight(window.innerHeight);
     };
     
     window.addEventListener("resize", handleResize);
@@ -21,7 +24,7 @@ function App() {
 
   return (
    <div className="App">
-      <header className="App-header">
+      <header className="App-header" style={{ height: `${viewportHeight}px` }}>
       <MenuController/>
       {/* {isMobileDevice ? <MobileDrawer/> : <Menu/> } */}
         <div className="clouds"> 

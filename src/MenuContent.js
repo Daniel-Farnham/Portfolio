@@ -25,7 +25,6 @@ import wombatVideo from './assets/Wombat_Mange.mp4'
 import waterCycle from './assets/WaterCycle.mp4'
 
 function MenuContent({ activeDiv, isMobile }) {
-  console.log(isMobile);
   const [activeExperienceId, setActiveExperienceId] = useState(null);
   const [playing, setPlaying] = useState(null);
   const [contentHeight, setContentHeight] = useState('100vh');
@@ -41,6 +40,7 @@ function MenuContent({ activeDiv, isMobile }) {
   
   const updateContentHeight = () => {
     if (isMobile) {
+      setContentHeight(`-webkit-fill-available`)
       return;
     }
     const menuItem = document.querySelector('.menu-item');

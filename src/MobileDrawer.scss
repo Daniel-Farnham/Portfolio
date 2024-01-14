@@ -1,0 +1,26 @@
+.drawer-container {
+  position: absolute;
+  display: flex; 
+  justify-content: flex-start;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  backdrop-filter: blur(20px);
+  //background-color: #FFFFFF;
+  //opacity: 0.1;
+}
+
+.drawer-icon-button {
+  background-color: red;
+  width: 100px; 
+  margin-left: 20px; // Adjust as needed, previously ml: 5
+  margin-right: 8px; // Adjust as needed, previously mr: 2
+  z-index: 4;
+}
+
+.drawer-content-container {
+  width: 250px; // Set width of content container
+}
