@@ -51,6 +51,7 @@ function MenuContent({ activeDiv, isMobile }) {
 
   const updateContentPosition = () => {
     if (isMobile) {
+      // setTopOffset(`80px`)
       return; 
     }
     const menuItem = document.querySelector('.menu-item');
