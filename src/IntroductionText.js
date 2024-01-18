@@ -5,7 +5,7 @@ import './IntroductionText.css';
 function IntroductionText({ textType, textContent }) {
  const [nameChars, setNameChars] = useState([]);
  const [showParagraph, setShowParagraph] = useState(false);
-
+ const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
 
  useEffect(() => {
   const words = textContent.split(' ');
@@ -40,6 +40,20 @@ function IntroductionText({ textType, textContent }) {
   return () => clearTimeout(timeoutId);
 }, [textContent]);
 
+useEffect(() => {
+  function handleResize() {
+    setIsMobile(window.innerWidth < 700);
+  }
+  
+  // Add event listener
+  window.addEventListener("resize", handleResize);
+  
+  // Call the handler right away so state gets updated with initial window size
+  handleResize();
+
+  // Remove event listener on cleanup
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
  if (textType === "introduction") {
   return (
@@ -49,7 +63,7 @@ function IntroductionText({ textType, textContent }) {
         I'm sending this to you because I really admire the work you do. So much so that I built a website to help you
         understand me better.
       </p>
-      < Links showLinks={showParagraph}/>
+      {!isMobile && <Links showLinks={showParagraph}/>}
     </div>
   );
  }
@@ -57,7 +71,7 @@ function IntroductionText({ textType, textContent }) {
   return (
     <div className="contentText">
       <h1>{nameChars}</h1>
-      < Links showLinks={showParagraph}/>
+      {!isMobile && <Links showLinks={showParagraph}/>}
     </div>
     
     

@@ -66,7 +66,7 @@ function Menu({ isMobile, onActiveDivChange }) {
               ? item.activeClass
               : ''
           }`}
-          style={{ height: windowHeight / 3 + itemStyles.itemBorderWidth }}
+          style={{ height: 100 + itemStyles.itemBorderWidth, backgroundColor: `${activeItem === item.id ? "rgb(255, 205, 255)" : "white"}` }}
           onClick={() => handleClick(item.id)}
           >
             

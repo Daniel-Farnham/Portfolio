@@ -1,22 +1,22 @@
-
-
-
 .extraLinks {
-  margin-top: 50px; 
   display: flex; 
+  align-items: center;
+  justify-content: center; 
   gap: 20px;
   z-index: 1; 
+  margin-right: 20px;
 }
 
 .extraLinks a {
   color: rgb(0, 0, 0);
   transition: transform 0.2s ease;
-  height: 15px; 
+  height: 25px; 
   display: inline-block;  
   position: relative; 
 }
 
 .extraLinks a::before {
+  content: ''; 
   display: block;
   position: absolute;
   top: -10px;
