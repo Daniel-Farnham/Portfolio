@@ -77,7 +77,7 @@ function ContentBox(props) {
       else {
         const currentScroll = contentInfoRef.current.scrollTop;
         const maxScroll = contentInfoRef.current.scrollHeight - contentInfoRef.current.clientHeight;
-        let scrollAmount = 300;
+        let scrollAmount = 320;
   
         if (scrollDown) {
           if (currentScroll + scrollAmount >= maxScroll) {

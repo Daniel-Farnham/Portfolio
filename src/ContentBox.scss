@@ -11,7 +11,7 @@
   background-color: rgba(216, 216, 216, 0.5);
   overflow: hidden; 
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  height: 500px;
+  height: 540px;
   width: 80vw;
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
 
@@ -64,7 +64,7 @@
   grid-row: 2 / 4;
   grid-column: 1 / 4; 
   display: flex;
-  align-items: center;
+  //align-items: center;
   justify-content: flex-start;
   gap: 20px;
   flex-direction: row; 
@@ -80,12 +80,12 @@
   scrollbar-width: none;
   [logo] {
     height: 80px; 
-    max-width: 200px;
+    width: 200px;
     object-fit: cover;
   }
   [media] {
-    height: 300px;
-    width: 300px; 
+    min-height: 350px;
+    width: 320px; 
     border-radius: 5px;
     object-fit: cover;
   }
