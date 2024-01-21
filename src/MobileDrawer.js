@@ -12,7 +12,12 @@ import './MobileDrawer.scss'
 export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange }) {
   const handleCloseDrawer = () => {
     onToggle(!isOpen);
+    //onActiveDivChange(null);
   };
+
+  const goToMainMenu = () => {
+    onActiveDivChange(null);
+  }
 
   return (
     <div>
@@ -43,6 +48,7 @@ export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange })
         >
         </Box>
         <Menu isMobile={true} onActiveDivChange={onActiveDivChange}></Menu>
+        <button onClick={goToMainMenu}>exit</button>
       </SwipeableDrawer>
     </div> 
   );

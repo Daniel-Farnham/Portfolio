@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Menu.scss';
-import MenuContent from './MenuContent';
 
 // Will need to pass 
 function Menu({ isMobile, onActiveDivChange }) {

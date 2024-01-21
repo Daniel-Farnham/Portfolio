@@ -11,12 +11,16 @@ function MenuController() {
 
   useEffect(() => {
     const handleResize = () => {
+      // Check if the window width has crossed the 700px mark and reset activeDivId if necessary
+      if (window.innerWidth >= 700 && isMobileDevice) {
+        setActiveDivId(null); // Reset activeDivId when going from mobile to desktop
+      }
       setIsMobileDevice(window.innerWidth < 700);
     };
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isMobileDevice]); // Add isMobileDevice as a dependency
 
   const handleMenuItemClick = (itemId) => {
     setActiveItem(itemId);
