@@ -45,9 +45,10 @@ function Menu({ isMobile, onActiveDivChange }) {
   }
 
   const menuItems = [
-    { id: 'menu-item-1', label: 'Experiences', activeClass: 'menu-1-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight, activePosition: positionActiveDivs() },
-    { id: 'menu-item-2', label: 'Cool Projects', activeClass: 'menu-2-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight, activePosition: positionActiveDivs() },
-    { id: 'menu-item-3', label: 'Who Am I?', activeClass: 'menu-3-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight,  activePosition: positionActiveDivs() },
+    { id: 'menu-item-1', label: 'Who Am I?', activeClass: 'menu-3-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight,  activePosition: positionActiveDivs() },
+    { id: 'menu-item-2', label: 'Experiences', activeClass: 'menu-1-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight, activePosition: positionActiveDivs() },
+    { id: 'menu-item-3', label: 'Cool Projects', activeClass: 'menu-2-active', height: itemStyles.itemHeight, borderWidth: itemStyles.itemHeight, activePosition: positionActiveDivs() },
+    
   ];
 
   if (isMobile) {

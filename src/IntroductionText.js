@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Links from './Links';
 import './IntroductionText.css'; 
 
-function IntroductionText({ textType, textContent }) {
+function IntroductionText({ textType, textContent, showLinks }) {
  const [nameChars, setNameChars] = useState([]);
  const [showParagraph, setShowParagraph] = useState(false);
  const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
@@ -15,7 +15,7 @@ function IntroductionText({ textType, textContent }) {
     const letters = word.split('').map((char, charIndex) => {
       const displayChar = char === ' ' ? '\u00A0' : char;
       return (
-        <span key={charIndex} className="char" style={{ animationDelay: `${charCount++ * 0.15}s` }}>
+        <span key={charIndex} className="char" style={{ animationDelay: `${charCount++ * 0.12}s` }}>
           {displayChar}
         </span>
       );
@@ -23,7 +23,7 @@ function IntroductionText({ textType, textContent }) {
     
     if (wordIndex !== words.length - 1) {
       letters.push(
-        <span key={word.length} className="char" style={{ animationDelay: `${charCount++ * 0.15}s` }}>
+        <span key={word.length} className="char" style={{ animationDelay: `${charCount++ * 0.12}s` }}>
           {'\u00A0'}
         </span>
       );

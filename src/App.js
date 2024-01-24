@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import cloudImage from './assets/CloudImage.png';
 import IntroductionText from './IntroductionText';
-import MobileDrawer from './MobileDrawer'
-import Menu from './Menu';
+//import MobileDrawer from './MobileDrawer'
+//import Menu from './Menu';
 import MenuController from './MenuController';
 
 function App() {

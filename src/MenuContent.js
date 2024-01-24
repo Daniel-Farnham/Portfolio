@@ -173,7 +173,6 @@ function MenuContent({ activeDiv, isMobile }) {
       skills: ['UI/UX Design', 'User Journey Mapping', 'Figma', 'HTML', 'CSS', 'Javascript', 'JSON', 'Git', 'Project Management'],
       contentHeight: "medium"
     }, 
-    /*
     {
       id: 14,
       title: 'Silk Drip The Label',
@@ -182,7 +181,7 @@ function MenuContent({ activeDiv, isMobile }) {
       content: 'blah blah test', 
       skills: ['blah']
     },
-    
+    /*
     {
       id: 16, 
       title: 'This Website',
@@ -230,7 +229,7 @@ function MenuContent({ activeDiv, isMobile }) {
 
   return (
     <div className={`content-space ${activeDiv ? 'showContent' : 'hideContent'}`} style={{height: contentHeight, top: topOffset}}>
-      <div className = {`listContent ${activeDiv === 'div-1' ? 'showContent' : 'hideContent'}`}>
+      <div className = {`listContent ${activeDiv === 'div-2' ? 'showContent' : 'hideContent'}`}>
         {experiences.map((experience) => (
           <ContentBox
           key={experience.id}
@@ -245,7 +244,7 @@ function MenuContent({ activeDiv, isMobile }) {
           />
         ))}
       </div>
-      <div className = {`listContent ${activeDiv === 'div-2' ? 'showContent' : 'hideContent'}`}>
+      <div className = {`listContent ${activeDiv === 'div-3' ? 'showContent' : 'hideContent'}`}>
         {projects.map((project) => (
           <ContentBox
             key={project.id}
@@ -264,9 +263,18 @@ function MenuContent({ activeDiv, isMobile }) {
           />
         ))}
       </div>
-      <div className = {`listContent hireMe ${activeDiv === 'div-3' ? 'showContent' : 'hideContent'}`}>
+      <div className = {`listContent hireMe ${activeDiv === 'div-1' ? 'showContent' : 'hideContent'}`}>
         
-          <IntroductionText textType={"hireMe"} textContent={"stuff to do"} />     
+          <IntroductionText textType={"hireMe"} textContent={"I'm someone who does things over the internet."} /> 
+          
+          <p className={"text-content"}> <br></br>I design things, I build things and I work hard to make sure the user LOVE the things that I have built. The happy marriage of design and development is where I like to live. </p>    
+          <h3 className={"text-content"}>Why does this matter? </h3>
+          <p className={"text-content"}> Because digital footprints matter; website, apps, your little cousins hand-me-down iPad and everything in between is a big part of how customers interact with your brand, how they get to know you and how they know you can trust you.  </p>    
+          <p className={"text-content"}>And on that we can have the best design in the world but without the tech skills to match it can never come to life. Similarly our code can look pretty and do the job but if the design is poor no one will use it. </p>
+          <p className={"text-content"}>I am interested in bridging these two worlds.</p>
+          <h3 className={"text-content"}>How can I help?</h3>
+          <p className={"text-content"}>I can be your developer + designer living in your pocket. Need a minor update in your code? I can do that. Need a full website redesign and rebuild? I can also do that. Need someone to be on call for an ongoing basis to handle anything digital related? I can also do that. </p>
+          <p> <br></br> If you're interested in getting to know me - contact me below!</p>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from './Menu';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import HomeIcon from '@mui/icons-material/Home';
 import Links from './Links'
 import './Menu.scss';
 import './MobileDrawer.scss'
@@ -22,6 +23,7 @@ export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange })
   return (
     <div>
       <Box className="drawer-container">
+        
         <IconButton
           edge="start"
           color="inherit"
@@ -48,7 +50,7 @@ export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange })
         >
         </Box>
         <Menu isMobile={true} onActiveDivChange={onActiveDivChange}></Menu>
-        <button onClick={goToMainMenu}>exit</button>
+        <HomeIcon fontSize="large" onClick={goToMainMenu}>exit</HomeIcon>
       </SwipeableDrawer>
     </div> 
   );
