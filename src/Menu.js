@@ -6,7 +6,7 @@ function Menu({ isMobile, onActiveDivChange }) {
   const [activeItem, setActiveItem] = useState('');
   const [windowHeight, setWindowHeight] = useState(window.innerHeight); 
   const itemStyles = {
-    itemHeight: 55,
+    itemHeight: 45,
     itemBorderWidth: 2,
   } 
 

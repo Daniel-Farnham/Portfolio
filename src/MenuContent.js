@@ -3,7 +3,7 @@ import './MenuContent.scss';
 import IntroductionText from './IntroductionText';
 import Media from './Media';
 import ContentBox from './ContentBox';
-import SkillsTable from './SkillsTable';
+import Links from './Links';
 import { ReactComponent as Arrow } from './assets/arrow.svg'
 import pgvLogo from './assets/PGV_Logo.png'
 import unswLogo from './assets/UNSW_Logo.png'
@@ -46,7 +46,7 @@ function MenuContent({ activeDiv, isMobile }) {
     const menuItem = document.querySelector('.menu-item');
       const menuItemHeight = menuItem.offsetHeight;
       const availableHeight = window.innerHeight - (menuItemHeight * 3);
-      setContentHeight(`${availableHeight + 2 - 100}px`); //100px is to account for the top padding of the content space
+      setContentHeight(`${availableHeight + 2 - 250}px`); //100px is to account for the top padding of the content space
   };
 
   const updateContentPosition = () => {
@@ -275,6 +275,7 @@ function MenuContent({ activeDiv, isMobile }) {
           <h3 className={"text-content"}>How can I help?</h3>
           <p className={"text-content"}>I can be your developer + designer living in your pocket. Need a minor update in your code? I can do that. Need a full website redesign and rebuild? I can also do that. Need someone to be on call for an ongoing basis to handle anything digital related? I can also do that. </p>
           <p> <br></br> If you're interested in getting to know me - contact me below!</p>
+          <Links showLinks={(true)}></Links>
       </div>
     </div>
   );

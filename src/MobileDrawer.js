@@ -6,6 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Menu from './Menu';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import HomeIcon from '@mui/icons-material/Home';
+import CloseIcon from '@mui/icons-material/Close';
 import Links from './Links'
 import './Menu.scss';
 import './MobileDrawer.scss'
@@ -49,8 +50,10 @@ export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange })
           onClick={() => onToggle(false)}
         >
         </Box>
+        <CloseIcon 
+          className="drawer-close-menu-icon" sx={{height: '80px', borderBottom: '1px solid black;', marginLeft: '20px'}} fontSize="large" onClick={goToMainMenu}></CloseIcon>
         <Menu isMobile={true} onActiveDivChange={onActiveDivChange}></Menu>
-        <HomeIcon fontSize="large" onClick={goToMainMenu}>exit</HomeIcon>
+
       </SwipeableDrawer>
     </div> 
   );

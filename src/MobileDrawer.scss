@@ -1,3 +1,5 @@
+
+
 .drawer-container {
   position: absolute;
   display: flex; 
@@ -20,5 +22,6 @@
 }
 
 .drawer-content-container {
-  width: 250px; // Set width of content container
+  width: 350px; // Set width of content container
+  border-right: 1px solid black;
 }

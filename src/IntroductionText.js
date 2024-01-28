@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Links from './Links';
 import './IntroductionText.css'; 
 
-function IntroductionText({ textType, textContent, showLinks }) {
+function IntroductionText({ textType, textContent }) {
  const [nameChars, setNameChars] = useState([]);
  const [showParagraph, setShowParagraph] = useState(false);
  const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
@@ -71,7 +71,7 @@ useEffect(() => {
   return (
     <div className="contentText">
       <h1>{nameChars}</h1>
-      {!isMobile && <Links showLinks={showParagraph}/>}
+      {!isMobile && <Links showLinks={false}/>}
     </div>
     
     

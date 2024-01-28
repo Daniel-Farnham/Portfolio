@@ -65,12 +65,10 @@ function ContentBox(props) {
         const contentBox = contentInfoRef.current.closest('.content-box');
         if (!isExpanded) {
           // If the box is not expanded, expand it
-          contentBox.style.width = '90vw';
           contentBox.style.height = heightMap[props.contentHeight];
           contentBox.style.overflow = 'auto'; // Enable scrolling if content overflows
         } else {
           // If the box is expanded, shrink it back to its original size
-          contentBox.style.width = ''; // Reset to default
           contentBox.style.height = ''; // Reset to default
         }
       }
