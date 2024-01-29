@@ -88,22 +88,22 @@ function MenuContent({ activeDiv, isMobile }) {
       id: 1,
       logo: pgvLogo, 
       title: 'Co-Founder', 
-      content: 'Playground Vintage was established in 2018 out of a desire to provide clothing that is cool, affordable and ultimately good for the environment. This was a business born out of naivety, frustration with the clothing industry and a willingness to do something about it.\n\n Originally this started as a process of designing and making my own clothing which did well to start with. However I became concerned with the environmental impact of clothes and pivoted to selling only remade or vintage pieces. Plus I felt like there wasn’t enough ‘fun’ for young people in Sydney, hence the name ‘Playground Vintage’. \n\nIn 2019, I opened up my first store and in 2021 my second which was difficult while balancing my degree and COVID-lockdowns. This experience was valuable because it really taught me a lot about building products for people and how to make things happen despite a lack of knowledge and resources.',
+      content: 'From Passion to Niche Brand: Started in 2018, Playground Vintage grew from a personal project into a brand loved for its sustainable fashion, resonating with the environmentally-aware community in Sydney. \n\n Adapting to Challenges: Despite juggling studies and pandemic disruptions, I opened two stores by 2021 and started a successful e-commerce brand. This part of my journey involved learning to navigate unexpected challenges and adapt strategies, skills relevant to the ever-evolving fields of web development and UI/UX design. \n\n Building Relationships, Building Brands: The essence of Playground Vintage lies in its ability to create connections. This mirrors my approach to creative work: understanding and valuing people, their stories, and their needs, which is fundamental to creating meaningful and engaging experiences.',
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
     },
     {
       id: 2,
       logo: tediLogo,
-      title: 'Student Product Engineer',
+      title: 'Product Engineer',
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
-      content: 'This was a spot within a cross functional team, multi-disciplinary team which required me to design, prototype and ultimately build a product from scratch. \n\nDuring this experience I led a lot of the work during the design and building process. This meant identifying user problems, writing a design brief, building a prototype and eventually the entire product within a short period. There was technical obstacles to overcome, design flaws to iterate over and financial constraints but it was immensely satisfying to build things for people.',
+      content: 'Dynamic Team Role: In my role as a Product Engineer within a cross-functional team, I led the journey from concept to creation. This involved identifying user needs, developing a design brief, and building prototypes, all within stringent timelines. \n\n Overcoming and Innovating: Facing technical challenges, design iterations, and budget constraints, I balanced problem-solving with creative innovation. The satisfaction came from not just overcoming obstacles but also in crafting solutions that truly resonated with users, reinforcing my commitment to empathetic and practical design.',
     },
     {
       id: 3, 
       logo: fullCirclelogo,
       title: 'Web Developer',
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'], 
-      content: 'Leaning on my technical skills from my degree and my product management skills from running my own business I began offering up my time as a freelance web developer. This meant developing Figma prototypes all the way to actually coding the website. This has been as much about understanding what the client needs as it has been about writing code. Being able to put myself in my client’s shoes has helped me be a better web developer. ',
+      content: 'Combining Skills and Vision: At Full Circle Digital Marketing, I blend my technical knowledge from academia with practical product management experience from my own business ventures. This unique mix allows me to take projects from initial Figma designs to fully functional websites. \n\n Understanding Beyond Code: My role goes beyond coding; it is deeply rooted in understanding clients visions and needs. By putting myself in their shoes, I ensure that each website is not just a digital space but a true reflection of their goals and aspirations. \n\n A Personal Touch: Working with Full Circle Digital Marketing has reinforced my belief in empathetic web development. Here, I create not just websites, but meaningful digital experiences that resonate with clients and their audiences.',
     },
     {
       id: 4,
@@ -265,7 +265,7 @@ function MenuContent({ activeDiv, isMobile }) {
       </div>
       <div className = {`listContent hireMe ${activeDiv === 'div-1' ? 'showContent' : 'hideContent'}`}>
         
-          <IntroductionText textType={"hireMe"} textContent={"I'm someone who does things over the internet."} /> 
+          <IntroductionText textType={"hireMe"} textContent={"I'm someone who does things over the internet for people."} /> 
           
           <p className={"text-content"}> <br></br>I design things, I build things and I work hard to make sure the user LOVE the things that I have built. The happy marriage of design and development is where I like to live. </p>    
           <h3 className={"text-content"}>Why does this matter? </h3>

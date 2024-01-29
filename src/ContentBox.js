@@ -32,8 +32,6 @@ function ContentBox(props) {
   const isVideo1 = type1 === "video";
   const isVideo2 = type2 === "video";
 
-  // TODO: It might be best to just precalculate the maximum space a div will need
-  // Video autoplay and pause logic
   useEffect(() => {
     if (videoRef.current) {
       if (props.playing === props.id) {
