@@ -8,6 +8,7 @@ import { ReactComponent as Arrow } from './assets/arrow.svg'
 import pgvLogo from './assets/PGV_Logo.png'
 import unswLogo from './assets/UNSW_Logo.png'
 import tediLogo from './assets/TEDI_Logo.png'
+import dijgtalLogo from './assets/DIJGTAL_Logo.png'
 import fullCirclelogo from './assets/Full_Circle_Logo.png'
 import blackMarketProject from './assets/BlackMarketProject.png'
 import blackMarketProject_2 from './assets/BlackMarketProject2.png'
@@ -86,20 +87,27 @@ function MenuContent({ activeDiv, isMobile }) {
   const experiences = [
     {
       id: 1,
-      logo: pgvLogo, 
+      logo: dijgtalLogo, 
       title: 'Co-Founder', 
       content: 'From Passion to Niche Brand: Started in 2018, Playground Vintage grew from a personal project into a brand loved for its sustainable fashion, resonating with the environmentally-aware community in Sydney. \n\n Adapting to Challenges: Despite juggling studies and pandemic disruptions, I opened two stores by 2021 and started a successful e-commerce brand. This part of my journey involved learning to navigate unexpected challenges and adapt strategies, skills relevant to the ever-evolving fields of web development and UI/UX design. \n\n Building Relationships, Building Brands: The essence of Playground Vintage lies in its ability to create connections. This mirrors my approach to creative work: understanding and valuing people, their stories, and their needs, which is fundamental to creating meaningful and engaging experiences.',
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
     },
     {
       id: 2,
+      logo: pgvLogo, 
+      title: 'Co-Founder', 
+      content: 'From Passion to Niche Brand: Started in 2018, Playground Vintage grew from a personal project into a brand loved for its sustainable fashion, resonating with the environmentally-aware community in Sydney. \n\n Adapting to Challenges: Despite juggling studies and pandemic disruptions, I opened two stores by 2021 and started a successful e-commerce brand. This part of my journey involved learning to navigate unexpected challenges and adapt strategies, skills relevant to the ever-evolving fields of web development and UI/UX design. \n\n Building Relationships, Building Brands: The essence of Playground Vintage lies in its ability to create connections. This mirrors my approach to creative work: understanding and valuing people, their stories, and their needs, which is fundamental to creating meaningful and engaging experiences.',
+      skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
+    },
+    {
+      id: 3,
       logo: tediLogo,
       title: 'Product Engineer',
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'],
       content: 'Dynamic Team Role: In my role as a Product Engineer within a cross-functional team, I led the journey from concept to creation. This involved identifying user needs, developing a design brief, and building prototypes, all within stringent timelines. \n\n Overcoming and Innovating: Facing technical challenges, design iterations, and budget constraints, I balanced problem-solving with creative innovation. The satisfaction came from not just overcoming obstacles but also in crafting solutions that truly resonated with users, reinforcing my commitment to empathetic and practical design.',
     },
     {
-      id: 3, 
+      id: 4, 
       logo: fullCirclelogo,
       title: 'Web Developer',
       skills: ['User Research', 'Product Ideation', 'Interaction Design', 'Prototyping', 'Project Management', 'Product Development', 'Mechanical Engineering', 'Software Engineering'], 

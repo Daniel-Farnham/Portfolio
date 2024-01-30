@@ -79,8 +79,9 @@
 
   scrollbar-width: none;
   [logo] {
-    height: 80px; 
-    width: 200px;
+    height: 50px; 
+    width: 150px;
+    padding-top: 10px;
     object-fit: cover;
   }
   [media] {
@@ -100,4 +101,10 @@
   gap: 10px;
   flex-direction: column;
   align-items: center; 
+}
+
+.logo-stuff {
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
 }

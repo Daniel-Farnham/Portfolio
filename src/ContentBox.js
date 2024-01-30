@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
-import './MenuContent.scss';
-import './ContentBox.scss';
-import Media from './Media';
+import React, { useRef, useState, useEffect } from "react";
+import "./MenuContent.scss";
+import "./ContentBox.scss";
+import Media from "./Media";
 
 const FormattedContent = ({ content }) => {
-  return content.split('\n').map((line, index) => (
+  return content.split("\n").map((line, index) => (
     <React.Fragment key={index}>
       {line}
       <br />
@@ -43,10 +43,10 @@ function ContentBox(props) {
   }, [props.playing, props.id]);
 
   const heightMap = {
-    tall: '200vh',
-    medium: '150vh',
-    short: '100vh',
-    undefined: '100vh'
+    tall: "200vh",
+    medium: "150vh",
+    short: "100vh",
+    undefined: "100vh",
   };
 
   const handleClick = () => {
@@ -54,41 +54,47 @@ function ContentBox(props) {
     if (props.setPlaying) {
       props.setPlaying(props.id);
     }
-   
+
     setIsExpanded(!isExpanded);
 
     if (contentInfoRef.current) {
-      // if we are on the mobile site. 
-      if (window.innerWidth < 700)  {
-        const contentBox = contentInfoRef.current.closest('.content-box');
+      // if we are on the mobile site.
+      if (window.innerWidth < 700) {
+        const contentBox = contentInfoRef.current.closest(".content-box");
         if (!isExpanded) {
           // If the box is not expanded, expand it
           contentBox.style.height = heightMap[props.contentHeight];
-          contentBox.style.overflow = 'auto'; // Enable scrolling if content overflows
+          contentBox.style.overflow = "auto"; // Enable scrolling if content overflows
         } else {
           // If the box is expanded, shrink it back to its original size
-          contentBox.style.height = ''; // Reset to default
+          contentBox.style.height = ""; // Reset to default
         }
-      }
-      else {
+      } else {
         const currentScroll = contentInfoRef.current.scrollTop;
-        const maxScroll = contentInfoRef.current.scrollHeight - contentInfoRef.current.clientHeight;
+        const maxScroll =
+          contentInfoRef.current.scrollHeight -
+          contentInfoRef.current.clientHeight;
         let scrollAmount = 320;
-  
+
         if (scrollDown) {
           if (currentScroll + scrollAmount >= maxScroll) {
             scrollAmount = maxScroll - currentScroll;
             setScrollDown(false);
           }
-          contentInfoRef.current.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+          contentInfoRef.current.scrollBy({
+            top: scrollAmount,
+            behavior: "smooth",
+          });
         } else {
           if (currentScroll - scrollAmount <= 0) {
             scrollAmount = currentScroll;
             setScrollDown(true);
           }
-          contentInfoRef.current.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+          contentInfoRef.current.scrollBy({
+            top: -scrollAmount,
+            behavior: "smooth",
+          });
         }
-
       }
     }
   };
@@ -97,7 +103,7 @@ function ContentBox(props) {
     if (props.media_1 || props.media_2) {
       return (
         <div className="media-wrapper">
-          <Media 
+          <Media
             className="media"
             type={type1}
             src={src1}
@@ -114,7 +120,11 @@ function ContentBox(props) {
         </div>
       );
     } else if (props.logo) {
-      return <img logo={1} src={props.logo} alt={props.title} />;
+      return (
+        <div className="logo-stuff">
+          <img logo={1} src={props.logo} alt={props.title} />
+        </div>
+      );
     }
     return null;
   };
@@ -126,7 +136,9 @@ function ContentBox(props) {
       </div>
       <div ref={contentInfoRef} className="content-information">
         {renderMedia()}
-        <p><FormattedContent content={props.content} /></p>
+        <p>
+          <FormattedContent content={props.content} />
+        </p>
       </div>
       {/* <SkillsTable skills={props.skills} /> */}
     </div>
