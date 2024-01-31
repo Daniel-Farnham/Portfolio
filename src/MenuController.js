@@ -4,6 +4,7 @@ import Menu from './Menu';
 import MenuContent from './MenuContent';
 
 function MenuController() {
+  // eslint-disable-next-line
   const [activeItem, setActiveItem] = useState('');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMobileDevice, setIsMobileDevice] = useState(window.innerWidth < 600);
@@ -22,6 +23,7 @@ function MenuController() {
     return () => window.removeEventListener("resize", handleResize);
   }, [isMobileDevice]); // Add isMobileDevice as a dependency
 
+  // eslint-disable-next-line
   const handleMenuItemClick = (itemId) => {
     setActiveItem(itemId);
     setIsDrawerOpen(false); 

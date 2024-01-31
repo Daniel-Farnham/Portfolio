@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./MenuContent.scss";
 import IntroductionText from "./IntroductionText";
 import ContentBox from "./ContentBox";
@@ -30,7 +30,7 @@ function MenuContent({ activeDiv, isMobile }) {
     }
   };
 
-  const updateContentHeight = () => {
+  const updateContentHeight = useCallback(() => {
     if (isMobile) {
       setContentHeight(`-webkit-fill-available`);
       return;
@@ -38,10 +38,10 @@ function MenuContent({ activeDiv, isMobile }) {
     const menuItem = document.querySelector(".menu-item");
     const menuItemHeight = menuItem.offsetHeight;
     const availableHeight = window.innerHeight - menuItemHeight * 3;
-    setContentHeight(`${availableHeight + 2 - 250}px`); //100px is to account for the top padding of the content space
-  };
+    setContentHeight(`${availableHeight + 2 - 250}px`); // 100px is to account for the top padding of the content space
+  }, [isMobile]);
 
-  const updateContentPosition = () => {
+  const updateContentPosition = useCallback(() => {
     if (isMobile) {
       // setTopOffset(`80px`)
       return;
@@ -56,8 +56,8 @@ function MenuContent({ activeDiv, isMobile }) {
       contentTopOffset = contentTopOffset * 3;
     }
 
-    setTopOffset(`${contentTopOffset}px`); // Use template literals
-  };
+    setTopOffset(`${contentTopOffset}px`);
+  }, [isMobile, activeDiv]);
 
   useEffect(() => {
     const updateLayout = () => {
@@ -67,14 +67,12 @@ function MenuContent({ activeDiv, isMobile }) {
 
     updateLayout();
 
-    // Add resize event listener
     window.addEventListener("resize", updateLayout);
 
-    // Return a cleanup function to remove the event listener when the component unmounts
     return () => {
       window.removeEventListener("resize", updateLayout);
     };
-  }, [activeDiv]);
+  }, [updateContentHeight, updateContentPosition]);
   const experiences = [
     {
       id: 1,

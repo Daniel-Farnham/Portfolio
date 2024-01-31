@@ -16,7 +16,6 @@ function ContentBox(props) {
   const videoRef = useRef();
   const contentInfoRef = useRef();
   const [scrollDown, setScrollDown] = useState(true);
-  const [playing, setPlaying] = useState(null);
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Common function for determining media type

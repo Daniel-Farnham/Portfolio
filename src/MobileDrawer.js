@@ -1,11 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from './Menu';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import HomeIcon from '@mui/icons-material/Home';
 import CloseIcon from '@mui/icons-material/Close';
 import Links from './Links'
 import './Menu.scss';
