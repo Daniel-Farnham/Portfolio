@@ -411,7 +411,7 @@ function MenuContent({ activeDiv, isMobile }) {
         <p className={"text-content"}>
           {" "}
           <br></br>I design things, I build things and I work hard to make sure
-          the people who use these things, that I have built love them. The
+          the people who use these things, love them. The
           happy marriage of design and development is where I like to live.{" "}
         </p>
         <h3 className={"text-content"}>Why does this matter? </h3>
