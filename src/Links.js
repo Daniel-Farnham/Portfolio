@@ -10,10 +10,10 @@ import './Links.css'
 function Links({ showLinks }) {
   return (
     <div className={`extraLinks ${showLinks ? 'visible' : 'hidden'}`}>
-      <a href="https://github.com/Daniel-Farnham" target="_blank" rel="noopener noreferrer">
+      {/* <a href="https://github.com/Daniel-Farnham" target="_blank" rel="noopener noreferrer">
         <GitHubIcon
          />
-      </a>
+      </a> */}
       <a href="https://www.linkedin.com/in/daniel-farnham-84308522b/" target="_blank" rel="noopener noreferrer">
         <LinkedInIcon />
       </a>

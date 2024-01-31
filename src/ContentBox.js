@@ -24,7 +24,6 @@ function ContentBox(props) {
     if (!media) return { type: "null", src: null };
     return { type: media.type, src: media.src };
   };
-  console.log(props.contentHeight);
 
   const { type: type1, src: src1 } = determineMediaType(props.media_1);
   const { type: type2, src: src2 } = determineMediaType(props.media_2);
