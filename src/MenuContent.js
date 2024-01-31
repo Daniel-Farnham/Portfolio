@@ -1,29 +1,20 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./MenuContent.scss";
 import IntroductionText from "./IntroductionText";
-import Media from "./Media";
 import ContentBox from "./ContentBox";
 import Links from "./Links";
 import { ReactComponent as Arrow } from "./assets/arrow.svg";
 import pgvLogo from "./assets/PGV_Logo.png";
-import unswLogo from "./assets/UNSW_Logo.png";
 import tediLogo from "./assets/TEDI_Logo.png";
 import dijgtalLogo from "./assets/DIJGTAL_Logo.png";
 import fullCirclelogo from "./assets/Full_Circle_Logo.png";
 import blackMarketProject from "./assets/BlackMarketProject.png";
-import blackMarketProject_2 from "./assets/BlackMarketProject2.png";
 import waterCycleimage_1 from "./assets/WaterCycle_Construction.jpeg";
 import sneakerDeximage_1 from "./assets/SneakerDex.png";
-import sneakerDeximage_2 from "./assets/SneakerDex_image2.png";
 import silkDriptheLabelImage_1 from "./assets/SilkDripTheLabel.png";
-import silkDriptheLabelImage_2 from "./assets/SilkDripTheLabelimage_2.png";
-import portfolioImage from "./assets/PortfolioImage.png";
 import playgroundVintagewebsite_1 from "./assets/playgroundVintageWebsite.png";
 import playgroundVintageWebsite_2 from "./assets/playgroundVintageWebsite_2.png";
-import pgvShop_2 from "./assets/pgvShop_2.jpg";
 import pgvStoreVideo from "./assets/PGV_Shop.mp4";
-import wombatVideo from "./assets/Wombat_Mange.mp4";
-import waterCycle from "./assets/WaterCycle.mp4";
 
 function MenuContent({ activeDiv, isMobile }) {
   const [activeExperienceId, setActiveExperienceId] = useState(null);

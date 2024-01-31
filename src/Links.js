@@ -1,10 +1,6 @@
 import React from 'react';
-import Icon from './Icon';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import './Links.css'
 
 function Links({ showLinks }) {
