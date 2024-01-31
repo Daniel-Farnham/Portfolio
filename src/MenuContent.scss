@@ -1,28 +1,15 @@
-$contentHeightTall: 70vh; 
-$contentHeightMedium: 60vh; 
-$contentHeightShort: 60vh; 
-$additionalHeightforTallMobile: 55vh; 
-$additionalHeightforMediumMobile: 35vh;
-$additionalHeightforShortMobile: 20vh;
-
-
-
 .content-space {
-  height: 100vh;
   width: 100vw; 
   position: absolute; 
   display: flex;
+  padding-top: 250px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
+  overflow-x: hidden;
   z-index: 2;
-}
-
-@media screen and (max-width: 650px) {
-  .content-space {
-    height: -webkit-fill-available; 
-  }
+  backdrop-filter: blur(20px);
 }
 
 .hideContent {
@@ -31,20 +18,31 @@ $additionalHeightforShortMobile: 20vh;
 
 .listContent {
   backdrop-filter: blur(0px);
-  transition: backdrop-filter 0.3s ease;
+  
+
+  &.showContent {
+    width: 99vw; 
+    height: 85vh; 
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    padding: 12vh 0; 
+    animation: fadeIn 1.5s ease 0s forwards;
+
+    &.hireMe {
+      justify-content: center;
+    }
+  }
 }
 
-.listContent.showContent {
-  width: 100vw; 
-  height: 100vh; 
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 12vh 0; 
-  overflow-y: scroll;
-  backdrop-filter: blur(20px);
-  animation: fadeIn 2.5s ease 0s forwards;
+@media screen and (max-width: 700px) {
+  .listContent{
+    &.showContent {
+      padding: 0; 
+      padding-top: 180px;
+      min-height: 100vh;
+    }
+  }
 }
 
 @keyframes fadeIn {
@@ -58,211 +56,13 @@ $additionalHeightforShortMobile: 20vh;
   }
 }
 
-
-
-/* ##### CONTENT BLOCKS FOR EXPERIENCES/PROJECTS ##### */
-
-@media screen and (min-width: 1500px) {
-  .content-box {
-    width: 40vw;
-  }
+.text-content {
+  width: 60vw;
+  max-width: 800px;
 }
 
-.content-box {  
-  width: 85vw;
-  height: 30vh; 
-  padding: 15px; 
-  gap: 20px;
-  border-style: solid;
-  border-color: black;
-  flex-shrink: 0; 
-  background-color: rgba(216, 216, 216, 0.5);
-  overflow: hidden; 
-  transition: background-color 0.5s ease, width 1.5s ease, height 1.5s ease, box-shadow 1s ease; 
-}
-
-.content-box:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0px 3px 4px rgb(0, 0, 0);
-  cursor: pointer; 
-}
-
-.content-box h1 {
-  margin-top: 1vh;
-  font-size: 40px;
-}
-
-.experience-design {
-  display: flex; 
-  flex-direction: column;
-}
-
-.expandExperience {
-  height: 50vh;
-  width: 90vw; 
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-.expandExperience.tall {
-  height: $contentHeightTall;
-}
-
-.expandExperience.medium {
-  height: $contentHeightMedium;
-}
-
-.expandExperience.short {
-  height: $contentHeightShort;
-}
-
-.hideExperience {
-  background-color: rgba(216, 216, 216, 0.5);
-}
-
-@media screen and (max-width: 650px) {
-  .content-box {
-    height: 30vh;
-    width: 70vw; 
-    transition: width 1.3s ease, height 1.5s ease; 
-  }
-  .content-box h1 {
-    font-size: 24px
-  }
-  .content-box p {
-    font-size: 12px; 
-  }
-  .expandExperience.tall {
-    height: calc(#{$additionalHeightforTallMobile} + #{$contentHeightTall});
-  }
-  
-  .expandExperience.medium {
-    height: calc(#{$additionalHeightforMediumMobile} + #{$contentHeightMedium});
-  }
-  
-  .expandExperience.short {
-    height: calc(#{$additionalHeightforShortMobile} + #{$contentHeightShort});
-  }
-  .expandExperience {
-    width: 80vw; 
-    height: 60vh; 
-  }
-}
-
-/* ##### EXPERIENCES ##### */
-
-
-.experience-image {
+.who-am-i-links {
+  height: 100px;
   display: flex; 
   align-items: center;
-  justify-content: center;
-  border-bottom-style: solid;
-  border-width: 2px;
-  flex-basis: 30%; 
 }
-
-.experience-image img {
-  height: 80px; 
-}
-
-.experience-information {
-  margin: 0 auto; 
-}
-
-@media screen and (max-width: 650px) {
-  .experience-image {
-    max-height: 70px;
-  }
-  .experience-image img {
-    height: 50px; 
-  }
-}
-
-/* ##### PROJECTS ##### */ 
-
-.project-design {
-  display: flex; 
-}
-.project-content {
-  overflow: scroll;
-  min-width: 360px;
-  
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column; 
-  height: 340px;
-  gap: 15px;
-}
-
-.project-content video {
-  border-radius: 10px;
-  width: 100%;
-  max-width: 340px; 
-  height: 360px; 
-  object-fit: cover; 
-}
-
-.project-content img {
-  border-radius: 10px; 
-  width: 100%; 
-  max-width: 340px;
-  height: 360px;
-  object-fit: cover;
-}
-
-.project-content a {
-  width: 50px; 
-  margin: auto auto; 
-}
-
-.project-information {
-  display: flex; 
-  flex-direction: column;
-  gap: 10px; 
-}
-.extra-image {
-  max-height: 50vh;
-}
-
-
-@media screen and (max-width: 650px) {
-  .project-design {
-    display: flex;
-    flex-direction: column-reverse; 
-    justify-content: start; 
-    align-items: flex-start;
-  }
-  .project-content {
-    overflow: visible;
-  }
-  .content-wrapper {
-    display: flex; 
-    flex-direction: row;
-  }
-  .project-content img {
-    width: 50%;
-    height: 25vh;
-  }
-  .project-content video {
-    width: 50%;
-    height: 25vh; 
-  }
-  
-  .project-design h1 {
-    padding: 0; 
-  }
-  .project-design p {
-    padding: 0; 
-  }
-  
-}
-
-
-/* ###### Hire Me ####### */
-
-.listContent.showContent.hireMe {
-  justify-content: center;
-}
-
-

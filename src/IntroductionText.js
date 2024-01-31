@@ -2,13 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Links from './Links';
 import './IntroductionText.css'; 
 
-
-
-
 function IntroductionText({ textType, textContent }) {
  const [nameChars, setNameChars] = useState([]);
  const [showParagraph, setShowParagraph] = useState(false);
-
+ const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
 
  useEffect(() => {
   const words = textContent.split(' ');
@@ -18,16 +15,15 @@ function IntroductionText({ textType, textContent }) {
     const letters = word.split('').map((char, charIndex) => {
       const displayChar = char === ' ' ? '\u00A0' : char;
       return (
-        <span key={charIndex} className="char" style={{ animationDelay: `${charCount++ * 0.15}s` }}>
+        <span key={charIndex} className="char" style={{ animationDelay: `${charCount++ * 0.12}s` }}>
           {displayChar}
         </span>
       );
     });
     
-    // if it's not the last word, add a space after
     if (wordIndex !== words.length - 1) {
       letters.push(
-        <span key={word.length} className="char" style={{ animationDelay: `${charCount++ * 0.15}s` }}>
+        <span key={word.length} className="char" style={{ animationDelay: `${charCount++ * 0.12}s` }}>
           {'\u00A0'}
         </span>
       );
@@ -44,6 +40,20 @@ function IntroductionText({ textType, textContent }) {
   return () => clearTimeout(timeoutId);
 }, [textContent]);
 
+useEffect(() => {
+  function handleResize() {
+    setIsMobile(window.innerWidth < 700);
+  }
+  
+  // Add event listener
+  window.addEventListener("resize", handleResize);
+  
+  // Call the handler right away so state gets updated with initial window size
+  handleResize();
+
+  // Remove event listener on cleanup
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
  if (textType === "introduction") {
   return (
@@ -53,7 +63,7 @@ function IntroductionText({ textType, textContent }) {
         I'm sending this to you because I really admire the work you do. So much so that I built a website to help you
         understand me better.
       </p>
-      < Links showLinks={showParagraph}/>
+      {!isMobile && <Links showLinks={showParagraph}/>}
     </div>
   );
  }
@@ -61,7 +71,7 @@ function IntroductionText({ textType, textContent }) {
   return (
     <div className="contentText">
       <h1>{nameChars}</h1>
-      < Links showLinks={showParagraph}/>
+      {!isMobile && <Links showLinks={false}/>}
     </div>
     
     

@@ -1,0 +1,27 @@
+
+
+.drawer-container {
+  position: absolute;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  backdrop-filter: blur(20px);
+
+}
+
+.drawer-icon-button {
+  width: 100px; 
+  margin-left: 20px; // Adjust as needed, previously ml: 5
+  z-index: 4;
+}
+
+.drawer-content-container {
+  width: 350px; // Set width of content container
+  border-right: 1px solid black;
+}
