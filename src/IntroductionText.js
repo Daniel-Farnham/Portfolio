@@ -72,11 +72,8 @@ useEffect(() => {
     <div className="contentText">
       <h1>{nameChars}</h1>
       {!isMobile && <Links showLinks={false}/>}
-    </div>
-    
-    
+    </div> 
   )
-  
  }
  
 }
