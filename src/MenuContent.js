@@ -393,7 +393,7 @@ function MenuContent({ activeDiv, isMobile }) {
         <IntroductionText
           textType={"hireMe"}
           textContent={
-            "I'm someone who does things over the internet for people."
+            "I'm someone who does things over the internet."
           }
         />
 
@@ -401,7 +401,7 @@ function MenuContent({ activeDiv, isMobile }) {
           {" "}
           <br></br>I design things, I build things and I work hard to make sure
           the people who use these things, love them. The
-          happy marriage of design and development is where I like to live.{" "}
+          happy marriage of design and development is where I live.{" "}
         </p>
         <h3 className={"text-content"}>Why does this matter? </h3>
         <p className={"text-content"}>
@@ -412,24 +412,21 @@ function MenuContent({ activeDiv, isMobile }) {
           they know you can trust you.{" "}
         </p>
         <p className={"text-content"}>
-          And on that we can have the best design in the world but without the
-          tech skills to match it can never come to life. Similarly our code can
-          look pretty and do the job but if the design is poor no one will use
-          it.{" "}
+          And being able to design well is hugely important for this - design is the window through which our users can poke, prod and feel our brand. Unfortunately even the most spectacular design can only ever come to life with the tech skills to make it. If design is the window, development is the carpenter who built the window, maintains it and make sure it doesn't collapse in on itself. You need to have both. 
+         {" "}
         </p>
         <p className={"text-content"}>
-          I am interested in bridging these two worlds.
+          Luckily, I can be both. 
         </p>
         <h3 className={"text-content"}>How can I help?</h3>
         <p className={"text-content"}>
           I can be your developer + designer living in your pocket. Need a minor
-          update for your site? I can do that. Need a full website redesign and
-          rebuild? I can also do that. Need someone to be on call for an ongoing
-          basis to handle anything digital related? I can also do that.
+          update for your site? A full website redesign and
+          rebuild? Someone to be on call for an ongoing
+          basis to handle anything digital related? I can help.
         </p>
         <p className={"text-content"}>
-          <br></br> If you're interested in getting to know me - contact me
-          below!
+          <br></br> If this sounds at least 1% useful to you or you just wanted to chat with me - contact me below.
         </p>
         <div className={"who-am-i-links"}>
           <Links showLinks={true}></Links>
