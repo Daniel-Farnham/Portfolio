@@ -426,7 +426,7 @@ function MenuContent({ activeDiv, isMobile }) {
           basis to handle anything digital related? I can help.
         </p>
         <p className={"text-content"}>
-          <br></br> If this sounds at least 1% useful to you or you just wanted to chat with me - contact me below.
+          <br></br> If this sounds at least 1% useful to you or you just wanted to chat with me - contact me below!
         </p>
         <div className={"who-am-i-links"}>
           <Links showLinks={true}></Links>
