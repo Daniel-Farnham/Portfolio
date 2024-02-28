@@ -11,6 +11,9 @@
   z-index: 2;
   backdrop-filter: blur(20px);
 }
+.content-space::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and newer versions of Edge */
+}
 
 .hideContent {
   display: none;

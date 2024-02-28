@@ -30,7 +30,6 @@ function App() {
           <img className="cloudImage_1" src={cloudImage} alt="cloudImage"></img>
         </div>
         <IntroductionText textType={"introduction"} textContent={"Hi there, my name is Daniel."} />
-        <p>hello fiorst</p>
       <MenuController/>
       </header>
       <ContactForm/>
