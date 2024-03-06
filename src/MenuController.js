@@ -11,6 +11,7 @@ function MenuController() {
   const [activeDivId, setActiveDivId] = useState(null);
 
   useEffect(() => {
+
     const handleResize = () => {
       // Check if the window width has crossed the 700px mark and reset activeDivId if necessary
       if (window.innerWidth >= 700 && isMobileDevice) {
@@ -45,9 +46,7 @@ function MenuController() {
           onActiveDivChange={handleActiveDivChange}
           isMobile={isMobileDevice}     
           />
-        
       }
-
       <MenuContent activeDiv={activeDivId} isMobile={isMobileDevice} /> 
     </>
   );

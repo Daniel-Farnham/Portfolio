@@ -22,6 +22,7 @@ function MenuContent({ activeDiv, isMobile }) {
   const [contentHeight, setContentHeight] = useState("100vh");
   const [topOffset, setTopOffset] = useState(0);
 
+  // Choose which div to become active 
   const handleClick = (id) => {
     if (activeExperienceId === id) {
       setActiveExperienceId(null);
@@ -43,7 +44,6 @@ function MenuContent({ activeDiv, isMobile }) {
 
   const updateContentPosition = useCallback(() => {
     if (isMobile) {
-      // setTopOffset(`80px`)
       return;
     }
     const menuItem = document.querySelector(".menu-item");
@@ -288,54 +288,6 @@ function MenuContent({ activeDiv, isMobile }) {
     //     "Agile Development",
     //   ],
     // },
-    // {
-    //   id: 11,
-    //   title: "Dungeonmania",
-    //   media_1: {
-    //     type: "icon",
-    //     src: "https://github.com/Daniel-Farnham/Dungeonmania",
-    //   },
-    //   media_2: { type: null, src: null },
-    //   content:
-    //     "Dungeonmania is as it sounds a ‘Dungeon’ style adventure game developed in Java where the user moves through different rooms completing goals, collecting items, fighting enemies and navigating obstacles. My role in this project involved adding some new features to the game such as new items and weapons. However as some of the game was already built this quickly evolved into a large refactoring process to untangle the web of tight coupling between classes in order to make the process of adding these new features easier as development went on.",
-    //   skills: [
-    //     "Java",
-    //     "Object Oriented Programming",
-    //     "Git/GitLab",
-    //     "UML Diagrams",
-    //     "Iterative Development",
-    //   ],
-    // },
-    // {
-    //   id: 12,
-    //   title: "BattleMips",
-    //   media_1: {
-    //     type: "icon",
-    //     src: "https://github.com/Daniel-Farnham/Battlemips",
-    //   },
-    //   media_2: { type: null, src: null },
-    //   content:
-    //     "BattleMips is perhaps one of my most straightforward (on paper) but most difficult and deeply-technical projects that I have completed. In short BattleMips is the game ‘BattleShip’ but coded in the Assembly language MIPS. \n\n For the non-technical people, Assembly is one of the lowest-languages you get in programming - it is hard to decipher and involves a lot of binary/hexadecimal (1’s and 0’s - like what you see in the Matrix’). This project tested my technical skills and more importantly helped refine my toolkit allowing me to break down and deal with difficult problems.",
-    //   skills: [
-    //     "C",
-    //     "Assembly",
-    //     "Memory Management",
-    //     "Binary",
-    //     "Software Testing",
-    //     "Technical Problem Solving",
-    //     "Time Management",
-    //   ],
-    // },
-    /*
-    {
-      id: 13, 
-      title: 'SatelliteTransferSystem', 
-      media_1: {type: 'icon', src: 'https://github.com/Daniel-Farnham/SatelliteTransferSystem'},
-      media_2: {type: null, src: null},
-      content: 'blah blah', 
-      skills: ['Java']
-    },
-    */
   ];
 
   return (
