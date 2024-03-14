@@ -5,16 +5,18 @@ $menu-item-height-mobile: 40px;
 $menu-item-border-width: 2px;
 $transition-time: 1.5s; 
 
+// Referring to menu as a whole
 .menu {
   padding: 0; 
   width: 100vw;
   //height: $menu-height;
-  position: absolute;
-  bottom: 0;
+  position: sticky; // might need to make this sticky
+  bottom: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  z-index: 100;
 }
 
 .menu-item {
@@ -31,7 +33,7 @@ $transition-time: 1.5s;
   font-style: normal;
   //height: $menu-item-height;
   transition: border-width 3s ease, margin-top 1s ease, margin-bottom 1s ease;
-  z-index: 4;
+  backdrop-filter: blur(10px);
   &:hover {
     box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
   }
@@ -39,14 +41,11 @@ $transition-time: 1.5s;
 @media (min-width: 700px) {
   .menu-item {
     border-style: solid;
-    border-width: $menu-item-border-width;
+    //border-width: $menu-item-border-width;
   }
   .menu-item-1, .menu-item-2, .menu-item-3 {
     transition: transform $transition-time ease, background-color 0.5s ease, box-shadow 0.5s ease;
 
-    &:hover {
-      
-    }
     &.menu-1-active {
       background-color: rgb(255, 205, 255);
       //transform: translateY(-100%);

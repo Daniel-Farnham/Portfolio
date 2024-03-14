@@ -40,17 +40,19 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     }
   }, [isMobileDevice]);
-
+  // style={{ height: `${viewportHeight + 500}px` }}
+  // Make the app-header height the same height as the menuContent. We already calculate this I believe. 
   return (
     <div className="App">
-      <header className="App-header" style={{ height: `${viewportHeight}px` }}>
+      <header className="App-header" > 
         <div className="clouds">
           <img className="cloudImage" src={cloudImage} alt="cloudImage" />
           <img className="cloudImage_1" src={cloudImage} alt="cloudImage" />
         </div>
-        <IntroductionText textType={"introduction"} textContent={"Hi there, my name is Daniel."} />
+        <div className="introductionText">
+          <IntroductionText textType={"introduction"} textContent={"Hi there, my name is Daniel."} />
+        </div>
         {/* Inline conditional rendering based on isMobileDevice */}
-      </header>
         {isMobileDevice ? (
           <TemporaryDrawer
             isOpen={isDrawerOpen}
@@ -64,6 +66,8 @@ function App() {
           />
         )}
         <MenuContent activeDiv={activeDivId} isMobile={isMobileDevice} />
+      </header>
+
       <ContactForm />
     </div>
   );

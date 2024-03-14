@@ -77,9 +77,10 @@ function Menu({ isMobile, onActiveDivChange }) {
       </div>
     );
   } else {
+    //style={{ height: windowHeight }}
     // Render the regular menu for non-mobile devices
     return (
-      <div className="menu" style={{ height: windowHeight }}>
+      <div className="menu" >
         {menuItems.map((item) => (
           <div
             key={item.id}

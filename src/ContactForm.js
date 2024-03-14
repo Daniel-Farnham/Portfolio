@@ -68,8 +68,6 @@ function ContactForm() {
       </div>
       <button type="submit">Send Email</button>
     </form>
-
-
     </div>
   )
 
