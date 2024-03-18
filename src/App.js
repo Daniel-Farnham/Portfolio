@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import cloudImage from './assets/CloudImage.png';
 import IntroductionText from './IntroductionText';
@@ -9,42 +9,32 @@ import ContactForm from './ContactForm';
 
 function App() {
   const [isMobileDevice, setIsMobileDevice] = useState(window.innerWidth < 600);
-  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+  const [contentHeight, setContentHeight] = useState(0);
+  const [sectionHeights, setSectionHeights] = useState({});
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeDivId, setActiveDivId] = useState(null);
+
+  const handleContentHeightChange = useCallback((height) => {
+    console.log(height.hireMe + height.experience + height.projects);
+    setContentHeight(height.hireMe + height.experience + height.projects + 2500); // 2500 for the extra padding for menuContent
+    setSectionHeights(height);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobileDevice(window.innerWidth < 700);
-      setViewportHeight(window.innerHeight);
     };
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      // Correctly access the first element's offsetHeight
-      const header = document.getElementsByClassName('App-header')[0];
-      const menuController = document.getElementsByClassName('menu')[0];
-
-      if (header && menuController && scrollPosition >= header.offsetHeight - 500) {
-        const menuScrollPosition = scrollPosition - header.offsetHeight; 
-        console.log(menuController.scrollTop);
-        menuController.scrollTop = 500; 
-      }   
-    }
     
     window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
     }
   }, [isMobileDevice]);
-  // style={{ height: `${viewportHeight + 500}px` }}
-  // Make the app-header height the same height as the menuContent. We already calculate this I believe. 
+
   return (
     <div className="App">
-      <header className="App-header" > 
+      <header className="App-header" style={{ height: `${contentHeight}px` }}> 
         <div className="clouds">
           <img className="cloudImage" src={cloudImage} alt="cloudImage" />
           <img className="cloudImage_1" src={cloudImage} alt="cloudImage" />
@@ -63,9 +53,10 @@ function App() {
           <Menu
             onActiveDivChange={setActiveDivId}
             isMobile={isMobileDevice}
+            menuContentPosition={sectionHeights}
           />
         )}
-        <MenuContent activeDiv={activeDivId} isMobile={isMobileDevice} />
+        <MenuContent activeDiv={activeDivId} isMobile={isMobileDevice} onContentHeightChange={handleContentHeightChange} />
       </header>
 
       <ContactForm />

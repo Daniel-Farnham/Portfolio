@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import "./MenuContent.scss";
 import IntroductionText from "./IntroductionText";
 import ContentBox from "./ContentBox";
@@ -234,116 +234,40 @@ const projects = [
   // },
 ];
 
-function MenuContent({ activeDiv, isMobile }) {
-  const [activeExperienceId, setActiveExperienceId] = useState(null);
+/**
+ * MenuContent component displays the content for each section of the menu.
+ *
+ * @param {Object} props - The props object.
+ * @param {function} props.onContentHeightChange - Callback function to pass the heights of each section to the parent component.
+ * @returns {JSX.Element} The rendered MenuContent component.
+ */
+function MenuContent({ onContentHeightChange }) {
   const [playing, setPlaying] = useState(null);
-  const [contentHeight, setContentHeight] = useState("100vh");
-  const [topOffset, setTopOffset] = useState(0);
 
-  // Choose which div to become active 
-  const handleClick = (id) => {
-    if (activeExperienceId === id) {
-      setActiveExperienceId(null);
-    } else {
-      setActiveExperienceId(id);
-    }
-  };
+  const hireMeRef = useRef(null);
+  const experienceRef = useRef(null);
+  const projectRef = useRef(null);
 
-  const updateContentHeight = useCallback(() => {
-    if (isMobile) {
-      setContentHeight(`-webkit-fill-available`);
-      return;
-    }
-    const menuItem = document.querySelector(".menu-item");
-    const menuItemHeight = menuItem.offsetHeight;
-    const availableHeight = window.innerHeight - menuItemHeight * 3;
-    setContentHeight(`${availableHeight + 2 - 250}px`); // 100px is to account for the top padding of the content space
-  }, [isMobile]);
-
-  const updateContentPosition = useCallback(() => {
-    if (isMobile) {
-      return;
-
-    }
-    const menuItem = document.querySelector(".menu-item");
-    const menuItemHeight = menuItem.offsetHeight;
-    let contentTopOffset = menuItemHeight - 1;
-    if (activeDiv === "div-2") {
-      contentTopOffset = contentTopOffset * 2;
-    }
-    if (activeDiv === "div-3") {
-      contentTopOffset = contentTopOffset * 3;
-    }
-
-    setTopOffset(`${contentTopOffset}px`);
-  }, [isMobile, activeDiv]);
-
+  // Get the heights of each content section on each render
   useEffect(() => {
-    const updateLayout = () => {
-      updateContentHeight();
-      updateContentPosition();
+    const contentSectionHeights = {
+      hireMe: hireMeRef.current ? hireMeRef.current.offsetHeight : 0,
+      experience: experienceRef.current ? experienceRef.current.offsetHeight : 0,
+      projects: projectRef.current ? projectRef.current.offsetHeight : 0,
     };
 
-    updateLayout();
+    console.log('hello from menuContent', contentSectionHeights);
 
-    window.addEventListener("resize", updateLayout);
+    onContentHeightChange(contentSectionHeights);
+  }, [onContentHeightChange]);
 
-    return () => {
-      window.removeEventListener("resize", updateLayout);
-    };
-  }, [updateContentHeight, updateContentPosition]);
 
   return (
     <div
-      className={`content-space ${activeDiv ? "showContent" : "hideContent"}`}
-      style={{ top: topOffset }}
+      className={`content-space`}
     >
       <div
-        className={`listContent ${
-          activeDiv === "div-2" ? "showContent" : "hideContent"
-        }`}
-      >
-        {experiences.map((experience) => (
-          <ContentBox
-            key={experience.id}
-            id={experience.id}
-            logo={experience.logo}
-            svg={Arrow}
-            title={experience.title}
-            content={experience.content}
-            skills={experience.skills}
-            active={activeExperienceId === experience.id}
-            onClick={handleClick}
-          />
-        ))}
-      </div>
-      <div
-        className={`listContent ${
-          activeDiv === "div-3" ? "showContent" : "hideContent"
-        }`}
-      >
-        {projects.map((project) => (
-          <ContentBox
-            key={project.id}
-            id={project.id}
-            title={project.title}
-            media_1={project.media_1}
-            media_2={project.media_2}
-            skills={project.skills}
-            content={project.content}
-            contentHeight={project.contentHeight}
-            active={activeExperienceId === project.id}
-            onClick={handleClick}
-            playing={playing}
-            setPlaying={setPlaying}
-            extraimage={project.extraimage}
-          />
-        ))}
-      </div>
-      <div
-        className={`listContent hireMe ${
-          activeDiv === "div-1" ? "showContent" : "hideContent"
-        }`}
+        className={`hireMe showContent`} ref={hireMeRef}
       >
         <IntroductionText
           textType={"hireMe"}
@@ -386,6 +310,42 @@ function MenuContent({ activeDiv, isMobile }) {
         <div className={"who-am-i-links"}>
           <Links showLinks={true}></Links>
         </div>
+      </div>
+      <div
+        className={`showContent`} ref={experienceRef}
+      >
+        {experiences.map((experience) => (
+          <ContentBox
+            key={experience.id}
+            id={experience.id}
+            logo={experience.logo}
+            svg={Arrow}
+            title={experience.title}
+            content={experience.content}
+            skills={experience.skills}
+            // active={activeExperienceId === experience.id}
+          />
+        ))}
+      </div>
+      <div
+        className={`showContent`} ref={projectRef}
+      >
+        {projects.map((project) => (
+          <ContentBox
+            key={project.id}
+            id={project.id}
+            title={project.title}
+            media_1={project.media_1}
+            media_2={project.media_2}
+            skills={project.skills}
+            content={project.content}
+            contentHeight={project.contentHeight}
+            // active={activeExperienceId === project.id}
+            playing={playing}
+            setPlaying={setPlaying}
+            extraimage={project.extraimage}
+          />
+        ))}
       </div>
     </div>
   );
