@@ -3,14 +3,13 @@ $menu-height-mobile: 95vh;
 $menu-item-height: 55px;
 $menu-item-height-mobile: 40px; 
 $menu-item-border-width: 2px;
-$transition-time: 1.5s; 
+$transition-time: 1.2s; 
 
 // Referring to menu as a whole
 .menu {
   padding: 0; 
   width: 100vw;
-  //height: $menu-height;
-  position: sticky; // might need to make this sticky
+  position: sticky;
   bottom: 0px;
   display: flex;
   flex-direction: column;
@@ -23,8 +22,6 @@ $transition-time: 1.5s;
   margin-top: -2px;
   box-sizing: border-box; 
   width: 100%; 
-  // border-style: solid;
-  // border-width: $menu-item-border-width;
   display: flex;
   align-items: center;
   justify-content: center; 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Menu.scss';
 
-function Menu({ isMobile, onActiveDivChange, menuContentPosition }) {
+function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing }) {
   
-  const { hireMe, experience, projects } = menuContentPosition;
+  const { hireMe, experience, projects, introductionText } = menuContentPosition;
 
   const [activeItem, setActiveItem] = useState('');
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
@@ -20,16 +20,15 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition }) {
       { id: 'menu-item-2', label: 'Experiences', activeClass: 'menu-1-active' },
       { id: 'menu-item-3', label: 'Cool Projects', activeClass: 'menu-2-active' },
     ];
-
-    let startingPosition = 1000
   
-    // Calculate the cumulative heights of the sections
+    // Calculate the cumulative heights of the sections. We multiply the contentSpacing by the number of spaces
     const cumulativeHeights = [
-      startingPosition,
-      startingPosition + hireMe,
-      startingPosition + hireMe + experience,
-      startingPosition + hireMe + experience + projects,
+      introductionText,
+      introductionText + hireMe + contentSpacing,
+      introductionText + hireMe + experience + (contentSpacing)*2,
+      introductionText + hireMe + experience + projects + (contentSpacing)*3,
     ];
+
   // Update window height on resize. We check the window height just to see how the divs should be positioned at the top of the screen. 
   useEffect(() => {
     const handleResize = () => setWindowHeight(window.innerHeight);
@@ -44,18 +43,22 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition }) {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
 
+      // For smooth triggering behaviour we are going to collect scrollPosition from towards the bottom of the screen rather than the top. 
+
+      const scrollPositionCentre = scrollPosition + window.innerHeight/1.5; 
+
       let isActiveItemSet = false;
   
       menuItems.forEach((item, index) => {
         if (
-          scrollPosition >= cumulativeHeights[index] &&
-          scrollPosition < cumulativeHeights[index + 1]
-        ) {
+          scrollPositionCentre >= cumulativeHeights[index] &&
+          scrollPositionCentre < cumulativeHeights[index + 1]
+          ) {
           setActiveItem(item.id);
           isActiveItemSet = true;
         }
       });
-  
+      
       if (!isActiveItemSet) {
         setActiveItem('');
       }
@@ -68,21 +71,31 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition }) {
   }, [hireMe, experience, projects]);
 
   // Handle item click
-  const handleClick = (item, index) => {
-    setActiveItem((prevItem) => {
-      const newActiveItem = prevItem === item ? '' : item;
-      onActiveDivChange(getActiveDivId(newActiveItem));
+  const handleClick = (itemId, index) => {
+    const newActiveItem = activeItem === itemId ? '' : itemId;
+    setActiveItem(newActiveItem);
 
-      // Scroll to the corresponding section
-    const sectionHeight = index === 0 ? 0 : cumulativeHeights[index];
-    console.log(index);
-    window.scrollTo({
-      top: sectionHeight,
-      behavior: 'smooth',
-    });
+    onActiveDivChange(getActiveDivId(newActiveItem));
 
-      return newActiveItem;
-    });
+    // Scroll to the corresponding menu item in the mobile view
+    if (isMobile) {
+      console.log('hello');
+      const menuItemElement = document.querySelector(`.menu-item.${itemId}`);
+      if (menuItemElement) {
+        console.log('yo yo')
+        menuItemElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      }
+    } else {
+      // Scroll to the corresponding section in the non-mobile view
+      const sectionHeight = index === 0 ? cumulativeHeights[0] : cumulativeHeights[index];
+      window.scrollTo({
+        top: sectionHeight,
+        behavior: 'smooth',
+      });
+    }
   };
 
   // Check if menu items are active

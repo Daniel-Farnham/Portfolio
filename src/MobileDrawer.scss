@@ -1,7 +1,5 @@
-
-
 .drawer-container {
-  position: absolute;
+  position: fixed;
   display: flex; 
   justify-content: space-between;
   align-items: center;
@@ -12,7 +10,6 @@
   width: 100%;
   border-bottom: 1px solid black;
   backdrop-filter: blur(20px);
-
 }
 
 .drawer-icon-button {

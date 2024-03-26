@@ -241,7 +241,7 @@ const projects = [
  * @param {function} props.onContentHeightChange - Callback function to pass the heights of each section to the parent component.
  * @returns {JSX.Element} The rendered MenuContent component.
  */
-function MenuContent({ onContentHeightChange }) {
+function MenuContent({ onContentHeightChange, contentSpacing }) {
   const [playing, setPlaying] = useState(null);
 
   const hireMeRef = useRef(null);
@@ -256,18 +256,17 @@ function MenuContent({ onContentHeightChange }) {
       projects: projectRef.current ? projectRef.current.offsetHeight : 0,
     };
 
-    console.log('hello from menuContent', contentSectionHeights);
-
     onContentHeightChange(contentSectionHeights);
   }, [onContentHeightChange]);
-
 
   return (
     <div
       className={`content-space`}
     >
       <div
-        className={`hireMe showContent`} ref={hireMeRef}
+        className={`hireMe showContent`}
+        style={{ marginTop: contentSpacing }}
+        ref={hireMeRef}
       >
         <IntroductionText
           textType={"hireMe"}
@@ -307,12 +306,9 @@ function MenuContent({ onContentHeightChange }) {
         <p className={"text-content"}>
           <br></br> If this sounds at least 1% useful to you or you just wanted to chat with me - contact me below!
         </p>
-        <div className={"who-am-i-links"}>
-          <Links showLinks={true}></Links>
-        </div>
       </div>
       <div
-        className={`showContent`} ref={experienceRef}
+        className={`showContent`} style={{ marginTop: contentSpacing }} ref={experienceRef}
       >
         {experiences.map((experience) => (
           <ContentBox
@@ -328,7 +324,7 @@ function MenuContent({ onContentHeightChange }) {
         ))}
       </div>
       <div
-        className={`showContent`} ref={projectRef}
+        className={`showContent`} style={{ marginTop: contentSpacing }} ref={projectRef}
       >
         {projects.map((project) => (
           <ContentBox

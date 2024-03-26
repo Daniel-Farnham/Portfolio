@@ -1,10 +1,9 @@
 .content-space {
   width: 100vw; 
-  position: absolute; 
-  top: 2000px;
+  position: relative; 
+  //top: 1000px;
   display: flex;
   flex-direction: column;
-  gap: 100px;
   justify-content: space-between;
   align-items: center;
   overflow-y: hidden;
