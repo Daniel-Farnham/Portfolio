@@ -76,26 +76,12 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing
     setActiveItem(newActiveItem);
 
     onActiveDivChange(getActiveDivId(newActiveItem));
+    const sectionHeight = index === 0 ? cumulativeHeights[0] : cumulativeHeights[index];
 
-    // Scroll to the corresponding menu item in the mobile view
-    if (isMobile) {
-      console.log('hello');
-      const menuItemElement = document.querySelector(`.menu-item.${itemId}`);
-      if (menuItemElement) {
-        console.log('yo yo')
-        menuItemElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-        });
-      }
-    } else {
-      // Scroll to the corresponding section in the non-mobile view
-      const sectionHeight = index === 0 ? cumulativeHeights[0] : cumulativeHeights[index];
-      window.scrollTo({
-        top: sectionHeight,
-        behavior: 'smooth',
-      });
-    }
+    window.scrollTo({
+      top: sectionHeight,
+      behavior: 'smooth',
+    });
   };
 
   // Check if menu items are active
@@ -115,7 +101,7 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing
   if (isMobile) {
     return (
       <div className="menu-placeholder" style={{ height: windowHeight }}>
-        {menuItems.map((item) => (
+        {menuItems.map((item, index) => (
           <div
             key={item.id}
             className={`menu-item ${item.id} ${
@@ -129,7 +115,7 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing
               height: 100 + itemStyles.itemBorderWidth,
               backgroundColor: activeItem === item.id ? 'rgb(255, 205, 255)' : 'white',
             }}
-            onClick={() => handleClick(item.id)}
+            onClick={() => handleClick(item.id, index)}
           >
             <p>{item.label}</p>
           </div>

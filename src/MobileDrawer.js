@@ -50,7 +50,7 @@ export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange, m
         </Box>
         <CloseIcon 
           className="drawer-close-menu-icon" sx={{height: '80px', borderBottom: '1px solid black;', marginLeft: '20px'}} fontSize="large" onClick={goToMainMenu}></CloseIcon>
-        <Menu isMobile={true} onActiveDivChange={onActiveDivChange} menuContentPosition={menuContentPosition}></Menu>
+        <Menu isMobile={true} onActiveDivChange={onActiveDivChange} menuContentPosition={menuContentPosition} contentSpacing={contentSpacing}></Menu>
 
       </SwipeableDrawer>
     </div> 

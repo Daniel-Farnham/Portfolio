@@ -6,6 +6,7 @@ import TemporaryDrawer from './MobileDrawer'; // Imported directly
 import Menu from './Menu'; // Already imported
 import MenuContent from './MenuContent';
 import ContactForm from './ContactForm';
+import { gsap } from 'gsap';
 
 function App() {
   const [isMobileDevice, setIsMobileDevice] = useState(window.innerWidth < 600);
@@ -15,6 +16,8 @@ function App() {
   const [activeDivId, setActiveDivId] = useState(null);
   const [introductionTextHeight, setIntroductionTextHeight] = useState(0);
   const introductionTextRef = useRef(null);
+  const cloudRef = useRef(null);
+  const cloudRef1 = useRef(null);
   
   const spaceBetweenElements = 1000;
   
@@ -44,12 +47,35 @@ function App() {
     };
   }, [isMobileDevice]);
 
+  useEffect(() => {
+    const cloud = cloudRef.current;
+    const cloud1 = cloudRef1.current;
+  
+    gsap.set([cloud, cloud1], { x: '100vw' });
+  
+    gsap.to(cloud, {
+      x: '-100%',
+      duration: 30,
+      ease: 'none',
+      repeat: -1,
+      repeatDelay: 0,
+    });
+  
+    gsap.to(cloud1, {
+      x: '-300%',
+      duration: 40,
+      ease: 'none',
+      repeat: -1,
+      repeatDelay: 0,
+    });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header" style={{ height: `${contentHeight}px` }}> 
         <div className="clouds">
-          <img className="cloudImage" src={cloudImage} alt="cloudImage" />
-          <img className="cloudImage_1" src={cloudImage} alt="cloudImage" />
+          <img ref={cloudRef} className="cloudImage" src={cloudImage} alt="cloudImage" />
+          <img ref={cloudRef1} className="cloudImage_1" src={cloudImage} alt="cloudImage" />
         </div>
         <div className="introductionText" ref={introductionTextRef}>
           <IntroductionText textType={"introduction"} textContent={"Hi there, my name is Daniel."} />
@@ -61,7 +87,7 @@ function App() {
             isOpen={isDrawerOpen}
             onToggle={setIsDrawerOpen}
             onActiveDivChange={handleActiveDivChange}
-            menuContentPosition={handleActiveDivChange}
+            menuContentPosition={sectionHeights}
             contentSpacing={spaceBetweenElements}
           />
         ) : (
