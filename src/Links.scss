@@ -1,0 +1,18 @@
+.button-links {
+  padding: 10px;
+  background-color: #000000;
+  color: white;
+  border: solid 1px rgb(0, 0, 0);
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  z-index: 10;
+  
+  &:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: solid 1px black;
+  }
+}

@@ -1,58 +1,50 @@
-
-
 .App-header {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAACkpqScmpycnpykoqSUlpQeVBQmAAAAAXRSTlMAQObYZgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAvFJREFUOI0Vk4sBRREMQ61wfQbwG4DWAFQHoOy/yvMGkMpJopzc04T9xH7WbB+mlS/foLRJy+HhjngqWZBw9tzZKwi+sz7V6O8Ssd2YxY4P1dCSmgeqFN0M/MWZ18VcVdMU6ih2rBgGhu3YWRNdVGCZnPXZ6crdnqaBlo60FC+Y1/uvWb92KYE4ad/hKjQ6CxhMbO3VG8vE5pg/9Qm6UQvO7G2ZMMPp6XhrFZAAn2/Tt1yBRXRhNPFF6Y97gaq7j9iyvWiT1uZ2RccRV9gQRVYcJmwJ3j2DaegM+t0EMq3iqi4yr3cjj6bxkQy9y27DUNEXv9NUhDbIjipTh/zhkxm3jalVD+AS9Tiw7pKY6KlV2knJbBfB2oKCKxSt17p5kldNIsufe4mye8AbU4MOqCZN/O5z8lKyBorxD56FpEw3jmX4XPn/qA2Y4httVRtEQ5jyR89XagHjFFOjskQgxua7gJ/YHLl2ismo5jXTuWmV4EMfHIU3mskqmp6ckb5rxmJWPjy1GUVUatPx0TR3WnamNaeJuu6s3Kb0wjC2xXZCFPhIdzuMetlJq6cU9u6mw1AISg1b9ZtymaltcqkWyHr4pJ9NNTVjRfF+YRn1mu+wxOCjGnufl+0Fdy22x+aVJMtwygRr7hhfscVQc242fx1E96SqeRAoXVjXNVc3upVBFIuz2y2cJz9Q8whg0B66KrC3f9QGr3vTNie++x2DSmTKWcYscw68xIL1L7tlVfXjmm3lJOCF+CHI2SdF1bCXVuU++KVx1xXeanz9FDwIHGOK16Wc4qJmzWkTHnaapy3M93yfcI/Rj7G+qfp8i63AjhHMdEY3pni/5wOGLbQ5vcZXeBqkQUYQRbv6bzsoEZDyfVU+3/0gq2RKrZntAJ1Z6r3bc93iVK2p34J2SH/AgG0vX8VXuN3fVz8o47z6eoBJEi/xUEd0esvtNGndc/2bH2ucU4W2ob9O7xxO7ALDrZ1O24rtLCGhd9rRpZSc32aPij+i8OnKGHRalQAAAABJRU5ErkJggg==), linear-gradient(180deg, #4462FF 10%, #FC6C3F 90%);
   background-blend-mode: overlay;
-  min-height: 100vh;
-  min-height: -webkit-fill-available; 
+  min-height: -webkit-fill-available;
   display: flex;
+  overflow-x: hidden;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+  justify-content: space-between;
 }
 
 .clouds {
-  opacity: 0.8; 
-  overflow: hidden; 
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-style: preserve-3d;
 }
 
-.cloudImage {
-  position: absolute; 
-    top: 30%; 
-    right: -0%; 
+.cloudImage,
+.cloudImage_1 {
+  position: absolute;
+  top: 30%;
   width: 200px;
-  animation: moveImage 40s linear infinite; 
+  transform: translateZ(-50px);
 }
 
 .cloudImage_1 {
-  position: absolute; 
-    top: 10%; 
-    right: -0%; 
-    width: 100px; 
-    animation: moveImage 30s linear infinite; 
+  top: 10%;
+  width: 100px;
+  transform: translateZ(-100px);
 }
 
-@media screen and (min-width: 1600px) {
-  .cloudImage {
-    animation: moveImage 60s linear infinite; 
-  }
-}
-
-@keyframes moveImage {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100vw);
-  }
+.introductionText {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 650px) {
-  .App-header {
-    
-  }
   .cloudImage {
     width: 150px; 
   }
