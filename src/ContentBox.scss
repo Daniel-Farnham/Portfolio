@@ -8,8 +8,7 @@
   border-width: 1px;
   border-color: black;
   border-radius: 10px;
-  background-color: rgba(216, 216, 216, 0.5);
-  overflow: hidden; 
+  overflow: scroll; 
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   height: 500px;
   width: 90vw;
@@ -20,18 +19,9 @@
     height: 500px;
   }
 
-  max-width: 800px;
+  //max-width: 800px;
   &:hover {
-    //background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 3px 4px rgb(0, 0, 0);
-    cursor: pointer; 
-  }
-  @media screen and (max-width: 700px) {
-    &:active {
-      //background-color: rgba(255, 255, 255, 0.8);
-
-    }
-
   }
   h1 {
     font-size: 20px;
@@ -50,8 +40,6 @@
 }
 
 .content-title {
-  border-bottom-style: solid;
-  border-width: 1px;
   width: 100%; 
   max-height: 80px;
   text-align: center;
@@ -64,11 +52,9 @@
   grid-row: 2 / 4;
   grid-column: 1 / 4; 
   display: flex;
-  //align-items: center;
   justify-content: flex-start;
   gap: 20px;
   flex-direction: row; 
-  overflow-y: scroll;
    &::-webkit-scrollbar {
     display: none;
   }
@@ -85,8 +71,8 @@
     object-fit: cover;
   }
   [media] {
-    min-height: 350px;
-    width: 330px; 
+    //min-height: 500px;
+    width: 500px; 
     border-radius: 5px;
     object-fit: cover;
   }
@@ -97,9 +83,10 @@
 }
 
 .media-wrapper {
+  height: 100%;
   display: flex; 
   gap: 10px;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center; 
 }
 

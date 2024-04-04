@@ -7,6 +7,14 @@ h1 {
   margin: 0; 
 }
 
+h2 {
+  font-family: "new-kansas", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 24px;
+  margin: 0;
+}
+
 p {
   font-family: "area-normal", sans-serif;
   font-weight: 600;

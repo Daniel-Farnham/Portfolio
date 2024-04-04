@@ -1,8 +1,7 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./MenuContent.scss";
 import IntroductionText from "./IntroductionText";
 import ContentBox from "./ContentBox";
-import Links from "./Links";
 import { ReactComponent as Arrow } from "./assets/arrow.svg";
 import pgvLogo from "./assets/PGV_Logo.png";
 import tediLogo from "./assets/TEDI_Logo.png";

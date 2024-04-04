@@ -97,7 +97,7 @@ function App() {
             menuContentPosition={sectionHeights}
             contentSpacing={spaceBetweenElements}
           />
-        )}
+          )}
       </header>
 
       <ContactForm />

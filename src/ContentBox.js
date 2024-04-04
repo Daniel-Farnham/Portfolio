@@ -128,15 +128,15 @@ function ContentBox(props) {
   };
 
   return (
-    <div onClick={handleClick} id={props.id} className="content-box">
+    <div id={props.id} className="content-box">
       <div className="content-title">
-        <h1>{props.title}</h1>
+        <h2>{props.title}</h2>
       </div>
       <div ref={contentInfoRef} className="content-information">
         {renderMedia()}
-        <p>
+        {/* <p>
           <FormattedContent content={props.content} />
-        </p>
+        </p> */}
       </div>
       {/* <SkillsTable skills={props.skills} /> */}
     </div>
