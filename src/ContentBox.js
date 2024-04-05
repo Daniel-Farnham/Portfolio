@@ -15,9 +15,7 @@ const FormattedContent = ({ content }) => {
 function ContentBox(props) {
   const videoRef = useRef();
   const contentInfoRef = useRef();
-  const [scrollDown, setScrollDown] = useState(true);
-  const [isExpanded, setIsExpanded] = useState(false);
-
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
   // Common function for determining media type
   const determineMediaType = (media) => {
     if (!media) return { type: "null", src: null };
@@ -30,72 +28,16 @@ function ContentBox(props) {
   const isVideo1 = type1 === "video";
   const isVideo2 = type2 === "video";
 
+  const handleButtonClick = () => {
+    setIsButtonClicked((prevState) => !prevState);
+  };
+
   useEffect(() => {
     if (videoRef.current) {
-      if (props.playing === props.id) {
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
-      }
+      videoRef.current.play();
+  
     }
   }, [props.playing, props.id]);
-
-  const heightMap = {
-    tall: "200vh",
-    medium: "150vh",
-    short: "100vh",
-    undefined: "100vh",
-  };
-
-  const handleClick = () => {
-    props.onClick(props.id);
-    if (props.setPlaying) {
-      props.setPlaying(props.id);
-    }
-
-    setIsExpanded(!isExpanded);
-
-    if (contentInfoRef.current) {
-      // if we are on the mobile site.
-      if (window.innerWidth < 700) {
-        const contentBox = contentInfoRef.current.closest(".content-box");
-        if (!isExpanded) {
-          // If the box is not expanded, expand it
-          contentBox.style.height = heightMap[props.contentHeight];
-          contentBox.style.overflow = "auto"; // Enable scrolling if content overflows
-        } else {
-          // If the box is expanded, shrink it back to its original size
-          contentBox.style.height = ""; // Reset to default
-        }
-      } else {
-        const currentScroll = contentInfoRef.current.scrollTop;
-        const maxScroll =
-          contentInfoRef.current.scrollHeight -
-          contentInfoRef.current.clientHeight;
-        let scrollAmount = 320;
-
-        if (scrollDown) {
-          if (currentScroll + scrollAmount >= maxScroll) {
-            scrollAmount = maxScroll - currentScroll;
-            setScrollDown(false);
-          }
-          contentInfoRef.current.scrollBy({
-            top: scrollAmount,
-            behavior: "smooth",
-          });
-        } else {
-          if (currentScroll - scrollAmount <= 0) {
-            scrollAmount = currentScroll;
-            setScrollDown(true);
-          }
-          contentInfoRef.current.scrollBy({
-            top: -scrollAmount,
-            behavior: "smooth",
-          });
-        }
-      }
-    }
-  };
 
   const renderMedia = () => {
     if (props.media_1 || props.media_2) {
@@ -108,13 +50,15 @@ function ContentBox(props) {
             title={props.title}
             videoRef={isVideo1 ? videoRef : null}
           />
-          <Media
-            className="media"
-            type={type2}
-            src={src2}
-            title={props.title}
-            videoRef={isVideo2 ? videoRef : null}
-          />
+          {!props.isMobile && (
+            <Media
+              className="media"
+              type={type2}
+              src={src2}
+              title={props.title}
+              videoRef={isVideo2 ? videoRef : null}
+            />
+          )}
         </div>
       );
     } else if (props.logo) {
@@ -130,15 +74,21 @@ function ContentBox(props) {
   return (
     <div id={props.id} className="content-box">
       <div className="content-title">
-        <h2>{props.title}</h2>
+        <h1>{props.title}</h1>
+        <button
+          className={`button-links ${isButtonClicked ? "clicked" : ""}`}
+          onClick={handleButtonClick}
+        >
+          what is this? 🤔
+        </button>
       </div>
       <div ref={contentInfoRef} className="content-information">
         {renderMedia()}
-        {/* <p>
+        <div className={`formatted-content ${isButtonClicked ? "show" : ""}`}>
           <FormattedContent content={props.content} />
-        </p> */}
+        </div>
       </div>
-      {/* <SkillsTable skills={props.skills} /> */}
+      {/* ... */}
     </div>
   );
 }

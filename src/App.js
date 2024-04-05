@@ -55,7 +55,7 @@ function App() {
   
     gsap.to(cloud, {
       x: '-100%',
-      duration: 30,
+      duration: 40,
       ease: 'none',
       repeat: -1,
       repeatDelay: 0,
@@ -63,7 +63,7 @@ function App() {
   
     gsap.to(cloud1, {
       x: '-300%',
-      duration: 40,
+      duration: 50,
       ease: 'none',
       repeat: -1,
       repeatDelay: 0,

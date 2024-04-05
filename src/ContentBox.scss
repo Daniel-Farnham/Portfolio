@@ -3,15 +3,17 @@
   grid-template-rows: minmax(auto, 80px) repeat(2, 1fr);;
   grid-template-columns: repeat(3, 1fr);
   padding: 15px; 
-  gap: 30px;
   border-style: solid;
   border-width: 1px;
   border-color: black;
   border-radius: 10px;
-  overflow: scroll; 
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden; 
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  height: 500px;
+  height: 700px;
   width: 90vw;
+  max-width: 800px;
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
 
   @media screen and (min-width: 700px) {
@@ -24,7 +26,9 @@
     box-shadow: 0px 3px 4px rgb(0, 0, 0);
   }
   h1 {
-    font-size: 20px;
+    font-family: "area-normal", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
   }
   p {
     font-size: 14px; 
@@ -41,11 +45,12 @@
 
 .content-title {
   width: 100%; 
-  max-height: 80px;
-  text-align: center;
+  //max-height: 80px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  // justify-content: center;
+  // align-items: center;
 }
 
 .content-information {
@@ -71,10 +76,14 @@
     object-fit: cover;
   }
   [media] {
-    //min-height: 500px;
-    width: 500px; 
+    height: 100%;
+    width: 50%; 
     border-radius: 5px;
     object-fit: cover;
+    @media screen and (max-width: 700px) {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -83,15 +92,38 @@
 }
 
 .media-wrapper {
-  height: 100%;
+  width: 100%;
   display: flex; 
   gap: 10px;
   flex-direction: row;
   align-items: center; 
+  @media screen and (max-width: 700px) {
+    flex-direction: column; // stack items vertically on smaller screens
+    height: 100%;
+    overflow-y: hidden;
+  }
 }
 
 .logo-stuff {
   min-width: 200px;
   display: flex;
   justify-content: center;
+}
+
+.formatted-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: 100%;
+  padding: 100px 50px;
+  background-color: rgb(255, 255, 255, 1);
+  z-index: 2;
+  transform: translateX(100%);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

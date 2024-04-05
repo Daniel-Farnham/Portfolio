@@ -8,9 +8,12 @@ import tediLogo from "./assets/TEDI_Logo.png";
 import dijgtalLogo from "./assets/DIJGTAL_Logo.png";
 import fullCirclelogo from "./assets/Full_Circle_Logo.png";
 import blackMarketProject from "./assets/BlackMarketProject.png";
+import blackMarketProject_2 from "./assets/BlackMarketProject2.png"
 import waterCycleimage_1 from "./assets/WaterCycle_Construction.jpeg";
 import sneakerDeximage_1 from "./assets/SneakerDex.png";
+import sneakerDeximage_2 from "./assets/SneakerDex_image2.png"
 import silkDriptheLabelImage_1 from "./assets/SilkDripTheLabel.png";
+import silkDriptheLabelImage_2 from "./assets/SilkDripTheLabelimage_2.png"
 import playgroundVintagewebsite_1 from "./assets/playgroundVintageWebsite.png";
 import playgroundVintageWebsite_2 from "./assets/playgroundVintageWebsite_2.png";
 import pgvStoreVideo from "./assets/PGV_Shop.mp4";
@@ -109,7 +112,7 @@ const projects = [
     id: 15,
     title: "SneakerDex",
     media_1: { type: "image", src: sneakerDeximage_1 },
-    //media_2: { type: "image", src: sneakerDeximage_2 },
+    media_2: { type: "image", src: sneakerDeximage_2 },
     content:
       "User-Centered Design Approach: SneakerDex began with a clear focus: design an online marketplace tailored for sneaker collectors. We honed in on what mattered to our users - collectors who cherish sneakers for their cool factor, cultural significance, and the joy of sharing their passion with others. \n\n Digital Showcase and Social Interaction: The core of SneakerDex is its ability to let enthusiasts digitally showcase their sneaker collections. It's like a personal window shop, highlighting owned pairs and gray-scaling the ones they're still hunting for. But it's more than just display; it's about fostering a community. The platform encourages trading and socializing, connecting collectors not just with friends but with the wider sneaker-loving community. \n\n Encouraging Collector Connections: At its heart, SneakerDex is about celebrating and deepening the connections between collectors. It's a space where their passion for sneakers turns into shared experiences and new friendships",
     skills: ["UI/UX Design", "Wireframing", "Prototyping"],
@@ -140,7 +143,7 @@ const projects = [
     id: 8,
     title: "Black Market Project",
     media_1: { type: "image", src: blackMarketProject },
-    //media_2: { type: "image", src: blackMarketProject_2 },
+    media_2: { type: "image", src: blackMarketProject_2 },
     content:
       "Project Overview: The Black Market Project, spearheaded by photographer Adam Oswell and journalist Ben Davies, with insights from Jane Goodall, delves into the intricate world of wildlife trade. This ongoing journalistic endeavor journeys from the caves of Laos to Australia's forests, aiming to uncover the impacts of human interactions on nature. \n\n My Contribution: Web Development with a Purpose: My role centered on bringing this vital narrative to the digital stage. I started with early prototyping using Figma, ensuring the website's design resonated with the project's depth and gravity. Close collaboration with the clients was key to understand their vision and the needs of their audience. \n\n Crafting a Digital Window: The development of the website was more than just technical execution; it was about creating a portal that invites users into these hidden stories, bridging the gap between people and wildlife. My work involved translating complex, global narratives into an accessible and engaging online experience.",
     skills: [
@@ -209,7 +212,7 @@ const projects = [
     id: 14,
     title: "Silk Drip The Label",
     media_1: { type: "image", src: silkDriptheLabelImage_1 },
-    //media_2: { type: "image", src: silkDriptheLabelImage_2 },
+    media_2: { type: "image", src: silkDriptheLabelImage_2 },
     content:
       "Silk Drip the Label: Enhancing User Experience on a Budget \n\n Client Collaboration and Technical Solutions: Working with Silk Drip the Label, the challenge was clear: solve technical issues without stretching the budget. My role was to navigate through coding puzzles, focusing on making the site more user-friendly. This meant tackling tasks like refining the responsiveness of slideshows and optimizing button placements for a smoother user journey. \n\n Budget-Friendly Improvements: Through close collaboration, we discovered innovative ways to upgrade their website. Each solution was designed not just to fix immediate problems but to significantly enhance the site's overall functionality and appeal, all while keeping costs low. \n\n Empowering the Client: Perhaps one of the most rewarding achievements was customizing their CMS to be more intuitive. This allowed the clients to make updates and edits on their own, with zero coding experience needed. It was about giving them control and flexibility over their content, ensuring they could adapt and grow without constant technical support.",
     skills: ["blah"],
@@ -246,6 +249,8 @@ function MenuContent({ onContentHeightChange, contentSpacing }) {
   const hireMeRef = useRef(null);
   const experienceRef = useRef(null);
   const projectRef = useRef(null);
+
+  const isMobile = window.innerWidth <= 768;
 
   // Get the heights of each content section on each render
   useEffect(() => {
@@ -334,7 +339,7 @@ function MenuContent({ onContentHeightChange, contentSpacing }) {
             media_2={project.media_2}
             skills={project.skills}
             content={project.content}
-            contentHeight={project.contentHeight}
+            isMobile={isMobile}
             // active={activeExperienceId === project.id}
             playing={playing}
             setPlaying={setPlaying}
