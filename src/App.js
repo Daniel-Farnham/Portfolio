@@ -7,6 +7,9 @@ import Menu from './Menu'; // Already imported
 import MenuContent from './MenuContent';
 import ContactForm from './ContactForm';
 import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [isMobileDevice, setIsMobileDevice] = useState(window.innerWidth < 600);
@@ -23,8 +26,8 @@ function App() {
   
   // Calculate height based on height of menuContent items and the space between each of these items
   const handleContentHeightChange = useCallback((height) => {
-    setContentHeight(height.hireMe + height.experience + height.projects + spaceBetweenElements*3);
-    setSectionHeights({ ...height, introductionText: introductionTextHeight });
+    setContentHeight(height.hireMe + height.experience + height.projects + spaceBetweenElements*3 + 500);
+    setSectionHeights({ ...height, introductionText: introductionTextHeight + 500 });
   }, [introductionTextHeight]);
 
   const handleActiveDivChange = (divId) => {
@@ -48,26 +51,39 @@ function App() {
   }, [isMobileDevice]);
 
   useEffect(() => {
+
     const cloud = cloudRef.current;
     const cloud1 = cloudRef1.current;
   
-    gsap.set([cloud, cloud1], { x: '100vw' });
+    gsap.set(cloud, { x: '100vw' });
+    gsap.set(cloud1, { x: '100vw' });
   
     gsap.to(cloud, {
       x: '-100%',
-      duration: 30,
+      duration: 40,
       ease: 'none',
       repeat: -1,
       repeatDelay: 0,
     });
   
     gsap.to(cloud1, {
-      x: '-300%',
-      duration: 40,
+      x: '-200%',
+      duration: 50,
       ease: 'none',
       repeat: -1,
       repeatDelay: 0,
     });
+
+    // gsap.to('.clouds', {
+    //   scrollTrigger: {
+    //     trigger: '.App-header',
+    //     start: 'top top',
+    //     end: 'bottom top',
+    //     scrub: true,
+    //   },
+    //   y: -200,
+    //   ease: "none"
+    // });
   }, []);
 
   return (
@@ -97,7 +113,7 @@ function App() {
             menuContentPosition={sectionHeights}
             contentSpacing={spaceBetweenElements}
           />
-        )}
+          )}
       </header>
 
       <ContactForm />

@@ -63,7 +63,7 @@ useEffect(() => {
         I'm sending this to you because I really admire the work you do. So much so that I built a website to help you
         understand me better.
       </p>
-      {!isMobile && <Links showLinks={showParagraph}/>}
+      {!isMobile && <Links showLinks={showParagraph} buttonText="Say hello 👋"/>}
     </div>
   );
  }
@@ -71,7 +71,7 @@ useEffect(() => {
   return (
     <div className="contentText">
       <h1>{nameChars}</h1>
-      {!isMobile && <Links showLinks={false}/>}
+      {!isMobile && <Links showLinks={false} buttonText="Say hello 👋"/>}
     </div> 
   )
  }

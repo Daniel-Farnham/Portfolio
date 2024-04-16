@@ -17,7 +17,7 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing
     // Define menu items
     const menuItems = [
       { id: 'menu-item-1', label: 'Who Am I?', activeClass: 'menu-3-active' },
-      { id: 'menu-item-2', label: 'Experiences', activeClass: 'menu-1-active' },
+      { id: 'menu-item-2', label: 'What Can I Do? (My Services)', activeClass: 'menu-1-active' },
       { id: 'menu-item-3', label: 'Cool Projects', activeClass: 'menu-2-active' },
     ];
   
@@ -42,24 +42,24 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-
-      // For smooth triggering behaviour we are going to collect scrollPosition from towards the bottom of the screen rather than the top. 
-
-      const scrollPositionCentre = scrollPosition + window.innerHeight/1.5; 
-
+      const scrollPositionCentre = scrollPosition + window.innerHeight / 1.5;
+      const containerHeight = introductionText + hireMe + experience + projects + contentSpacing * 3;
+      const bottomThreshold = containerHeight - 1000;
+  
       let isActiveItemSet = false;
   
       menuItems.forEach((item, index) => {
         if (
           scrollPositionCentre >= cumulativeHeights[index] &&
-          scrollPositionCentre < cumulativeHeights[index + 1]
-          ) {
+          scrollPositionCentre < cumulativeHeights[index + 1] &&
+          scrollPositionCentre < bottomThreshold
+        ) {
           setActiveItem(item.id);
           isActiveItemSet = true;
         }
       });
-      
-      if (!isActiveItemSet) {
+  
+      if (!isActiveItemSet || scrollPositionCentre >= bottomThreshold) {
         setActiveItem('');
       }
     };
@@ -68,7 +68,7 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [hireMe, experience, projects]);
+  }, [hireMe, experience, projects, introductionText, contentSpacing]);
 
   // Handle item click
   const handleClick = (itemId, index) => {
@@ -125,30 +125,32 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing
   } else {
     return (
       <div className="menu">
-        {menuItems.map((item, index) => (
-          <div
-            key={item.id}
-            className={`menu-item ${item.id} ${
-              ((item.id === 'menu-item-1' && isMenu1Active()) ||
-                (item.id === 'menu-item-2' && isMenu2Active()) ||
-                activeItem === item.id)
-                ? item.activeClass
-                : ''
-            }`}
-            style={{
-              height: itemStyles.itemHeight,
-              transform:
+        <div className="menu-inner">
+          {menuItems.map((item, index) => (
+            <div
+              key={item.id}
+              className={`menu-item ${item.id} ${
                 ((item.id === 'menu-item-1' && isMenu1Active()) ||
                   (item.id === 'menu-item-2' && isMenu2Active()) ||
                   activeItem === item.id)
-                  ? `translateY(-${positionActiveDivs()}px`
-                  : '',
-            }}
-            onClick={() => handleClick(item.id, index)}
-          >
-            <p>{item.label}</p>
-          </div>
-        ))}
+                  ? item.activeClass
+                  : ''
+              }`}
+              style={{
+                height: itemStyles.itemHeight,
+                transform:
+                  ((item.id === 'menu-item-1' && isMenu1Active()) ||
+                    (item.id === 'menu-item-2' && isMenu2Active()) ||
+                    activeItem === item.id)
+                    ? `translateY(-${positionActiveDivs()}px)`
+                    : '',
+              }}
+              onClick={() => handleClick(item.id, index)}
+            >
+              <p>{item.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

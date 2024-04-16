@@ -12,19 +12,30 @@
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     padding: 20px;
     background-color: #222;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    #message {
+      height: 60px;
+    }
   }
-
+  @media screen and (max-width: 700px) {
+    form {
+      height: 50vh; 
+    }
+  }
+  
   label {
     margin-bottom: 5px;
   }
 
   input,
   textarea {
+    margin-top: 10px;
+    width: calc(100% - 50px); 
     padding: 10px;
     border: 1px solid #333;
     border-radius: 4px;
@@ -35,6 +46,9 @@
     &:focus {
       outline: 2px solid #555;
       background-color: #444;
+    }
+    #name {
+      width: 50px;
     }
   }
 
