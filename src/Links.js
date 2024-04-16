@@ -1,7 +1,7 @@
 import React from 'react';
 import './Links.scss';
 
-function Links({ showLinks }) {
+function Links({ showLinks, buttonText }) {
   const handleClick = () => {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
@@ -14,7 +14,8 @@ function Links({ showLinks }) {
       className={`button-links ${showLinks ? 'visible' : 'hidden'}`}
       onClick={handleClick}
     >
-      Say hello 👋
+      {buttonText}
+      
     </button>
   );
 }

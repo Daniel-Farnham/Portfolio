@@ -2,14 +2,30 @@ import React, { useRef, useState, useEffect } from "react";
 import "./MenuContent.scss";
 import "./ContentBox.scss";
 import Media from "./Media";
+import Links from './Links';
 
+// Breaks content into dot points. May not always want dot points.
 const FormattedContent = ({ content }) => {
-  return content.split("\n").map((line, index) => (
-    <React.Fragment key={index}>
-      {line}
-      <br />
-    </React.Fragment>
-  ));
+  const paragraphs = content.split("\n\n");
+  const firstParagraph = paragraphs.shift(); // Remove the first paragraph from the array
+
+  return (
+    <>
+      <p class="content-information-first-paragraph">{firstParagraph}</p>
+      <ul class="content-information-list">
+        {paragraphs.map((paragraph, index) => (
+          <li key={index}>
+            {paragraph.split("\n").map((line, lineIndex) => (
+              <React.Fragment key={`${index}-${lineIndex}`}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 };
 
 function ContentBox(props) {
@@ -70,27 +86,42 @@ function ContentBox(props) {
     }
     return null;
   };
-
-  return (
-    <div id={props.id} className="content-box">
-      <div className="content-title">
-        <h1>{props.title}</h1>
-        <button
-          className={`button-links ${isButtonClicked ? "clicked" : ""}`}
-          onClick={handleButtonClick}
-        >
-          what is this? 🤔
-        </button>
+  if (props.isProjectContent) {
+    return (
+      <div id={props.id} className="content-box content-box-projects">
+        <div className="content-title">
+          <h1>{props.title}</h1>
+          <button
+            className={`button-links ${isButtonClicked ? "clicked" : ""}`}
+            onClick={handleButtonClick}
+          >
+            what is this?
+          </button>
+        </div>
+        <div ref={contentInfoRef} className="content-information">
+          {renderMedia()}
+          <div className={`hidden-content ${isButtonClicked ? "show" : ""}`}>
+            <FormattedContent content={props.content} />
+          </div>
+        </div>
+        {/* ... */}
       </div>
-      <div ref={contentInfoRef} className="content-information">
-        {renderMedia()}
-        <div className={`formatted-content ${isButtonClicked ? "show" : ""}`}>
+    );
+  }
+  else {
+    return (
+      <div id={props.id} className="content-box services-box">
+        <div className="content-title">
+          <h1>{props.title}</h1>
+            <Links showLinks={true} buttonText="Book Intro"/>
+        </div>
+        <div ref={contentInfoRef} className="content-information">
           <FormattedContent content={props.content} />
         </div>
+        {/* ... */}
       </div>
-      {/* ... */}
-    </div>
-  );
+    );
+  }
 }
 
 export default ContentBox;
