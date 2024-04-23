@@ -11,8 +11,8 @@ const FormattedContent = ({ content }) => {
 
   return (
     <>
-      <p class="content-information-first-paragraph">{firstParagraph}</p>
-      <ul class="content-information-list">
+      <p className="content-information-first-paragraph">{firstParagraph}</p>
+      <ul className="content-information-list">
         {paragraphs.map((paragraph, index) => (
           <li key={index}>
             {paragraph.split("\n").map((line, lineIndex) => (
