@@ -35,7 +35,9 @@ export default function TemporaryDrawer({ isOpen, onToggle, onActiveDivChange, m
           fontSize="large"
           />
         </IconButton>
-        <Links style={{marginRight: "50px"}} showLinks={true} buttonText="Say hello 👋"></Links>
+        <div style={{marginRight: "10px"}}> 
+          <Links showLinks={true} buttonText="Say hello 👋"></Links>
+        </div>
       </Box>
       <SwipeableDrawer
         open={isOpen}

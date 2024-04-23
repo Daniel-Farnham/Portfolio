@@ -68,6 +68,7 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hireMe, experience, projects, introductionText, contentSpacing]);
 
   // Handle item click
