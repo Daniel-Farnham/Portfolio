@@ -34,7 +34,7 @@ function ContactForm() {
 
   return (
     <div className="contact-form">
-      <form onSubmit={handleSubmit} netlify>
+      <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
         <input type="hidden" name="form-name" value="contact" />
         <div>
           <label htmlFor="name">Name:</label>
