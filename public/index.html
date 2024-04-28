@@ -29,6 +29,22 @@
     <title>danieldoesthings</title>
   </head>
   <body>
+    <form name="contact" netlify hiddern>
+      <input type="hidden" name="form-name" value="contact" />
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="" onchange="handleChange(event)" />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="" onchange="handleChange(event)" />
+      </div>
+      <div>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" onchange="handleChange(event)"></textarea>
+      </div>
+      <button type="submit">Send Email</button>
+    </form>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
