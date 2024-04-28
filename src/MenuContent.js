@@ -9,14 +9,14 @@ import dijgtalLogo from "./assets/DIJGTAL_Logo.png";
 import fullCirclelogo from "./assets/Full_Circle_Logo.png";
 import blackMarketProject from "./assets/BlackMarketProject.png";
 import blackMarketProject_2 from "./assets/BlackMarketProject2.png"
-import waterCycleimage_1 from "./assets/WaterCycle_Construction.jpeg";
+// import waterCycleimage_1 from "./assets/WaterCycle_Construction.jpeg";
 import sneakerDeximage_1 from "./assets/SneakerDex.png";
 import sneakerDeximage_2 from "./assets/SneakerDex_image2.png"
 import silkDriptheLabelImage_1 from "./assets/SilkDripTheLabel.png";
 import silkDriptheLabelImage_2 from "./assets/SilkDripTheLabelimage_2.png"
 import playgroundVintagewebsite_1 from "./assets/playgroundVintageWebsite.png";
 import playgroundVintageWebsite_2 from "./assets/playgroundVintageWebsite_2.png";
-import pgvStoreVideo from "./assets/PGV_Shop.mp4";
+// import pgvStoreVideo from "./assets/PGV_Shop.mp4";
 
 
 const experiences = [
@@ -102,52 +102,52 @@ const projects = [
     ],
     contentHeight: "tall",
   },
-  {
-    id: 7,
-    title: "Water Cycle",
-    media_1: { type: "image", src: waterCycleimage_1 },
-    //media_2: { type: "video", src: waterCycle },
-    extraimage: waterCycleimage_1,
-    content:
-      "Eco-Friendly Community Initiative: In the Water Cycle project, we merged kids' play with environmental care. Tasked with addressing Global Generation's water wastage issue without hefty resources, we crafted a playful yet practical solution. \n\n Interactive and Impactful Design: Our creation? Play equipment that doubles as a water recycling system for the community garden. 'Fun' was a big theme here so we added interactive lights and games that react to water usage, gamefying sustainability for kids. \n\n My Role: Juggling design and engineering, my focus was on the users - understanding their needs and crafting a solution that's as enjoyable as it is useful.",
-    skills: [
-      "User Research",
-      "Product Ideation",
-      "Interaction Design",
-      "Prototyping",
-      "Project Management",
-      "Product Development",
-      "Mechanical Engineering",
-      "Software Engineering",
-    ],
-    contentHeight: "medium",
-  },
-  {
-    id: 5,
-    title: "Playground Vintage Shop",
-    //media_1: { type: "image", src: pgvShop_2 },
-    media_1: { type: "video", src: pgvStoreVideo },
-    content:
-      "Playground Vintage has operated across two different locations within Sydney with the first opening in September of 2019. \n\n I was part of the leadership of the opening of this store. Going into this process I had no idea how to open a physical business location so doing this involved a steep learning curve. The idea that I had was to develop a place for young people between the ages of 18-25 where they could not only find affordable clothing but be a place that was novel, childish and just fun and memorable - this was important in helping our customers feel comfortable in their own identity.",
-    skills: [
-      "Project Management",
-      "Negotiation",
-      "Interior Design",
-      "Financial Planning",
-      "Market Research",
-      "Product Development",
-      "Team Planning",
-      "Leadership",
-    ],
-    contentHeight: "medium",
-  },
+  // {
+  //   id: 7,
+  //   title: "Water Cycle",
+  //   media_1: { type: "image", src: waterCycleimage_1 },
+  //   //media_2: { type: "video", src: waterCycle },
+  //   extraimage: waterCycleimage_1,
+  //   content:
+  //     "Eco-Friendly Community Initiative: In the Water Cycle project, we merged kids' play with environmental care. Tasked with addressing Global Generation's water wastage issue without hefty resources, we crafted a playful yet practical solution. \n\n Interactive and Impactful Design: Our creation? Play equipment that doubles as a water recycling system for the community garden. 'Fun' was a big theme here so we added interactive lights and games that react to water usage, gamefying sustainability for kids. \n\n My Role: Juggling design and engineering, my focus was on the users - understanding their needs and crafting a solution that's as enjoyable as it is useful.",
+  //   skills: [
+  //     "User Research",
+  //     "Product Ideation",
+  //     "Interaction Design",
+  //     "Prototyping",
+  //     "Project Management",
+  //     "Product Development",
+  //     "Mechanical Engineering",
+  //     "Software Engineering",
+  //   ],
+  //   contentHeight: "medium",
+  // },
+  // {
+  //   id: 5,
+  //   title: "Playground Vintage Shop",
+  //   //media_1: { type: "image", src: pgvShop_2 },
+  //   media_1: { type: "video", src: pgvStoreVideo },
+  //   content:
+  //     "Playground Vintage has operated across two different locations within Sydney with the first opening in September of 2019. \n\n I was part of the leadership of the opening of this store. Going into this process I had no idea how to open a physical business location so doing this involved a steep learning curve. The idea that I had was to develop a place for young people between the ages of 18-25 where they could not only find affordable clothing but be a place that was novel, childish and just fun and memorable - this was important in helping our customers feel comfortable in their own identity.",
+  //   skills: [
+  //     "Project Management",
+  //     "Negotiation",
+  //     "Interior Design",
+  //     "Financial Planning",
+  //     "Market Research",
+  //     "Product Development",
+  //     "Team Planning",
+  //     "Leadership",
+  //   ],
+  //   contentHeight: "medium",
+  // },
   {
     id: 14,
     title: "Silk Drip The Label",
     media_1: { type: "image", src: silkDriptheLabelImage_1 },
     media_2: { type: "image", src: silkDriptheLabelImage_2 },
     content:
-      "Silk Drip the Label: Enhancing User Experience on a Budget \n\n Client Collaboration and Technical Solutions: Working with Silk Drip the Label, the challenge was clear: solve technical issues without stretching the budget. My role was to navigate through coding puzzles, focusing on making the site more user-friendly. This meant tackling tasks like refining the responsiveness of slideshows and optimizing button placements for a smoother user journey. \n\n Budget-Friendly Improvements: Through close collaboration, we discovered innovative ways to upgrade their website. Each solution was designed not just to fix immediate problems but to significantly enhance the site's overall functionality and appeal, all while keeping costs low. \n\n Empowering the Client: Perhaps one of the most rewarding achievements was customizing their CMS to be more intuitive. This allowed the clients to make updates and edits on their own, with zero coding experience needed. It was about giving them control and flexibility over their content, ensuring they could adapt and grow without constant technical support.",
+      "Silk Drip the Label: Enhancing User Experience on a Budget \n\n Developed custom Shopify CMS components that are flexible and can be modified with no-code. \n\n Enhanced user experience through intuitive navigation, fast page loads, and a smooth checkout process, leading to increased customer satisfaction and conversions. \n\n Brought to life custom designs with code while acomodating for low budget and time constraints.",
     skills: ["blah"],
     contentHeight: "tall",
   },
@@ -198,24 +198,19 @@ function MenuContent({ onContentHeightChange, contentSpacing }) {
 
         <p className={"text-content"}>
           {" "}
-          <br></br>I design things, I build things and I work hard to make sure
-          the people who use these things, love them. The
-          happy marriage of design and development is where I live.{" "}
+          <br></br> I am developer + designer with 3+ years of experience. I design things, I build things and I work hard to make sure
+          the people who use these things, love them. The marriage of design and development is where I live.{" "}
         </p>
         <h3 className={"text-content"}>Why does this matter? </h3>
         <p className={"text-content"}>
           {" "}
-          Because digital footprints matter; website, apps, your little cousins
-          hand-me-down iPad and everything in between is a big part of how
+          Because digital footprints matter. Website, apps and everything in between is a big part of how
           customers interact with your brand, how they get to know you and how
           they know you can trust you.{" "}
         </p>
         <p className={"text-content"}>
-          And being able to design well is hugely important for this - design is the window through which our users can poke, prod and feel our brand. Unfortunately even the most spectacular design can only ever come to life with the tech skills to make it. If design is the window, development is the carpenter who built the window, maintains it and make sure it doesn't collapse in on itself. You need to have both. 
+          I can help your customers poke, prod and feel your brand by creating a digital footprint that is well designed and coded to function smoothly.
          {" "}
-        </p>
-        <p className={"text-content"}>
-          Luckily, I can be both. 
         </p>
         <h3 className={"text-content"}>How can I help?</h3>
         <p className={"text-content"}>
@@ -223,9 +218,6 @@ function MenuContent({ onContentHeightChange, contentSpacing }) {
           update for your site? A full website redesign and
           rebuild? Someone to be on call for an ongoing
           basis to handle anything digital related? I can help.
-        </p>
-        <p className={"text-content"}>
-          <br></br> If this sounds at least 1% useful to you or you just wanted to chat with me - contact me below!
         </p>
       </div>
       <div
