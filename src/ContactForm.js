@@ -8,62 +8,51 @@ function ContactForm() {
     message: '',
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const handleSubmit = (e) => {
+  handleSubmit = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...this.state })
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
+
     e.preventDefault();
-
-    // Simple validation
-    if (!formData.name || !formData.email || !formData.message) {
-      alert('Please fill out all fields.');
-      return;
-    }
-
-    // Reset form fields
-    setFormData({ name: '', email: '', message: '' });
-
-    // Show success message
-    alert('Thank you! I will be in contact shortly 🎉');
   };
 
-  return (
-    <div className="contact-form">
-     <form 
-  method='POST' 
-  name='contactform' 
-  className='contactForm'
-  netlify
-  >
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  <input 
-    type='hidden'
-    name='form-name'
-    value='contactForm' />
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <p>
+          <label>
+            Your Name: <input type="text" name="name" value={name} onChange={this.handleChange} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your Email: <input type="email" name="email" value={email} onChange={this.handleChange} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message: <textarea name="message" value={message} onChange={this.handleChange} />
+          </label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
+    );
+  }
 
-  <input 
-    type='text' 
-    name='name' 
-    placeholder='Enter your name' />
-
-  <input 
-    type='email' 
-    name='email' 
-    placeholder='Enter your email' />
-
-  <textarea 
-    name='message' 
-    placeholder='Messaage'></textarea>
-
-  <button type='submit'>Submit</button>
-</form>
-    </div>
-  );
-}
 
 export default ContactForm;
