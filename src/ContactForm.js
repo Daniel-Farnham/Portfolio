@@ -24,7 +24,7 @@ function ContactForm() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...formData })
     })
-      .then(() => alert("Success!"))
+      .then(() => alert("Thanks! Will be in touch shortly 🎉"))
       .catch(error => alert(error));
   };
 
