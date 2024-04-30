@@ -35,30 +35,32 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} data-netlify="true" name="contact">
-      <input type="hidden" name="form-name" value="contact" />
-      <p>
-        <label>
-          Your Name:
-          <input type="text" name="name" value={formData.name} onChange={handleChange} />
-        </label>
-      </p>
-      <p>
-        <label>
-          Your Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
-        </label>
-      </p>
-      <p>
-        <label>
-          Message:
-          <textarea name="message" value={formData.message} onChange={handleChange} />
-        </label>
-      </p>
-      <p>
-        <button type="submit">Send</button>
-      </p>
-    </form>
+    <div className='contact-form'>
+      <form onSubmit={handleSubmit} data-netlify="true" name="contact">
+        <input type="hidden" name="form-name" value="contact" />
+        <p>
+          <label>
+            Your Name:
+            <input type="text" name="name" value={formData.name} onChange={handleChange} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your Email:
+            <input type="email" name="email" value={formData.email} onChange={handleChange} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message:
+            <textarea name="message" value={formData.message} onChange={handleChange} />
+          </label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
+    </div>
   );
 }
 
