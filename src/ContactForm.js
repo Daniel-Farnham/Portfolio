@@ -37,7 +37,9 @@ function ContactForm() {
      <form 
   method='POST' 
   name='contactform' 
-  className='contactForm'>
+  className='contactForm'
+  netlify
+  >
 
   <input 
     type='hidden'
