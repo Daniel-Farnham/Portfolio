@@ -192,14 +192,14 @@ function MenuContent({ onContentHeightChange, contentSpacing }) {
         <IntroductionText
           textType={"hireMe"}
           textContent={
-            "I'm someone who does things over the internet."
+            "I'm someone who builds things over the internet."
           }
         />
 
         <p className={"text-content"}>
           {" "}
-          <br></br> I am developer + designer with 3+ years of experience. I design things, I build things and I work hard to make sure
-          the people who use these things, love them. The marriage of design and development is where I live.{" "}
+          <br></br> I am developer + designer with years of experience. I design things, I build things and I work hard to make sure
+          the people who use these things, love them.{" "}
         </p>
         <h3 className={"text-content"}>Why does this matter? </h3>
         <p className={"text-content"}>

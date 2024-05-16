@@ -17,7 +17,7 @@ function Menu({ isMobile, onActiveDivChange, menuContentPosition, contentSpacing
     // Define menu items
     const menuItems = [
       { id: 'menu-item-1', label: 'Who Am I?', activeClass: 'menu-3-active' },
-      { id: 'menu-item-2', label: 'What Can I Do? (My Services)', activeClass: 'menu-1-active' },
+      { id: 'menu-item-2', label: 'My Services', activeClass: 'menu-1-active' },
       { id: 'menu-item-3', label: 'Cool Projects', activeClass: 'menu-2-active' },
     ];
   
