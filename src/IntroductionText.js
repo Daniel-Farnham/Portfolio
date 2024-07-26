@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Links from './Links';
 import './IntroductionText.css'; 
 
-function IntroductionText({ textType, textContent }) {
+function IntroductionText({ textType, textContent, onAnimationComplete }) {
  const [nameChars, setNameChars] = useState([]);
  const [showParagraph, setShowParagraph] = useState(false);
  const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
@@ -35,23 +35,24 @@ function IntroductionText({ textType, textContent }) {
   setNameChars(chars);
 
   const animationDuration = charCount * 0.12 * 1000;
-  const timeoutId = setTimeout(() => setShowParagraph(true), animationDuration);
+  const timeoutId = setTimeout(() => {
+    setShowParagraph(true);
+    if (onAnimationComplete && typeof onAnimationComplete === 'function') {
+      onAnimationComplete();
+    }
+  }, animationDuration);
 
   return () => clearTimeout(timeoutId);
-}, [textContent]);
+}, [textContent, onAnimationComplete]);
 
 useEffect(() => {
   function handleResize() {
     setIsMobile(window.innerWidth < 700);
   }
   
-  // Add event listener
   window.addEventListener("resize", handleResize);
-  
-  // Call the handler right away so state gets updated with initial window size
   handleResize();
 
-  // Remove event listener on cleanup
   return () => window.removeEventListener("resize", handleResize);
 }, []);
 
@@ -59,7 +60,7 @@ useEffect(() => {
   return (
     <div className="contentText">
       <h1>{nameChars}</h1> 
-      <p className = {showParagraph ? 'visible' : 'hidden'}>
+      <p className={showParagraph ? 'visible' : 'hidden'}>
         I'm sending this to you because I really admire the work you do. So much so that I built a website to help you
         understand me better.
       </p>
@@ -76,7 +77,8 @@ useEffect(() => {
   )
  }
  
+ // Default return in case textType doesn't match
+ return null;
 }
-
 
 export default IntroductionText;

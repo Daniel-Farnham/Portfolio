@@ -3,7 +3,7 @@ $menu-height-mobile: 95vh;
 $menu-item-height: 55px;
 $menu-item-height-mobile: 40px; 
 $menu-item-border-width: 2px;
-$transition-time: 1.2s; 
+$transition-time: 1s; 
 
 // Referring to menu as a whole
 .menu {
@@ -16,6 +16,14 @@ $transition-time: 1.2s;
   align-items: center;
   justify-content: flex-end;
   z-index: 100;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
 }
 
 .menu-inner {
@@ -95,7 +103,3 @@ $transition-time: 1.2s;
   opacity: 0.95; 
   box-shadow: 0 8px 10px rgba(1, 1, 1, 0.2);
 }
-
-
-
-

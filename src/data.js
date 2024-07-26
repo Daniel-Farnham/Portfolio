@@ -1,0 +1,129 @@
+import pgvLogo from "./assets/PGV_Logo.png";
+import tediLogo from "./assets/TEDI_Logo.png";
+import dijgtalLogo from "./assets/DIJGTAL_Logo.png";
+import fullCirclelogo from "./assets/Full_Circle_Logo.png";
+import blackMarketProject from "./assets/BlackMarketProject.png";
+import blackMarketProject_2 from "./assets/BlackMarketProject2.png"
+import hanami from "./assets/Hanami.png"
+import nucanon from "./assets/Nucanon.png"
+import sneakerDeximage_1 from "./assets/SneakerDex.png";
+import sneakerDeximage_2 from "./assets/SneakerDex_image2.png"
+import silkDriptheLabelImage_1 from "./assets/SilkDripTheLabel.png";
+import silkDriptheLabelImage_2 from "./assets/SilkDripTheLabelimage_2.png"
+import playgroundVintagewebsite_1 from "./assets/playgroundVintageWebsite.png";
+import playgroundVintageWebsite_2 from "./assets/playgroundVintageWebsite_2.png";
+
+export const experiences = [
+    {
+      id: 1,
+      logo: dijgtalLogo,
+      title: "Creative Development",
+      content:
+        "Bring your vision to life with a developer who understands the power of storytelling and creativity in the digital world. \n\n Ongoing development for your website or app. \n\n Identify ways to incorporate unique animations and design to create memorable user experiences. \n\n Framework specific development for more complex websites and apps - React.js, Svelte.js, Vue.js. \n\n Custom CMS Development - Shopify, Squarespace. \n\n API Integrations",
+    },
+    {
+      id: 4,
+      logo: fullCirclelogo,
+      title: "Daniel Does Design",
+      content:
+        "Transform your digital presence with a designer who combines creativity, usability, and a deep understanding of user behavior to create interfaces that engage and convert. \n\n Comprehensive UI design services, from concept to delivery. \n\n Continuously iterate and refine designs based on user feedback and data-driven insights. \n\n Ongoing design support",
+    },
+    {
+      id: 2,
+      logo: pgvLogo,
+      title: "Optimisation",
+      content:
+        "Unlock your website's full potential and increase conversions with data-driven optimization and iterative testing. \n\n Set up Google Analytics (GA4). \n\n Data analysis to identify opportunities for improvement. \n\n Set up A/B testing software such as VWO. \n\n Optimise for conversions through iterative testing. \n\n Ongoing conversion and testing support. \n\n Speed Optimisation",
+    },
+    {
+      id: 3,
+      logo: tediLogo,
+      title: "A Bit Of Everything",
+      content:
+        "Have a project that needs to be built from start to finish? Or maybe you need a few different things done? Contact me to find out how I can help."
+    },
+  ];
+  
+  export const projects = [
+    {
+      id: 15,
+      title: "SneakerDex",
+      media_1: { type: "image", src: sneakerDeximage_1 },
+      media_2: { type: "image", src: sneakerDeximage_2 },
+      content:
+        "SneakerDex: Transforming the way sneaker collectors showcase, connect, and trade, through a user-centric online marketplace that celebrates the passion and culture of the sneaker community. \n\n Crafted a visually stunning, user-centric interface that resonates with sneaker collectors, emphasizing coolness, culture, and community. \n\n Created engaging UI elements that encourage trading, socializing, and connecting with fellow enthusiasts" ,
+      skills: ["UI/UX Design", "Wireframing", "Prototyping"],
+      contentHeight: "tall",
+    },
+    {
+      id: 9,
+      title: "Playground Vintage Website",
+      media_1: { type: "image", src: playgroundVintagewebsite_1 },
+      media_2: { type: "image", src: playgroundVintageWebsite_2 },
+      content:
+        "Playground Vintage: Transforming a physical vintage shop into a thriving online store amidst the challenges of COVID-19, through resilient web development, adaptive design, and continuous optimization. \n\n Developed a robust e-commerce website from scratch with Shopify, quickly adapting to new technologies and best practices to bring Playground Vintage online. \n\n Optimized the checkout process to boost conversion rates and customer trust. \n\n Refined design and functionality based on user feedback to improve the online experience and drive sales \n\n Implemented effective SEO strategies to improve organic visibility and attract new customers",
+      skills: [
+        "HTML",
+        "CSS",
+        "Javascript",
+        "Shopify Liquid",
+        "API Integrations",
+        "UI/UX Design",
+        "Project Management",
+        "SEO",
+        "Digital Marketing",
+        "Product Design",
+      ],
+      contentHeight: "tall",
+    },
+    {
+      id: 8,
+      title: "Black Market Project",
+      media_1: { type: "image", src: blackMarketProject },
+      media_2: { type: "image", src: blackMarketProject_2 },
+      content:
+        "The Black Market Project: Bringing a crucial wildlife trade narrative to life through creating a digital window into the complex relationship between humans and nature. \n\n Built a website that serves as a platform for this ongoing journalistic project, making sure people can easily access and engage with the findings and insights. \n\n Crafted a visually compelling interface that draws users in, inviting them to explore the hidden stories and impacts of wildlife trade, and fostering a deeper connection between people and nature.",
+      skills: [
+        "UI/UX Design",
+        "User Journey Mapping",
+        "Figma",
+        "HTML",
+        "CSS",
+        "Javascript",
+        "JSON",
+        "Git",
+        "Project Management",
+      ],
+      contentHeight: "tall",
+    },
+    {
+      id: 14,
+      title: "Silk Drip The Label",
+      media_1: { type: "image", src: silkDriptheLabelImage_1 },
+      media_2: { type: "image", src: silkDriptheLabelImage_2 },
+      content:
+        "Silk Drip the Label: Enhancing User Experience on a Budget \n\n Developed custom Shopify CMS components that are flexible and can be modified with no-code. \n\n Enhanced user experience through intuitive navigation, fast page loads, and a smooth checkout process, leading to increased customer satisfaction and conversions. \n\n Brought to life custom designs with code while acomodating for low budget and time constraints.",
+      skills: ["blah"],
+      contentHeight: "tall",
+    },
+    {
+      id: 10,
+      title: "Hanami",
+      media_1: { type: "image", src: hanami },
+      media_2: { type: "image", src: silkDriptheLabelImage_2 },
+      content:
+        "Silk Drip the Label: Enhancing User Experience on a Budget \n\n Developed custom Shopify CMS components that are flexible and can be modified with no-code. \n\n Enhanced user experience through intuitive navigation, fast page loads, and a smooth checkout process, leading to increased customer satisfaction and conversions. \n\n Brought to life custom designs with code while acomodating for low budget and time constraints.",
+      skills: ["blah"],
+      contentHeight: "tall",
+    },
+    {
+      id: 11,
+      title: "Nucanon",
+      media_1: { type: "image", src: nucanon },
+      media_2: { type: "image", src: silkDriptheLabelImage_2 },
+      content:
+        "Silk Drip the Label: Enhancing User Experience on a Budget \n\n Developed custom Shopify CMS components that are flexible and can be modified with no-code. \n\n Enhanced user experience through intuitive navigation, fast page loads, and a smooth checkout process, leading to increased customer satisfaction and conversions. \n\n Brought to life custom designs with code while acomodating for low budget and time constraints.",
+      skills: ["blah"],
+      contentHeight: "tall",
+    }
+  ];

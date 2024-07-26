@@ -1,13 +1,32 @@
+.menu-content {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .who-am-i, .my-services, .cool-projects {
+    margin: 0 auto;
+  }
+}
+
+.my-services {
+  display: flex;
+  gap: 10px;
+}
+
 .content-space {
   width: 100vw; 
+  height: auto;
   position: relative; 
-  //top: 1000px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  // overflow-y: hidden;
+  // overflow-x: hidden;
   z-index: 2;
 }
 

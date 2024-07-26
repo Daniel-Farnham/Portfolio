@@ -28,6 +28,7 @@ const FormattedContent = ({ content }) => {
   );
 };
 
+// so much of the below is probably unneccasry
 function ContentBox(props) {
   const videoRef = useRef();
   const contentInfoRef = useRef();
