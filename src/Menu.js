@@ -30,7 +30,7 @@ function Menu({ activeSection, onSectionChange, isVisible, isMobile }) {
   const isMenu2Active = () => activeSection >= 3;
 
   // Calculate active div position
-  const positionActiveDivs = () => windowHeight - (3 * 55 - 3 * 2);  // Using your original values
+  const positionActiveDivs = () => windowHeight - (3 * 55 - 3 * 2); 
 
   if (isMobile) {
     return (
@@ -46,7 +46,7 @@ function Menu({ activeSection, onSectionChange, isVisible, isMobile }) {
                 : ''
             }`}
             style={{
-              height: 100 + 2,  // Using your original values
+              height: 100 + 2, 
               backgroundColor: activeSection === index + 1 ? 'rgb(255, 205, 255)' : 'white',
             }}
             onClick={() => handleClick(index)}
@@ -71,7 +71,7 @@ function Menu({ activeSection, onSectionChange, isVisible, isMobile }) {
                   : ''
               }`}
               style={{
-                height: 55,  // Using your original value
+                height: 55,
                 transform:
                   ((item.id === 'menu-item-1' && isMenu1Active()) ||
                     (item.id === 'menu-item-2' && isMenu2Active()) ||

@@ -38,7 +38,7 @@ const Carousel = ({ items, width = '100%', height = '400px', duration = 20 }) =>
     return () => {
       gsap.killTweensOf(scroller);
     };
-  }, [duration]); // Re-run effect if duration changes
+  }, [duration]);
 
   return (
     <div ref={containerRef} className="carousel-container" style={{ width, height }}>

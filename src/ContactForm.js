@@ -36,6 +36,7 @@ function ContactForm() {
 
   return (
     <div className='contact-form'>
+      {/* <p className='contact-introduction'>say hello</p> */}
       <form onSubmit={handleSubmit} data-netlify="true" name="contact">
         <input type="hidden" name="form-name" value="contact" />
         <p>

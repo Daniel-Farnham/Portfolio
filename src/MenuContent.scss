@@ -10,47 +10,51 @@
   .who-am-i, .my-services, .cool-projects {
     margin: 0 auto;
   }
+
+}
+
+.coolproject-partners-sections {
+  position: relative;
+  top: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  
+  p {
+    font-family: "new-kansas", sans-serif;
+    font-weight: 400;
+  }
+}
+
+.coolproject-partners {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.coolproject-partners img {
+  height: 100px;
+  cursor: pointer;
+  transition: scale 0.3s ease;
+
+  &:hover {
+    scale: 1.05; 
+  }
 }
 
 .my-services {
   display: flex;
-  gap: 10px;
-}
+  flex-direction: column;
+  gap: 20px;
 
-.content-space {
-  width: 100vw; 
-  height: auto;
-  position: relative; 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  // overflow-y: hidden;
-  // overflow-x: hidden;
-  z-index: 2;
-}
-
-.showContent {
-  width: 99vw; 
-  display: grid;
-  justify-items: center;
-  gap: 30px;
-  padding: 12vh 0; 
-  animation: fadeIn 1.5s ease 0s forwards;
-
-  .hireMe {
-    justify-content: center;
+  @media screen and (min-width: 650px) {
+    flex-direction: row;
   }
 }
 
-@media screen and (max-width: 700px) {
-  .listContent{
-    &.showContent {
-      padding: 0; 
-      min-height: 100vh;
-    }
-  }
-}
 
 .text-content {
   width: 80vw; 
@@ -64,4 +68,5 @@
   height: 100px;
   display: flex; 
   align-items: center;
+  z-index: 1;
 }

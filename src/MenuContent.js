@@ -3,7 +3,10 @@ import './MenuContent.scss';
 import IntroductionText from './IntroductionText';
 import ContentBox from './ContentBox';
 import Carousel from './components/Carousel';
-import { experiences, projects } from './data'; // Assume we've moved the data to a separate file
+import { experiences, projects } from './data'; 
+import lowercaselogo from './assets/lowercase_club_logo.jpeg'
+import dijgtallogo from './assets/dijgtal_logo.jpeg'
+import fullcirclelogo from './assets/Full_Circle_Logo.png'
 
 function MenuContent({ section }) {
   const renderContent = () => {
@@ -25,6 +28,8 @@ function MenuContent({ section }) {
               customers interact with your brand, how they get to know you and how
               they know they can trust you.
             </p>
+            <p>add in tech stack into here</p>
+
             {/* Add more content as needed */}
           </div>
         );
@@ -39,16 +44,25 @@ function MenuContent({ section }) {
               />
             ))}
           </div>
+          // <p>tech stack can go underneath with a bunch of logos?? </p>
         );
       case 'coolProjects':
         return (
           <div className="cool-projects">
             <Carousel 
               items={projects.map(project => project.media_1.src)}
-              width="100%"
-              height="500px"
+              height="550px"
               duration={60}
             />
+            <div className='coolproject-partners-sections'>
+              <p>or check out some of the other agencies i have worked with!</p>
+              <div className='coolproject-partners'>
+                <img src={lowercaselogo} alt="lowercase logo"/>
+                <img src={dijgtallogo} alt="dijgtal logo"/>
+                <img src={fullcirclelogo} alt="full circle logo"/>
+              </div>
+            </div>
+
           </div>
         );
       default:

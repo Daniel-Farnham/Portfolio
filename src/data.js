@@ -16,31 +16,25 @@ import playgroundVintageWebsite_2 from "./assets/playgroundVintageWebsite_2.png"
 export const experiences = [
     {
       id: 1,
-      logo: dijgtalLogo,
-      title: "Creative Development",
-      content:
-        "Bring your vision to life with a developer who understands the power of storytelling and creativity in the digital world. \n\n Ongoing development for your website or app. \n\n Identify ways to incorporate unique animations and design to create memorable user experiences. \n\n Framework specific development for more complex websites and apps - React.js, Svelte.js, Vue.js. \n\n Custom CMS Development - Shopify, Squarespace. \n\n API Integrations",
-    },
-    {
-      id: 4,
-      logo: fullCirclelogo,
-      title: "Daniel Does Design",
-      content:
-        "Transform your digital presence with a designer who combines creativity, usability, and a deep understanding of user behavior to create interfaces that engage and convert. \n\n Comprehensive UI design services, from concept to delivery. \n\n Continuously iterate and refine designs based on user feedback and data-driven insights. \n\n Ongoing design support",
+      title: "Development",
+      content: [
+        "custom landing pages",
+        "animations + motion",
+        "web app development",
+        "ecommerce development",
+        "analytics + A/B testing",
+      ]
     },
     {
       id: 2,
-      logo: pgvLogo,
-      title: "Optimisation",
-      content:
-        "Unlock your website's full potential and increase conversions with data-driven optimization and iterative testing. \n\n Set up Google Analytics (GA4). \n\n Data analysis to identify opportunities for improvement. \n\n Set up A/B testing software such as VWO. \n\n Optimise for conversions through iterative testing. \n\n Ongoing conversion and testing support. \n\n Speed Optimisation",
-    },
-    {
-      id: 3,
-      logo: tediLogo,
-      title: "A Bit Of Everything",
-      content:
-        "Have a project that needs to be built from start to finish? Or maybe you need a few different things done? Contact me to find out how I can help."
+      title: "Design + Optimisation",
+      content: [
+        "site audit",
+        "visual identity",
+        "user experience",
+        "site speed optimisation",
+        "SEO development",
+      ]
     },
   ];
   

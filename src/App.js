@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -10,6 +10,7 @@ import TemporaryDrawer from './MobileDrawer';
 import Menu from './Menu';
 import MenuContent from './MenuContent';
 import ContactForm from './ContactForm';
+import CloudAnimation from './components/CloudAnimation';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,8 +20,7 @@ function App() {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [showContent, setShowContent] = useState(false);
-  const cloud1Ref = useRef(null);
-  const cloud2Ref = useRef(null);
+  const cloudRefs = useRef([]);
   const sectionRefs = useRef([]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.1,
+      threshold: 0.2,
     };
 
     const callback = (entries) => {
@@ -61,31 +61,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    // Parallax effect for clouds
-    gsap.to(cloud1Ref.current, {
-      yPercent: 70,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".first-section",
-        start: "top top",
-        end: "bottom top",
-        scrub: 0.5
-      }
-    });
-
-    gsap.to(cloud2Ref.current, {
-      yPercent: 80,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".scroll-container",
-        start: "top top",
-        end: "bottom top",
-        scrub: 0.5
-      }
-    });
-  }, []);
-
   const handleSectionChange = (index) => {
     setActiveSectionIndex(index);
     if (isMobileDevice) {
@@ -103,21 +78,54 @@ function App() {
     <div className="App">
       <div className="scroll-container">
         <section ref={el => sectionRefs.current[0] = el} className="scroll-section first-section">
-          <div className="clouds">
-            <img ref={cloud1Ref} className="cloudImage" src={cloudImage} alt="cloudImage" />
-            <img ref={cloud2Ref} className="cloudImage_1" src={cloudImage} alt="cloudImage" />
-          </div>
+          {/* <div className={`${showContent ? 'visible' : 'hidden'}`}> */}
+
+          <CloudAnimation 
+            cloudImage={cloudImage}
+            cloudHeight={400}
+            direction="left"
+            duration={200}
+          />
+          {/* </div> */}
           <IntroductionText 
             textType="introduction" 
             textContent="Hi there, my name is Daniel."
             onAnimationComplete={handleAnimationComplete}
           />
         </section>
-        <div className={`content-wrapper ${showContent ? 'visible' : 'hidden'}`}>
+        <div className={`${showContent ? 'visible' : 'hidden'}`}>
           <section ref={el => sectionRefs.current[1] = el} className="scroll-section">
+          <CloudAnimation 
+            cloudImage={cloudImage}
+            cloudHeight={200}
+            direction="right"
+            duration={200}
+            parallaxAmount={400}
+          />
+          <CloudAnimation 
+            cloudImage={cloudImage}
+            cloudHeight={100}
+            direction="right"
+            duration={180}
+            parallaxAmount={350}
+          />
             <MenuContent section="whoAmI" />
           </section>
           <section ref={el => sectionRefs.current[2] = el} className="scroll-section">
+          <CloudAnimation 
+            cloudImage={cloudImage}
+            cloudHeight={100}
+            direction="left"
+            duration={180}
+            parallaxAmount={200}
+          />
+          <CloudAnimation 
+            cloudImage={cloudImage}
+            cloudHeight={350}
+            direction="left"
+            duration={180}
+            parallaxAmount={250}
+          />
             <MenuContent section="myServices" />
           </section>
           <section ref={el => sectionRefs.current[3] = el} className="scroll-section">
@@ -126,7 +134,12 @@ function App() {
         </div>
       </div>
         {isMobileDevice ? (
-          <p>hello place holder</p>
+          <TemporaryDrawer
+          activeSection={activeSectionIndex}
+          onSectionChange={handleSectionChange}
+          isVisible={showContent}
+        />
+          
         ) : (
           <Menu
             activeSection={activeSectionIndex}
