@@ -58,7 +58,7 @@ function ContactForm() {
           </label>
         </p>
         <p>
-          <button type="submit">Send</button>
+          <button type="submit">Send 🙂</button>
         </p>
       </form>
     </div>

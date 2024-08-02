@@ -31,6 +31,7 @@
   @media screen and (max-width: 700px) {
     form {
       height: 50vh; 
+      width: 80%;
     }
   }
   
@@ -60,7 +61,7 @@
 
   button {
     padding: 10px;
-    width: 200px;
+    width: inherit;
     background-color: #000000;
     color: white;
     border: solid 1px rgb(0, 0, 0);

@@ -4,10 +4,11 @@
   border-width: 1.5px;
   border-color: black;
   border-radius: 20px;
+  // background-color: rgb(74, 189, 107);
   backdrop-filter: blur(20px);
   position: relative;
   overflow: hidden; 
-  height: 500px;
+  height: 300px;
   width: 300px;
   // transition: transform 0.8s ease-in, scale 0.2s ease, background-color 0.4s ease, box-shadow 0.3s ease-in-out;
   transform-style: preserve-3d;

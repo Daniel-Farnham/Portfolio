@@ -19,9 +19,6 @@ export default function TemporaryDrawer({ activeSection, onSectionChange, isVisi
     setIsOpen(open);
   };
 
-  console.log('activeSection', activeSection);
-  console.log('onSectionChange', onSectionChange);
-
   return (
     <div>
       <Box className="drawer-container">
@@ -32,9 +29,10 @@ export default function TemporaryDrawer({ activeSection, onSectionChange, isVisi
           fontSize="large"
           className="drawer-icon-button"
           onClick={toggleDrawer(true)}
-        >
+          >
           <MenuIcon fontSize="large" />
         </IconButton>
+          <p>{["Intro","Who Am I?","My Services","Cool Projects"][activeSection]}</p>
         <div style={{marginRight: "10px"}}> 
           <Links showLinks={true} buttonText="Say hello 👋" />
         </div>

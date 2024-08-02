@@ -41,7 +41,7 @@ const Carousel = ({ items, width = '100%', height = '400px', duration = 20 }) =>
   }, [duration]);
 
   return (
-    <div ref={containerRef} className="carousel-container" style={{ width, height }}>
+    <div ref={containerRef} className="carousel-container">
       <div ref={scrollerRef} className="carousel-scroller">
         <div className="scroller-content">
           {items.map((item, index) => (

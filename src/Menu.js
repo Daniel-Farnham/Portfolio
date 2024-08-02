@@ -58,7 +58,7 @@ function Menu({ activeSection, onSectionChange, isVisible, isMobile }) {
     );
   } else {
     return (
-      <div className={`menu hello-world ${isVisible ? 'visible' : 'hidden'}`}>
+      <div className={`menu ${isVisible ? 'visible' : 'hidden'}`}>
         <div className="menu-inner">
           {menuItems.map((item, index) => (
             <div

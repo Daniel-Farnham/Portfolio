@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import './App.css';
+import './App.scss';
 
 import cloudImage from './assets/CloudImage.png';
 import IntroductionText from './IntroductionText';
@@ -78,8 +78,6 @@ function App() {
     <div className="App">
       <div className="scroll-container">
         <section ref={el => sectionRefs.current[0] = el} className="scroll-section first-section">
-          {/* <div className={`${showContent ? 'visible' : 'hidden'}`}> */}
-
           <CloudAnimation 
             cloudImage={cloudImage}
             cloudHeight={400}
@@ -94,41 +92,41 @@ function App() {
           />
         </section>
         <div className={`${showContent ? 'visible' : 'hidden'}`}>
-          <section ref={el => sectionRefs.current[1] = el} className="scroll-section">
+          <section ref={el => sectionRefs.current[1] = el} className="scroll-section content-section">
           <CloudAnimation 
             cloudImage={cloudImage}
             cloudHeight={200}
             direction="right"
-            duration={200}
-            parallaxAmount={400}
+            duration={300}
+            parallaxAmount={200}
           />
           <CloudAnimation 
             cloudImage={cloudImage}
             cloudHeight={100}
             direction="right"
-            duration={180}
-            parallaxAmount={350}
+            duration={280}
+            parallaxAmount={250}
           />
             <MenuContent section="whoAmI" />
           </section>
-          <section ref={el => sectionRefs.current[2] = el} className="scroll-section">
+          <section ref={el => sectionRefs.current[2] = el} className="scroll-section content-section">
           <CloudAnimation 
             cloudImage={cloudImage}
             cloudHeight={100}
             direction="left"
-            duration={180}
-            parallaxAmount={200}
+            duration={280}
+            parallaxAmount={150}
           />
           <CloudAnimation 
             cloudImage={cloudImage}
             cloudHeight={350}
             direction="left"
-            duration={180}
-            parallaxAmount={250}
+            duration={280}
+            parallaxAmount={200}
           />
             <MenuContent section="myServices" />
           </section>
-          <section ref={el => sectionRefs.current[3] = el} className="scroll-section">
+          <section ref={el => sectionRefs.current[3] = el} className="scroll-section content-section">
             <MenuContent section="coolProjects" />
           </section>
         </div>

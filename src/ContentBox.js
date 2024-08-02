@@ -40,7 +40,7 @@ function ContentBox(props) {
         duration: 0.6,
         scale: scale,
         boxShadow: scale > 1 ? "0px 3px 4px rgb(0, 0, 0)" : "none",
-        backgroundColor: scale > 1 ? "rgba(244, 177, 76, 0.5)" : "rgba(244, 177, 76, 0)",
+        backgroundColor: scale > 1 ? "rgba(244, 177, 76, 0" : "rgba(244, 177, 76, 0)",
         ease: "power2.out"
       });
     };

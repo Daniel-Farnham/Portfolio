@@ -18,12 +18,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Fixed width for consistency */
-    width: 600px; /* Adjust this value as needed */
+    width: 350px;
+    height: 300px;
     margin: 0 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+  }
+
+  @media screen and (min-width: 648px) {
+    .carousel-item {
+      width: 600px;
+      height: 400px;
+    }
   }
   
   .carousel-item img {
