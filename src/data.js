@@ -121,3 +121,8 @@ export const experiences = [
       contentHeight: "tall",
     }
   ];
+
+  export const techStack = {
+    id: 1, 
+    media: { src: hanami }
+  }

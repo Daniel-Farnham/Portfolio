@@ -11,44 +11,62 @@
   .who-am-i, .my-services, .cool-projects {
     margin: 0 auto;
   }
-
 }
+
+// Cool Projects section
+
+.cool-projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; 
+}
+
 
 .coolproject-partners-sections {
   position: relative;
-  top: 40%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
   justify-content: center;
+  padding: 0px 20px;
   
-  p {
-    font-family: "new-kansas", sans-serif;
-    font-weight: 400;
-  }
+  // p {
+  //   font-family: "new-kansas", sans-serif;
+  //   font-weight: 400;
+  // }
 }
 
 .coolproject-partners {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
   align-items: center;
 }
 
 .coolproject-partners img {
-  height: 100px;
+  height: 60px;
   cursor: pointer;
   transition: scale 0.3s ease;
 
   &:hover {
     scale: 1.05; 
   }
+
+  @media screen and (min-width: 650px) {
+    height: 100px;
+  }
 }
 
-.my-services {
+// My Services Section
+.my-services-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
 
   @media screen and (min-width: 650px) {
@@ -56,18 +74,23 @@
   }
 }
 
-
-.text-content {
-  width: 80vw; 
-  @media screen and (min-width: 700px) {
-    width: 60vw;
-    max-width: 800px;
-  }
+// Who Am I Section
+.text-content-container {
+  width: 85vw;
+  max-width: 1000px;
+  padding: 20px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 
-.who-am-i-links {
-  height: 100px;
-  display: flex; 
-  align-items: center;
-  z-index: 1;
+.text-content {
+  text-align: left;
+}
+
+.text-content-special {
+  font-family: "new-kansas", sans-serif;
+  font-weight: 400;
+  font-style: italic;
 }

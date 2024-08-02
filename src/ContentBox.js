@@ -74,8 +74,6 @@ function ContentBox(props) {
                 <li key={index} style={{ marginBottom: '8px' }}>{item}</li>
               ))}
             </ul>
-            
-            <Links showLinks={true} buttonText="Say hello 👋"/>
           </>
         )}
       </div>

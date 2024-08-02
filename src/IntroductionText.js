@@ -62,7 +62,7 @@ useEffect(() => {
       <h1>{nameChars}</h1> 
       <p className={showParagraph ? 'visible' : 'hidden'}>
         I'm sending this to you because I really admire the work you do. So much so that I built a website to help you
-        understand me better.
+        understand me better!
       </p>
       {!isMobile && <Links showLinks={showParagraph} buttonText="Say hello 👋"/>}
     </div>

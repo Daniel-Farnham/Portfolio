@@ -20,7 +20,6 @@ function App() {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [showContent, setShowContent] = useState(false);
-  const cloudRefs = useRef([]);
   const sectionRefs = useRef([]);
 
   useEffect(() => {
@@ -78,12 +77,15 @@ function App() {
     <div className="App">
       <div className="scroll-container">
         <section ref={el => sectionRefs.current[0] = el} className="scroll-section first-section">
-          <CloudAnimation 
-            cloudImage={cloudImage}
-            cloudHeight={400}
-            direction="left"
-            duration={200}
-          />
+          <div className={`${showContent ? 'visible' : 'hidden'}`}>
+
+            <CloudAnimation 
+              cloudImage={cloudImage}
+              cloudHeight={400}
+              direction="left"
+              duration={500}
+            />
+          </div>
           {/* </div> */}
           <IntroductionText 
             textType="introduction" 
