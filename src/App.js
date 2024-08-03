@@ -1,122 +1,154 @@
-import React, { useRef, useCallback, useEffect, useState } from 'react';
-import './App.css';
+import React, { useRef, useState, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import './App.scss';
+
 import cloudImage from './assets/CloudImage.png';
 import IntroductionText from './IntroductionText';
-import TemporaryDrawer from './MobileDrawer'; // Imported directly
-import Menu from './Menu'; // Already imported
+import TemporaryDrawer from './MobileDrawer';
+import Menu from './Menu';
 import MenuContent from './MenuContent';
 import ContactForm from './ContactForm';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import CloudAnimation from './components/CloudAnimation';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [isMobileDevice, setIsMobileDevice] = useState(window.innerWidth < 600);
-  const [contentHeight, setContentHeight] = useState(0);
-  const [sectionHeights, setSectionHeights] = useState({});
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [activeDivId, setActiveDivId] = useState(null);
-  const [introductionTextHeight, setIntroductionTextHeight] = useState(0);
-  const introductionTextRef = useRef(null);
-  const cloudRef = useRef(null);
-  const cloudRef1 = useRef(null);
-  
-  const spaceBetweenElements = 1000;
-  
-  // Calculate height based on height of menuContent items and the space between each of these items
-  const handleContentHeightChange = useCallback((height) => {
-    setContentHeight(height.hireMe + height.experience + height.projects + spaceBetweenElements*3 + 500);
-    setSectionHeights({ ...height, introductionText: introductionTextHeight + 500 });
-  }, [introductionTextHeight]);
-
-  const handleActiveDivChange = (divId) => {
-    setActiveDivId(divId);
-  };
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  const [showContent, setShowContent] = useState(false);
+  const sectionRefs = useRef([]);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobileDevice(window.innerWidth < 700);
-      setIntroductionTextHeight(introductionTextRef.current.offsetHeight);
     };
-  
-    // Calculate the initial height
-    setIntroductionTextHeight(introductionTextRef.current.offsetHeight);
-  
+
     window.addEventListener("resize", handleResize);
-  
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [isMobileDevice]);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
+    const currentRefs = sectionRefs.current;
 
-    const cloud = cloudRef.current;
-    const cloud1 = cloudRef1.current;
-  
-    gsap.set(cloud, { x: '100vw' });
-    gsap.set(cloud1, { x: '100vw' });
-  
-    gsap.to(cloud, {
-      x: '-100%',
-      duration: 40,
-      ease: 'none',
-      repeat: -1,
-      repeatDelay: 0,
-    });
-  
-    gsap.to(cloud1, {
-      x: '-200%',
-      duration: 50,
-      ease: 'none',
-      repeat: -1,
-      repeatDelay: 0,
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2,
+    };
+
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = sectionRefs.current.findIndex(ref => ref === entry.target);
+          setActiveSectionIndex(index);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
     });
 
-    // gsap.to('.clouds', {
-    //   scrollTrigger: {
-    //     trigger: '.App-header',
-    //     start: 'top top',
-    //     end: 'bottom top',
-    //     scrub: true,
-    //   },
-    //   y: -200,
-    //   ease: "none"
-    // });
+    return () => {
+      currentRefs.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
   }, []);
+
+  const handleSectionChange = (index) => {
+    setActiveSectionIndex(index);
+    // Scroll to the corresponding section
+    sectionRefs.current[index].scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleAnimationComplete = () => {
+    setShowContent(true);
+  };
 
   return (
     <div className="App">
-      <header className="App-header" style={{ height: `${contentHeight}px` }}> 
-        <div className="clouds">
-          <img ref={cloudRef} className="cloudImage" src={cloudImage} alt="cloudImage" />
-          <img ref={cloudRef1} className="cloudImage_1" src={cloudImage} alt="cloudImage" />
+      <div className="scroll-container">
+        <section ref={el => sectionRefs.current[0] = el} className="scroll-section first-section">
+          <div className={`${showContent ? 'visible' : 'hidden'}`}>
+
+            <CloudAnimation 
+              cloudImage={cloudImage}
+              cloudHeight={400}
+              direction="left"
+              duration={500}
+            />
+          </div>
+          {/* </div> */}
+          <IntroductionText 
+            textType="introduction" 
+            textContent="Hi there, my name is Daniel."
+            onAnimationComplete={handleAnimationComplete}
+          />
+        </section>
+        <div className={`${showContent ? 'visible' : 'hidden'}`}>
+          <section ref={el => sectionRefs.current[1] = el} className="scroll-section content-section">
+          <CloudAnimation 
+            cloudImage={cloudImage}
+            cloudHeight={200}
+            direction="right"
+            duration={400}
+            parallaxAmount={150}
+          />
+          <CloudAnimation 
+            cloudImage={cloudImage}
+            cloudHeight={100}
+            direction="right"
+            duration={380}
+            parallaxAmount={200}
+          />
+            <MenuContent section="whoAmI" />
+          </section>
+          <section ref={el => sectionRefs.current[2] = el} className="scroll-section content-section">
+          <CloudAnimation 
+            cloudImage={cloudImage}
+            cloudHeight={100}
+            direction="left"
+            duration={380}
+            parallaxAmount={125}
+          />
+          <CloudAnimation 
+            cloudImage={cloudImage}
+            cloudHeight={350}
+            direction="left"
+            duration={380}
+            parallaxAmount={150}
+          />
+            <MenuContent section="myServices" />
+          </section>
+          <section ref={el => sectionRefs.current[3] = el} className="scroll-section content-section">
+            <MenuContent section="coolProjects" />
+          </section>
         </div>
-        <div className="introductionText" ref={introductionTextRef}>
-          <IntroductionText textType={"introduction"} textContent={"Hi there, my name is Daniel."} />
-        </div>
-        {/* Inline conditional rendering based on isMobileDevice */}
-        <MenuContent activeDiv={activeDivId} isMobile={isMobileDevice} onContentHeightChange={handleContentHeightChange} contentSpacing={spaceBetweenElements} />
+      </div>
         {isMobileDevice ? (
           <TemporaryDrawer
-            isOpen={isDrawerOpen}
-            onToggle={setIsDrawerOpen}
-            onActiveDivChange={handleActiveDivChange}
-            menuContentPosition={sectionHeights}
-            contentSpacing={spaceBetweenElements}
-          />
+          activeSection={activeSectionIndex}
+          onSectionChange={handleSectionChange}
+          isVisible={showContent}
+        />
+          
         ) : (
           <Menu
-            onActiveDivChange={handleActiveDivChange}
-            isMobile={isMobileDevice}
-            menuContentPosition={sectionHeights}
-            contentSpacing={spaceBetweenElements}
-          />
-          )}
-      </header>
-
-      <ContactForm />
+            activeSection={activeSectionIndex}
+            onSectionChange={handleSectionChange}
+            isVisible={showContent}
+            isMobile={false}
+        />
+        )}
+      <div className={`contact-form-wrapper ${showContent ? 'visible' : 'hidden'}`}>
+        <ContactForm />
+      </div>
     </div>
   );
 }

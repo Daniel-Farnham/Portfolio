@@ -1,127 +1,116 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { gsap } from "gsap";
 import "./MenuContent.scss";
 import "./ContentBox.scss";
-import Media from "./Media";
-import Links from './Links';
-
-// Breaks content into dot points. May not always want dot points.
-const FormattedContent = ({ content }) => {
-  const paragraphs = content.split("\n\n");
-  const firstParagraph = paragraphs.shift(); // Remove the first paragraph from the array
-
-  return (
-    <>
-      <p className="content-information-first-paragraph">{firstParagraph}</p>
-      <ul className="content-information-list">
-        {paragraphs.map((paragraph, index) => (
-          <li key={index}>
-            {paragraph.split("\n").map((line, lineIndex) => (
-              <React.Fragment key={`${index}-${lineIndex}`}>
-                {line}
-                <br />
-              </React.Fragment>
-            ))}
-          </li>
-        ))}
-      </ul>
-    </>
-  );
-};
 
 function ContentBox(props) {
-  const videoRef = useRef();
-  const contentInfoRef = useRef();
-  const [isButtonClicked, setIsButtonClicked] = useState(false);
-  // Common function for determining media type
-  const determineMediaType = (media) => {
-    if (!media) return { type: "null", src: null };
-    return { type: media.type, src: media.src };
-  };
-
-  const { type: type1, src: src1 } = determineMediaType(props.media_1);
-  const { type: type2, src: src2 } = determineMediaType(props.media_2);
-
-  const isVideo1 = type1 === "video";
-  const isVideo2 = type2 === "video";
-
-  const handleButtonClick = () => {
-    setIsButtonClicked((prevState) => !prevState);
-  };
+  const boxRef = useRef(null);
+  const contentRef = useRef(null);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [showFrontContent, setShowFrontContent] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play();
-  
-    }
-  }, [props.playing, props.id]);
+    setIsMobile(!window.matchMedia("(hover: hover)").matches);
+  }, []);
 
-  const renderMedia = () => {
-    if (props.media_1 || props.media_2) {
-      return (
-        <div className="media-wrapper">
-          <Media
-            className="media"
-            type={type1}
-            src={src1}
-            title={props.title}
-            videoRef={isVideo1 ? videoRef : null}
-          />
-          {!props.isMobile && (
-            <Media
-              className="media"
-              type={type2}
-              src={src2}
-              title={props.title}
-              videoRef={isVideo2 ? videoRef : null}
-            />
-          )}
-        </div>
-      );
-    } else if (props.logo) {
-      return (
-        <div className="logo-stuff">
-          <img logo={1} src={props.logo} alt={props.title} />
-        </div>
-      );
+  useEffect(() => {
+    const box = boxRef.current;
+    const content = contentRef.current;
+
+    const flipBox = () => {
+      setIsFlipped(!isFlipped);
+      gsap.to(box, {
+        duration: 0.8,
+        rotationY: isFlipped ? 0 : 180,
+        ease: "power2.inOut",
+        onUpdate: function() {
+          if (this.progress() > 0.4 && this.progress() < 0.75) {
+            setShowFrontContent(isFlipped);
+          }
+        }
+      });
+      
+      gsap.to(content, {
+        duration: 0.8,
+        rotationY: isFlipped ? 0 : 180,
+        ease: "power2.inOut",
+      });
+
+      if (isMobile) {
+        // Apply hover effect
+        hoverEffect(1.05);
+        // Remove hover effect after a short delay
+        setTimeout(() => hoverEffect(1), 300);
+      }
+    };
+
+    const hoverEffect = (scale) => {
+      gsap.to(box, {
+        duration: 0.3,
+        scale: scale,
+        boxShadow: scale > 1 ? "0px 3px 4px rgb(0, 0, 0)" : "none",
+        backgroundColor: scale > 1 ? "rgba(244, 177, 76, 0)" : "rgba(244, 177, 76, 0)",
+        ease: "power2.out"
+      });
+    };
+
+    const handleMouseEnter = () => {
+      if (!isMobile) {
+        setIsHovered(true);
+        hoverEffect(1.05);
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (!isMobile) {
+        setIsHovered(false);
+        hoverEffect(1);
+      }
+    };
+
+    box.addEventListener('click', flipBox);
+    
+    if (!isMobile) {
+      box.addEventListener('mouseenter', handleMouseEnter);
+      box.addEventListener('mouseleave', handleMouseLeave);
     }
-    return null;
-  };
-  if (props.isProjectContent) {
-    return (
-      <div id={props.id} className="content-box content-box-projects">
-        <div className="content-title">
-          <h1>{props.title}</h1>
-          <button
-            className={`button-links ${isButtonClicked ? "clicked" : ""}`}
-            onClick={handleButtonClick}
-          >
-            what is this?
-          </button>
-        </div>
-        <div ref={contentInfoRef} className="content-information">
-          {renderMedia()}
-          <div className={`hidden-content ${isButtonClicked ? "show" : ""}`}>
-            <FormattedContent content={props.content} />
-          </div>
-        </div>
-        {/* ... */}
+
+    return () => {
+      box.removeEventListener('click', flipBox);
+      box.removeEventListener('mouseenter', handleMouseEnter);
+      box.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [isFlipped, isMobile]);
+
+  return (
+    <div 
+      ref={boxRef} 
+      id={props.id} 
+      className={`content-box services-box ${isHovered ? 'hovered' : ''}`}
+    >
+      <div ref={contentRef} className="content-title">
+        {showFrontContent ? (
+          <>
+            <h1>{props.title}</h1>
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd">
+              <path d="M12 0c-6.623 0-12 5.377-12 12s5.377 12 12 12 12-5.377 12-12-5.377-12-12-12zm0 1c-6.071 0-11 4.929-11 11s4.929 11 11 11 11-4.929 11-11-4.929-11-11-11zm4.828 11.5l-4.608 3.763.679.737 6.101-5-6.112-5-.666.753 4.604 3.747h-11.826v1h11.828z"/>
+            </svg>
+          </>
+        ) : (
+          <>
+            <h1>{props.title}</h1>
+            <ul style={{ listStyleType: 'none', padding: 0 }}>
+              {props.content.map((item, index) => (
+                <li key={index} style={{ marginBottom: '8px' }}>{item}</li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
-    );
-  }
-  else {
-    return (
-      <div id={props.id} className="content-box services-box">
-        <div className="content-title">
-          <h1>{props.title}</h1>
-            <Links showLinks={true} buttonText="Book Intro"/>
-        </div>
-        <div ref={contentInfoRef} className="content-information">
-          <FormattedContent content={props.content} />
-        </div>
-        {/* ... */}
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default ContentBox;

@@ -1,11 +1,29 @@
 .contact-form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: black;
   color: white;
   height: 100vh;
   font-family: Arial, sans-serif;
+
+  .contact-introduction-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+
+    @media screen and (max-width: 700px) {
+      max-width: 80%;
+    }
+  }
+
+  .contact-introduction {
+    font-family: "new-kansas", sans-serif;
+    font-weight: 400;
+    text-align: left;
+    // margin-left: 20px;
+  }
 
   form {
     display: flex;
@@ -25,6 +43,7 @@
   @media screen and (max-width: 700px) {
     form {
       height: 50vh; 
+      width: 80%;
     }
   }
   
@@ -54,7 +73,7 @@
 
   button {
     padding: 10px;
-    width: 200px;
+    width: inherit;
     background-color: #000000;
     color: white;
     border: solid 1px rgb(0, 0, 0);

@@ -36,6 +36,9 @@ function ContactForm() {
 
   return (
     <div className='contact-form'>
+      <div className='contact-introduction-container'>
+        <p className='contact-introduction'>Interested in having a chat? Get in touch!</p>
+      </div>
       <form onSubmit={handleSubmit} data-netlify="true" name="contact">
         <input type="hidden" name="form-name" value="contact" />
         <p>
@@ -57,7 +60,7 @@ function ContactForm() {
           </label>
         </p>
         <p>
-          <button type="submit">Send</button>
+          <button type="submit">Send 🙂</button>
         </p>
       </form>
     </div>
