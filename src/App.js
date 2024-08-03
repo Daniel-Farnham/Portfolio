@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -18,7 +18,6 @@ gsap.registerPlugin(ScrollTrigger);
 function App() {
   const [isMobileDevice, setIsMobileDevice] = useState(window.innerWidth < 600);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [showContent, setShowContent] = useState(false);
   const sectionRefs = useRef([]);
 
@@ -32,6 +31,8 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const currentRefs = sectionRefs.current;
+
     const options = {
       root: null,
       rootMargin: '0px',
@@ -54,7 +55,7 @@ function App() {
     });
 
     return () => {
-      sectionRefs.current.forEach((ref) => {
+      currentRefs.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
@@ -62,9 +63,6 @@ function App() {
 
   const handleSectionChange = (index) => {
     setActiveSectionIndex(index);
-    if (isMobileDevice) {
-      setIsDrawerOpen(false);
-    }
     // Scroll to the corresponding section
     sectionRefs.current[index].scrollIntoView({ behavior: 'smooth' });
   };
@@ -99,15 +97,15 @@ function App() {
             cloudImage={cloudImage}
             cloudHeight={200}
             direction="right"
-            duration={300}
-            parallaxAmount={200}
+            duration={400}
+            parallaxAmount={150}
           />
           <CloudAnimation 
             cloudImage={cloudImage}
             cloudHeight={100}
             direction="right"
-            duration={280}
-            parallaxAmount={250}
+            duration={380}
+            parallaxAmount={200}
           />
             <MenuContent section="whoAmI" />
           </section>
@@ -116,15 +114,15 @@ function App() {
             cloudImage={cloudImage}
             cloudHeight={100}
             direction="left"
-            duration={280}
-            parallaxAmount={150}
+            duration={380}
+            parallaxAmount={125}
           />
           <CloudAnimation 
             cloudImage={cloudImage}
             cloudHeight={350}
             direction="left"
-            duration={280}
-            parallaxAmount={200}
+            duration={380}
+            parallaxAmount={150}
           />
             <MenuContent section="myServices" />
           </section>

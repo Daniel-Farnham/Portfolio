@@ -35,7 +35,7 @@ const CloudAnimation = ({
     const cloud = cloudRef.current;
     const container = containerRef.current;
 
-    let windowWrap = gsap.utils.wrap(-cloud.offsetWidth*4, window.innerWidth);
+    let windowWrap = gsap.utils.wrap(-cloud.offsetWidth, window.innerWidth);
 
     // Position cloud at the bottom, adjusting for mobile
     const setCloudPosition = () => {

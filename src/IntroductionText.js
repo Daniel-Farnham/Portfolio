@@ -9,13 +9,14 @@ function IntroductionText({ textType, textContent, onAnimationComplete }) {
 
  useEffect(() => {
   const words = textContent.split(' ');
+  const animationSpeed = 0.08;
   let charCount = 0;
 
   const chars = words.map((word, wordIndex) => {
     const letters = word.split('').map((char, charIndex) => {
       const displayChar = char === ' ' ? '\u00A0' : char;
       return (
-        <span key={charIndex} className="char" style={{ animationDelay: `${charCount++ * 0.12}s` }}>
+        <span key={charIndex} className="char" style={{ animationDelay: `${charCount++ * animationSpeed}s` }}>
           {displayChar}
         </span>
       );
@@ -23,7 +24,7 @@ function IntroductionText({ textType, textContent, onAnimationComplete }) {
     
     if (wordIndex !== words.length - 1) {
       letters.push(
-        <span key={word.length} className="char" style={{ animationDelay: `${charCount++ * 0.12}s` }}>
+        <span key={word.length} className="char" style={{ animationDelay: `${charCount++ * animationSpeed}s` }}>
           {'\u00A0'}
         </span>
       );
@@ -34,7 +35,7 @@ function IntroductionText({ textType, textContent, onAnimationComplete }) {
 
   setNameChars(chars);
 
-  const animationDuration = charCount * 0.12 * 1000;
+  const animationDuration = charCount * animationSpeed * 1000;
   const timeoutId = setTimeout(() => {
     setShowParagraph(true);
     if (onAnimationComplete && typeof onAnimationComplete === 'function') {
@@ -70,9 +71,8 @@ useEffect(() => {
  }
  else if (textType === "hireMe") {
   return (
-    <div className="contentText">
+    <div className="contentText contentText-hireMe">
       <h1>{nameChars}</h1>
-      {!isMobile && <Links showLinks={false} buttonText="Say hello 👋"/>}
     </div> 
   )
  }

@@ -1,7 +1,3 @@
-import pgvLogo from "./assets/PGV_Logo.png";
-import tediLogo from "./assets/TEDI_Logo.png";
-import dijgtalLogo from "./assets/DIJGTAL_Logo.png";
-import fullCirclelogo from "./assets/Full_Circle_Logo.png";
 import blackMarketProject from "./assets/BlackMarketProject.png";
 import blackMarketProject_2 from "./assets/BlackMarketProject2.png"
 import hanami from "./assets/Hanami.png"
@@ -29,9 +25,9 @@ export const experiences = [
       id: 2,
       title: "Design + Optimisation",
       content: [
-        "site audit",
+        "wireframing",
         "visual identity",
-        "user experience",
+        "user experience design",
         "site speed optimisation",
         "SEO development",
       ]
@@ -121,8 +117,3 @@ export const experiences = [
       contentHeight: "tall",
     }
   ];
-
-  export const techStack = {
-    id: 1, 
-    media: { src: hanami }
-  }

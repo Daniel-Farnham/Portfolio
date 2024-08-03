@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
-import Links from './Links';
 import "./MenuContent.scss";
 import "./ContentBox.scss";
 
@@ -9,6 +8,12 @@ function ContentBox(props) {
   const contentRef = useRef(null);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showFrontContent, setShowFrontContent] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(!window.matchMedia("(hover: hover)").matches);
+  }, []);
 
   useEffect(() => {
     const box = boxRef.current;
@@ -27,37 +32,64 @@ function ContentBox(props) {
         }
       });
       
-      // Adjust content rotation to keep it visible
       gsap.to(content, {
         duration: 0.8,
         rotationY: isFlipped ? 0 : 180,
         ease: "power2.inOut",
       });
+
+      if (isMobile) {
+        // Apply hover effect
+        hoverEffect(1.05);
+        // Remove hover effect after a short delay
+        setTimeout(() => hoverEffect(1), 300);
+      }
     };
 
     const hoverEffect = (scale) => {
       gsap.to(box, {
-        duration: 0.6,
+        duration: 0.3,
         scale: scale,
         boxShadow: scale > 1 ? "0px 3px 4px rgb(0, 0, 0)" : "none",
-        backgroundColor: scale > 1 ? "rgba(244, 177, 76, 0" : "rgba(244, 177, 76, 0)",
+        backgroundColor: scale > 1 ? "rgba(244, 177, 76, 0)" : "rgba(244, 177, 76, 0)",
         ease: "power2.out"
       });
     };
 
+    const handleMouseEnter = () => {
+      if (!isMobile) {
+        setIsHovered(true);
+        hoverEffect(1.05);
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (!isMobile) {
+        setIsHovered(false);
+        hoverEffect(1);
+      }
+    };
+
     box.addEventListener('click', flipBox);
-    box.addEventListener('mouseenter', () => hoverEffect(1.05));
-    box.addEventListener('mouseleave', () => hoverEffect(1));
+    
+    if (!isMobile) {
+      box.addEventListener('mouseenter', handleMouseEnter);
+      box.addEventListener('mouseleave', handleMouseLeave);
+    }
 
     return () => {
       box.removeEventListener('click', flipBox);
-      box.removeEventListener('mouseenter', () => hoverEffect(1.05));
-      box.removeEventListener('mouseleave', () => hoverEffect(1));
+      box.removeEventListener('mouseenter', handleMouseEnter);
+      box.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [isFlipped]);
+  }, [isFlipped, isMobile]);
 
   return (
-    <div ref={boxRef} id={props.id} className="content-box services-box">
+    <div 
+      ref={boxRef} 
+      id={props.id} 
+      className={`content-box services-box ${isHovered ? 'hovered' : ''}`}
+    >
       <div ref={contentRef} className="content-title">
         {showFrontContent ? (
           <>
@@ -69,7 +101,7 @@ function ContentBox(props) {
         ) : (
           <>
             <h1>{props.title}</h1>
-            <ul style={{ listStyleType: 'none', padding: 10 }}>
+            <ul style={{ listStyleType: 'none', padding: 0 }}>
               {props.content.map((item, index) => (
                 <li key={index} style={{ marginBottom: '8px' }}>{item}</li>
               ))}

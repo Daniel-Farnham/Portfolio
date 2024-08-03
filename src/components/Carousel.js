@@ -42,6 +42,7 @@ const Carousel = ({ items, width = '100%', height = '400px', duration = 20 }) =>
 
   return (
     <div ref={containerRef} className="carousel-container">
+      {/* <h2>My past work</h2> */}
       <div ref={scrollerRef} className="carousel-scroller">
         <div className="scroller-content">
           {items.map((item, index) => (

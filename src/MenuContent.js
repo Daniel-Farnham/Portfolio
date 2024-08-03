@@ -21,7 +21,7 @@ function MenuContent({ section }) {
                 className="text-content"
               />
               <p className="text-content">
-                I am a Front End Developer with a love for making things that are fun, friendly and memorable! For me building things which people absolute love has always been my ultimate goal. It could be a high converting landing page, perhaps some highly polished animation or maybe just a web app with a little bit more ✨ <a className="text-content-special"> spice</a> ✨ than normal. If people love it, then I love building it! 💻
+                I am a Front End Developer with a love for making things that are fun, friendly and memorable! For me building things which people absolute love has always been my ultimate goal. It could be a high converting landing page, perhaps some highly polished animation or maybe just a web app with a little bit more ✨ <span className="text-content-special"> spice</span> ✨ than normal. If people love it, then I love building it! 💻
               </p>
             </div>
             <div className="text-content-container">
@@ -43,7 +43,7 @@ function MenuContent({ section }) {
       case 'myServices':
         return (
           <div className="my-services">
-            <h2>What I can do</h2>
+            <h2>What I am good at</h2>
             <div className="my-services-content">
               {experiences.map((experience) => (
                 <ContentBox
@@ -58,18 +58,23 @@ function MenuContent({ section }) {
       case 'coolProjects':
         return (
           <div className="cool-projects">
-            <h2>Portfolio</h2>
             <Carousel 
               items={projects.map(project => project.media_1.src)}
               height="600px"
               duration={90}
             />
             <div className='coolproject-partners-sections'>
-              <p>Or find some of my other work with these agencies I have partnered with!</p>
+              <p>Or find some of my other work through these agencies I have partnered with!</p>
               <div className='coolproject-partners'>
-                <img src={lowercaselogo} alt="lowercase logo"/>
-                <img src={dijgtallogo} alt="dijgtal logo"/>
-                <img src={fullcirclelogo} alt="full circle logo"/>
+                <a href="https://www.lowercase.club/">
+                  <img src={lowercaselogo} alt="lowercase logo"/>
+                </a>
+                <a href="https://dijgtal.com/">
+                  <img src={dijgtallogo} alt="dijgtal logo"/>
+                </a>
+                <a href="https://www.fullcircledigitalmarketing.com.au/">
+                  <img src={fullcirclelogo} alt="full circle logo"/>
+                </a>
               </div>
             </div>
 
