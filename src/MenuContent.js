@@ -67,7 +67,7 @@ function MenuContent({ section, isVisible }) {
             <div className='cool-projects-main'>
               <IntroductionText
                 textType="hireMe"
-                textContent="And here is some of the work I am most proud of"
+                textContent="And here is some of the work I am most proud of."
                 className="text-content"
                 startAnimation={isVisible}
               />
