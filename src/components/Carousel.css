@@ -1,12 +1,12 @@
 .carousel-container {
     overflow: hidden;
     max-width: 100vw;
-    height: 600px;
+    height: 400px;
   }
   
   .carousel-scroller {
     display: flex;
-    align-items: center;
+    align-items: start;
     height: 100%;
     width: max-content;
   }
@@ -29,9 +29,12 @@
   }
 
   @media screen and (min-width: 648px) {
+    .carousel-container {
+      height: 600px;
+    }
     .carousel-item {
-      width: 600px;
-      height: 400px;
+      width: 700px;
+      height: 500px;
     }
   }
   

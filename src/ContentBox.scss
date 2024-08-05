@@ -19,6 +19,14 @@
   &:hover {
     cursor: pointer;
   }
+
+  img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border: solid 1px black;
+
+  }
   h1 {
     font-family: "new-kansas", sans-serif;
     font-weight: 400;

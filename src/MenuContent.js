@@ -8,7 +8,7 @@ import lowercaselogo from './assets/lowercase_club_logo.jpeg'
 import dijgtallogo from './assets/dijgtal_logo.jpeg'
 import fullcirclelogo from './assets/Full_Circle_Logo.png'
 
-function MenuContent({ section }) {
+function MenuContent({ section, isVisible }) {
   const renderContent = () => {
     switch(section) {
       case 'whoAmI':
@@ -19,9 +19,10 @@ function MenuContent({ section }) {
                 textType="hireMe"
                 textContent="I'm someone who builds for people over the internet."
                 className="text-content"
+                startAnimation={isVisible}
               />
               <p className="text-content">
-                I am a Front End Developer with a love for making things that are fun, friendly and memorable! For me building things which people absolute love has always been my ultimate goal. It could be a high converting landing page, perhaps some highly polished animation or maybe just a web app with a little bit more ✨ <span className="text-content-special"> spice</span> ✨ than normal. If people love it, then I love building it! 💻
+                I am a Front End Developer with a love for making things that are fun, friendly and memorable! For me building things which people absolutely love has always been my ultimate goal. It could be a high converting landing page, perhaps some highly polished animation or maybe just a web app with a little bit more ✨ <span className="text-content-special"> spice</span> ✨ than normal. If people love it, then I love building it! 💻
               </p>
             </div>
             <div className="text-content-container">
@@ -43,7 +44,12 @@ function MenuContent({ section }) {
       case 'myServices':
         return (
           <div className="my-services">
-            <h2>What I am good at</h2>
+            <IntroductionText
+              textType="other"
+              textContent="Soooo what can I do specifically?"
+              className="text-content"
+              startAnimation={isVisible}
+            />
             <div className="my-services-content">
               {experiences.map((experience) => (
                 <ContentBox
@@ -58,11 +64,24 @@ function MenuContent({ section }) {
       case 'coolProjects':
         return (
           <div className="cool-projects">
-            <Carousel 
-              items={projects.map(project => project.media_1.src)}
-              height="600px"
-              duration={90}
-            />
+            <div className='cool-projects-main'>
+              <IntroductionText
+                textType="hireMe"
+                textContent="And here is some of the work I am most proud of"
+                className="text-content"
+                startAnimation={isVisible}
+              />
+              <Carousel 
+                items={projects.map(project => project.media_1.src)}
+                direction="right"
+                duration={40}
+              />
+              {/* <Carousel 
+                items={projects.map(project => project.media_1.src)}
+                direction="left"
+                duration={20}
+              /> */}
+            </div>
             <div className='coolproject-partners-sections'>
               <p>Or find some of my other work through these agencies I have partnered with!</p>
               <div className='coolproject-partners'>

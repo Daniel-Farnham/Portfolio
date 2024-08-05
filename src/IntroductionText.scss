@@ -1,7 +1,7 @@
 
 h1 {
   font-family: "new-kansas", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-size: 56px;
   margin: 0; 
@@ -9,7 +9,7 @@ h1 {
 
 h2 {
   font-family: "new-kansas", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   font-size: 24px;
   margin: 0;
@@ -17,7 +17,7 @@ h2 {
 
 p {
   font-family: "area-normal", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
   font-size: 16px;
   margin: 0;
@@ -32,10 +32,18 @@ p {
   align-items: center;
   gap: 10px;
   z-index: 1;
+  margin-bottom: 20px;
 }
 
 .contentText-hireMe {
-  margin-bottom: 30px;
+  min-height: 150px;
+}
+
+.contentText-other {
+  min-height: 120px;
+  @media screen and (min-width: 768px) {
+    min-height: 0px;
+  }
 }
 
 .word {

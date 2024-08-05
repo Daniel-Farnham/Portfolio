@@ -19,6 +19,7 @@ function App() {
   const [isMobileDevice, setIsMobileDevice] = useState(window.innerWidth < 600);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [showContent, setShowContent] = useState(false);
+  const [visibleSections, setVisibleSections] = useState({});
   const sectionRefs = useRef([]);
 
   useEffect(() => {
@@ -40,12 +41,15 @@ function App() {
     };
 
     const callback = (entries) => {
+      const updatedVisibleSections = {...visibleSections};
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const index = sectionRefs.current.findIndex(ref => ref === entry.target);
+          updatedVisibleSections[index] = entry.isIntersecting;
           setActiveSectionIndex(index);
         }
       });
+      setVisibleSections(updatedVisibleSections);
     };
 
     const observer = new IntersectionObserver(callback, options);
@@ -59,7 +63,7 @@ function App() {
         if (ref) observer.unobserve(ref);
       });
     };
-  }, []);
+  }, [visibleSections]);
 
   const handleSectionChange = (index) => {
     setActiveSectionIndex(index);
@@ -79,16 +83,16 @@ function App() {
 
             <CloudAnimation 
               cloudImage={cloudImage}
-              cloudHeight={400}
+              cloudHeight={300}
               direction="left"
               duration={500}
             />
           </div>
-          {/* </div> */}
           <IntroductionText 
             textType="introduction" 
             textContent="Hi there, my name is Daniel."
             onAnimationComplete={handleAnimationComplete}
+            startAnimation={visibleSections[0]}
           />
         </section>
         <div className={`${showContent ? 'visible' : 'hidden'}`}>
@@ -100,14 +104,7 @@ function App() {
             duration={400}
             parallaxAmount={150}
           />
-          <CloudAnimation 
-            cloudImage={cloudImage}
-            cloudHeight={100}
-            direction="right"
-            duration={380}
-            parallaxAmount={200}
-          />
-            <MenuContent section="whoAmI" />
+            <MenuContent section="whoAmI" isVisible={visibleSections[1]}/>
           </section>
           <section ref={el => sectionRefs.current[2] = el} className="scroll-section content-section">
           <CloudAnimation 
@@ -124,10 +121,10 @@ function App() {
             duration={380}
             parallaxAmount={150}
           />
-            <MenuContent section="myServices" />
+            <MenuContent section="myServices" isVisible={visibleSections[2]}/>
           </section>
           <section ref={el => sectionRefs.current[3] = el} className="scroll-section content-section">
-            <MenuContent section="coolProjects" />
+            <MenuContent section="coolProjects" isVisible={visibleSections[3]}/>
           </section>
         </div>
       </div>

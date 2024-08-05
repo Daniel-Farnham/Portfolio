@@ -8,6 +8,8 @@ import silkDriptheLabelImage_1 from "./assets/SilkDripTheLabel.png";
 import silkDriptheLabelImage_2 from "./assets/SilkDripTheLabelimage_2.png"
 import playgroundVintagewebsite_1 from "./assets/playgroundVintageWebsite.png";
 import playgroundVintageWebsite_2 from "./assets/playgroundVintageWebsite_2.png";
+import it_crowd from "./assets/the-it-crowd-moss-the-it-crowd.gif"
+import bob_ross from "./assets/painting-bob-ross.gif"
 
 export const experiences = [
     {
@@ -19,7 +21,8 @@ export const experiences = [
         "web app development",
         "ecommerce development",
         "analytics + A/B testing",
-      ]
+      ],
+      media: { src: it_crowd }
     },
     {
       id: 2,
@@ -30,7 +33,8 @@ export const experiences = [
         "user experience design",
         "site speed optimisation",
         "SEO development",
-      ]
+      ],
+      media: { src: bob_ross }
     },
   ];
   

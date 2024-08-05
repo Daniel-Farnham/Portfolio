@@ -23,6 +23,14 @@
   gap: 40px; 
 }
 
+.cool-projects-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .coolproject-partners-sections {
   position: relative;
   top: -50px;
@@ -57,6 +65,13 @@
 }
 
 // My Services Section
+
+.my-services {
+  h2 {
+    padding: 20px 0;
+  }
+}
+
 .my-services-content {
   display: flex;
   flex-direction: column;
@@ -64,9 +79,6 @@
   align-items: center;
   gap: 20px;
 
-  h2 {
-    padding: 20px;
-  }
 
   @media screen and (min-width: 736px) {
     flex-direction: row;
